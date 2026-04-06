@@ -2,22 +2,54 @@ project:
   type: book
 
 book:
-  title: "Math Research"
-  author: "Norah Jones"
-  date: "4/6/2026"
+  title: "Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python"
+  subtitle: "A Guide to Mathematical Research for High School Students"
+  author: "James H. Choi, Ph.D."
+  date: today
+
   chapters:
-    - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - index.qmd                  # Preface: What Is Mathematical Research?
+    - part: "Part I — Numbers Have Secrets"
+      chapters:
+        - ch01-primes.qmd        # Chapter 1: Prime Numbers — The Atoms of Arithmetic
+        - ch02-collatz.qmd       # Chapter 2: The Collatz Conjecture — Simple Rules, Deep Mystery
+        - ch03-fibonacci.qmd     # Chapter 3: Fibonacci Numbers and Their Cousins
+        - ch04-digits.qmd        # Chapter 4: Digits, Bases, and Normal Numbers
+        - ch05-pascal.qmd        # Chapter 5: Pascal's Triangle — Infinite Patterns in a Simple Array
+        - ch06-continued.qmd     # Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers
+        - ch07-oeis.qmd          # Chapter 7: Integer Sequences and the OEIS
+
+    - part: "Part II — Structure and Dynamics"
+      chapters:
+        - ch08-automata.qmd      # Chapter 8: Cellular Automata — Rules That Generate Worlds
+        - ch09-logistic.qmd      # Chapter 9: Chaos in a Simple Formula — The Logistic Map
+
+    - part: "Part III — Geometry Through Computation"
+      chapters:
+        - ch10-fractals.qmd      # Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules
+        - ch11-tilings.qmd       # Chapter 11: Tilings and Symmetry
+
+    - part: "Part IV — The Experimental Method"
+      chapters:
+        - ch12-misleads.qmd      # Chapter 12: When the Computer Misleads You
+        - ch13-communication.qmd # Chapter 13: From Conjecture to Communication
+
+    - part: "Appendices"
+      chapters:
+        - app-a-mathematica.qmd  # Appendix A: Mathematica Quick Reference
+        - app-b-python.qmd       # Appendix B: Python Quick Reference
+        - app-c-oeis.qmd         # Appendix C: Guide to the OEIS
+        - app-d-reading.qmd      # Appendix D: Further Reading
+
+
 
 bibliography: references.bib
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
+    code-fold: true
+    toc: true
   pdf:
     documentclass: scrreprt
 
