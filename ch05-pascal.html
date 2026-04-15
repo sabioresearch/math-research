@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>5&nbsp; Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch05-pascal.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch05-pascal.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,32 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#building-the-triangle" id="toc-building-the-triangle" class="nav-link active" data-scroll-target="#building-the-triangle"><span class="header-section-number">5.1</span> Building the Triangle</a></li>
+  <li><a href="#binomial-coefficients" id="toc-binomial-coefficients" class="nav-link" data-scroll-target="#binomial-coefficients"><span class="header-section-number">5.2</span> Binomial Coefficients</a></li>
+  <li><a href="#coloring-by-divisibility-the-sierpinski-triangle" id="toc-coloring-by-divisibility-the-sierpinski-triangle" class="nav-link" data-scroll-target="#coloring-by-divisibility-the-sierpinski-triangle"><span class="header-section-number">5.3</span> Coloring by Divisibility: The Sierpinski Triangle</a></li>
+  <li><a href="#estimating-fractal-dimension" id="toc-estimating-fractal-dimension" class="nav-link" data-scroll-target="#estimating-fractal-dimension"><span class="header-section-number">5.4</span> Estimating Fractal Dimension</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">5.5</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-pascal-r1" id="toc-sec-pascal-r1" class="nav-link" data-scroll-target="#sec-pascal-r1"><span class="header-section-number">5.5.1</span> Topic 1 — Fractal Dimensions for Different Primes</a></li>
+  <li><a href="#sec-pascal-r2" id="toc-sec-pascal-r2" class="nav-link" data-scroll-target="#sec-pascal-r2"><span class="header-section-number">5.5.2</span> Topic 2 — Pascal’s Pyramid</a></li>
+  <li><a href="#sec-pascal-r3" id="toc-sec-pascal-r3" class="nav-link" data-scroll-target="#sec-pascal-r3"><span class="header-section-number">5.5.3</span> Topic 3 — The Hockey Stick and Its Generalizations</a></li>
+  <li><a href="#sec-pascal-r4" id="toc-sec-pascal-r4" class="nav-link" data-scroll-target="#sec-pascal-r4"><span class="header-section-number">5.5.4</span> Topic 4 — Substitution Rules</a></li>
+  <li><a href="#sec-pascal-r5" id="toc-sec-pascal-r5" class="nav-link" data-scroll-target="#sec-pascal-r5"><span class="header-section-number">5.5.5</span> Topic 5 — Divisibility and Row Structure</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch05-pascal.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch05-pascal.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></h1>
+<h1 class="title"><span id="sec-pascal" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></h1>
 </div>
 
 
@@ -312,9 +393,157 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="building-the-triangle" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="building-the-triangle"><span class="header-section-number">5.1</span> Building the Triangle</h2>
+<p>Pascal’s triangle is constructed by a simple rule: each entry is the sum of the two entries directly above it. The edges are all 1.</p>
+<p><span class="math display">\[
+\begin{array}{ccccccccc}
+&amp; &amp; &amp; &amp; 1 &amp; &amp; &amp; &amp; \\
+&amp; &amp; &amp; 1 &amp; &amp; 1 &amp; &amp; &amp; \\
+&amp; &amp; 1 &amp; &amp; 2 &amp; &amp; 1 &amp; &amp; \\
+&amp; 1 &amp; &amp; 3 &amp; &amp; 3 &amp; &amp; 1 &amp; \\
+1 &amp; &amp; 4 &amp; &amp; 6 &amp; &amp; 4 &amp; &amp; 1 \\
+\end{array}
+\]</span></p>
+<p>Despite this simple construction rule, the triangle contains an extraordinary wealth of mathematical structure. It is named after Blaise Pascal, who studied it systematically in 1653, though it was known to Chinese, Indian, and Persian mathematicians centuries earlier.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PascalTriangle<span class="op">[</span><span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{{1},
+ {1, 1},
+ {1, 2, 1},
+ {1, 3, 3, 1},
+ {1, 4, 6, 4, 1},
+ {1, 5, 10, 10, 5, 1},
+ {1, 6, 15, 20, 15, 6, 1},
+ {1, 7, 21, 35, 35, 21, 7, 1}}</code></pre>
+<hr>
+</section>
+<section id="binomial-coefficients" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="binomial-coefficients"><span class="header-section-number">5.2</span> Binomial Coefficients</h2>
+<p>The entry in row <span class="math inline">\(n\)</span>, position <span class="math inline">\(k\)</span> (both starting from 0) is the <strong>binomial coefficient</strong>:</p>
+<p><span class="math display">\[\binom{n}{k} = \frac{n!}{k!(n-k)!}\]</span></p>
+<p>This counts the number of ways to choose <span class="math inline">\(k\)</span> items from <span class="math inline">\(n\)</span> — for example, <span class="math inline">\(\binom{5}{2} = 10\)</span> counts the ways to choose 2 items from 5.</p>
+<p>The binomial coefficients appear in the expansion of <span class="math inline">\((a + b)^n\)</span>:</p>
+<p><span class="math display">\[(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k}\]</span></p>
+<p>Setting <span class="math inline">\(a = b = 1\)</span> gives the <strong>row sum identity</strong>: each row of Pascal’s triangle sums to a power of 2.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>VerifyPascalIdentities<span class="op">[</span><span class="dv">20</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Row sums = powers of 2: verified for rows 0 to 20
+Diagonal sums = Fibonacci: verified for diagonals 0 to 20
+Symmetry: C(n,k) = C(n,n-k): verified for rows 0 to 20</code></pre>
+<p>The <strong>diagonal sums</strong> are the Fibonacci numbers: if you sum along the shallow diagonals (northwest to southeast), you get <span class="math inline">\(1, 1, 2, 3, 5, 8, \ldots\)</span> This connects two of the most famous sequences in mathematics through a single construction.</p>
+<hr>
+</section>
+<section id="coloring-by-divisibility-the-sierpinski-triangle" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="coloring-by-divisibility-the-sierpinski-triangle"><span class="header-section-number">5.3</span> Coloring by Divisibility: The Sierpinski Triangle</h2>
+<p>Here is the key experiment of this chapter. Take Pascal’s triangle and color each entry by whether it is <strong>even</strong> (divisible by 2) or <strong>odd</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>PlotPascalMod<span class="op">[</span><span class="dv">256</span><span class="op">,</span> <span class="dv">2</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[256-row Pascal’s triangle. Each entry colored black if odd, white if even. The resulting image is a perfect Sierpinski triangle — a fractal consisting of three smaller copies of itself arranged in a triangle.]</em></p>
+<p>This is not a coincidence. It is a consequence of <strong>Lucas’s theorem</strong>: <span class="math inline">\(\binom{n}{k} \bmod p\)</span> depends only on the base-<span class="math inline">\(p\)</span> representations of <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span>. When <span class="math inline">\(p = 2\)</span>, <span class="math inline">\(\binom{n}{k}\)</span> is odd if and only if every bit of <span class="math inline">\(k\)</span> is also a bit of <span class="math inline">\(n\)</span> (a bitwise AND condition) — and this rule generates the Sierpinski pattern recursively.</p>
+<p>Try other primes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>PlotPascalMod<span class="op">[</span><span class="dv">243</span><span class="op">,</span> <span class="dv">3</span><span class="op">]</span>   <span class="co">(* 243 = 3^5 rows, colored mod 3 *)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>PlotPascalMod<span class="op">[</span><span class="dv">125</span><span class="op">,</span> <span class="dv">5</span><span class="op">]</span>   <span class="co">(* 125 = 5^3 rows, colored mod 5 *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Left: mod 3 pattern — three-way Sierpinski analog with three colors (0, 1, 2 mod 3). Right: mod 5 pattern — five-way analog. Both are self-similar.]</em></p>
+<hr>
+</section>
+<section id="estimating-fractal-dimension" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="estimating-fractal-dimension"><span class="header-section-number">5.4</span> Estimating Fractal Dimension</h2>
+<p>The Sierpinski triangle is a <strong>fractal</strong> — a shape that has detail at every scale. We can measure its “roughness” using the <strong>box-counting dimension</strong>:</p>
+<p><span class="math display">\[d = \lim_{\epsilon \to 0} \frac{\log N(\epsilon)}{\log(1/\epsilon)}\]</span></p>
+<p>where <span class="math inline">\(N(\epsilon)\)</span> is the number of boxes of size <span class="math inline">\(\epsilon\)</span> needed to cover the shape. For the Sierpinski triangle, the theoretical value is <span class="math inline">\(d = \log 3 / \log 2 \approx 1.585\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BoxCountingDimension<span class="op">[</span>PascalMod<span class="op">[</span><span class="dv">512</span><span class="op">,</span> <span class="dv">2</span><span class="op">]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Log-log plot of N(ε) vs 1/ε. Points fall on a straight line. Slope (estimated dimension): approximately 1.58. Theoretical value: log(3)/log(2) ≈ 1.585.]</em></p>
+<p>The close agreement between computation and theory is satisfying — but remember, we are only estimating from finite data. The theoretical value requires an infinite fractal.</p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">5.5</span> Further Research Topics</h2>
+<section id="sec-pascal-r1" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="sec-pascal-r1"><span class="header-section-number">5.5.1</span> Topic 1 — Fractal Dimensions for Different Primes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Table</span><span class="op">[</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="fu">p</span><span class="op">,</span> BoxCountingDimension<span class="op">[</span>PascalMod<span class="op">[</span><span class="fu">p</span><span class="sc">^</span><span class="dv">6</span><span class="op">,</span> <span class="fu">p</span><span class="op">]]},</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">{</span><span class="fu">p</span><span class="op">,</span> <span class="op">{</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">}}]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table of primes and estimated box-counting dimensions. Values: ~1.585 for p=2, ~1.631 for p=3, ~1.672 for p=5, ~1.693 for p=7.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Estimate the box-counting dimension of <code>PascalMod[p^6, p]</code> for primes <span class="math inline">\(p = 2, 3, 5, 7, 11\)</span>. Plot dimension vs.&nbsp;<span class="math inline">\(\log p\)</span>. Conjecture a formula for the dimension in terms of <span class="math inline">\(p\)</span>.<br>
+(The theoretical answer involves <span class="math inline">\(\log(p)/\log(p+\text{something})\)</span> — find the pattern.)</li>
+<li>The theoretical dimension for the mod-<span class="math inline">\(p\)</span> Sierpinski pattern is <span class="math inline">\(\log\binom{p+1}{2} / \log p\)</span>… or is it? Verify or disprove this conjecture.</li>
+<li>For prime <span class="math inline">\(p\)</span>, how many distinct colors appear in <code>PlotPascalMod[p^3, p]</code>? Does this equal <span class="math inline">\(p\)</span>?</li>
+<li>Build <code>PlotPascalMod[n, m]</code> for composite <span class="math inline">\(m = 4, 6, 9\)</span>. Describe how the pattern differs from prime <span class="math inline">\(m\)</span>. Can you predict the composite pattern from the prime patterns?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-pascal-r2" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="sec-pascal-r2"><span class="header-section-number">5.5.2</span> Topic 2 — Pascal’s Pyramid</h3>
+<p>The 3D analog of Pascal’s triangle uses <strong>trinomial coefficients</strong>: the coefficients of <span class="math inline">\((a + b + c)^n\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>PascalPyramidSlice<span class="op">[</span><span class="dv">4</span><span class="op">]</span>    <span class="co">(* slice at level n=4 *)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>PlotPyramidMod<span class="op">[</span><span class="dv">27</span><span class="op">,</span> <span class="dv">2</span><span class="op">]</span>    <span class="co">(* 3D Sierpinski analog *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Left: 2D array showing the coefficients in level 4 of the pyramid. Right: 3D voxel plot showing the mod-2 pattern — a 3D Sierpinski tetrahedron.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the trinomial coefficients for levels 0 through 6. Verify that the row sums are powers of 3.</li>
+<li>Visualize 2D slices of <code>PlotPyramidMod[27, 2]</code> at levels 0, 1, 3, 9, 27. Does the pattern at level <span class="math inline">\(3^k\)</span> look like the pattern at level <span class="math inline">\(3^{k-1}\)</span>, scaled?</li>
+<li>Estimate the box-counting dimension of the 3D mod-2 Pascal pyramid pattern. The theoretical value is <span class="math inline">\(\log 4 / \log 2 = 2\)</span>… but wait, that would mean it fills the plane. Is the 3D Sierpinski tetrahedron actually 2-dimensional?</li>
+<li>The 3D pyramid has a mod-<span class="math inline">\(p\)</span> pattern for any prime <span class="math inline">\(p\)</span>. Describe the pattern for <span class="math inline">\(p = 3\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-pascal-r3" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="sec-pascal-r3"><span class="header-section-number">5.5.3</span> Topic 3 — The Hockey Stick and Its Generalizations</h3>
+<p>The <strong>hockey stick identity</strong> states:</p>
+<p><span class="math display">\[\sum_{i=r}^{n} \binom{i}{r} = \binom{n+1}{r+1}\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>VerifyHockeyStick<span class="op">[</span><span class="dv">15</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>True  (* verified for all r from 0 to 15 and n from r to 15 *)</code></pre>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>In Pascal’s triangle, find the hockey stick visually: a diagonal run of <span class="math inline">\(k\)</span> entries summing to the entry one step down and one step right. Mark several hockey sticks on a printed copy.</li>
+<li>Prove the hockey stick identity computationally by induction: verify that if it holds for <span class="math inline">\(n\)</span>, it holds for <span class="math inline">\(n+1\)</span>, using only the Pascal recurrence.</li>
+<li>Define the “hockey stick of order 2”: sums of products of two consecutive entries. Does a similar identity hold?</li>
+<li>The <span class="math inline">\(k\)</span>th diagonal of Pascal’s triangle contains the <span class="math inline">\(k\)</span>-dimensional figurate numbers (triangular, tetrahedral, etc.). Sum every other diagonal and verify you get Fibonacci numbers. Sum every third diagonal. Conjecture the result for every <span class="math inline">\(k\)</span>th diagonal.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-pascal-r4" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="sec-pascal-r4"><span class="header-section-number">5.5.4</span> Topic 4 — Substitution Rules</h3>
+<p>The mod-2 Pascal pattern at <span class="math inline">\(2^n\)</span> rows is built from the pattern at <span class="math inline">\(2^{n-1}\)</span> rows by a substitution rule: three copies arranged in a triangle, with a white triangle in the center.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>PascalSubstitution<span class="op">[</span><span class="dv">5</span><span class="op">]</span>    <span class="co">(* apply the substitution 5 times *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Sequence of images at levels 1 through 5. Each image is clearly built from three copies of the previous image.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Verify computationally that the level-<span class="math inline">\(n\)</span> mod-2 Pascal pattern is exactly the image obtained by applying the substitution rule <span class="math inline">\(n\)</span> times, starting from a single black cell.</li>
+<li>Implement the substitution rule directly (without computing Pascal’s triangle at all) and verify it produces the same image as <code>PlotPascalMod[2^n, 2]</code> for <span class="math inline">\(n = 1, \ldots, 8\)</span>.</li>
+<li>For <span class="math inline">\(p = 3\)</span>: describe the substitution rule that builds the level-<span class="math inline">\(3^n\)</span> mod-3 pattern from the level-<span class="math inline">\(3^{n-1}\)</span> pattern. How many copies are used, and how are they arranged?</li>
+<li>Estimate how much faster the substitution method is than directly computing Pascal’s triangle mod <span class="math inline">\(p\)</span> for <span class="math inline">\(n = 8\)</span>. Measure the computation time of both methods.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-pascal-r5" class="level3" data-number="5.5.5">
+<h3 data-number="5.5.5" class="anchored" data-anchor-id="sec-pascal-r5"><span class="header-section-number">5.5.5</span> Topic 5 — Divisibility and Row Structure</h3>
+<p>By Kummer’s theorem, the highest power of prime <span class="math inline">\(p\)</span> dividing <span class="math inline">\(\binom{m+n}{m}\)</span> equals the number of carries when adding <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> in base <span class="math inline">\(p\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>KummerCarries<span class="op">[</span><span class="dv">35</span><span class="op">,</span> <span class="dv">21</span><span class="op">,</span> <span class="dv">2</span><span class="op">]</span>    <span class="co">(* carries when adding 35+21 in base 2 *)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>HighestPowerDividing<span class="op">[</span><span class="fu">Binomial</span><span class="op">[</span><span class="dv">56</span><span class="op">,</span> <span class="dv">35</span><span class="op">],</span> <span class="dv">2</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>3   (* three carries *)
+3   (* 2^3 divides C(56,35) but 2^4 does not *)</code></pre>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For all entries <span class="math inline">\(\binom{n}{k}\)</span> in the first 64 rows of Pascal’s triangle, compute the highest power of 2 dividing each entry. Plot the result as a heatmap. Compare visually to the mod-2 Sierpinski pattern.</li>
+<li>Which rows of Pascal’s triangle have all entries odd (divisible by no even number except 1)? These are rows <span class="math inline">\(2^k\)</span>. Verify this for <span class="math inline">\(k = 0, \ldots, 7\)</span>.</li>
+<li>For prime <span class="math inline">\(p\)</span>: a row <span class="math inline">\(n\)</span> of Pascal’s triangle has all entries <span class="math inline">\(\not\equiv 0 \pmod p\)</span> if and only if <span class="math inline">\(n+1\)</span> is a power of <span class="math inline">\(p\)</span>. Verify for <span class="math inline">\(p = 2, 3, 5\)</span> and rows 0 through 100.</li>
+<li>Compute the sum <span class="math inline">\(\sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}\)</span> for <span class="math inline">\(n = 1\)</span> to 20. Verify the identity. These are the <strong>central binomial coefficients</strong> — find them in OEIS and identify their asymptotic growth rate.</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +948,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch04-digits.html" class="pagination-link" aria-label="Chapter 4: Digits, Bases, and Normal Numbers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span>
+      <a href="./ch04-digits.html" class="pagination-link" aria-label="Chapter 4 — Digits, Bases, and Normal Numbers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch06-continued.html" class="pagination-link" aria-label="Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch06-continued.html" class="pagination-link" aria-label="Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

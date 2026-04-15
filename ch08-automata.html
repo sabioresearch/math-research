@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Chapter 8: Cellular Automata — Rules That Generate Worlds – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>8&nbsp; Chapter 8 — Cellular Automata: Rules That Generate Worlds – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II — Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch08-automata.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II - Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch08-automata.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,34 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-world-of-simple-rules" id="toc-a-world-of-simple-rules" class="nav-link active" data-scroll-target="#a-world-of-simple-rules"><span class="header-section-number">8.1</span> A World of Simple Rules</a></li>
+  <li><a href="#encoding-rules" id="toc-encoding-rules" class="nav-link" data-scroll-target="#encoding-rules"><span class="header-section-number">8.2</span> Encoding Rules</a></li>
+  <li><a href="#generating-space-time-diagrams" id="toc-generating-space-time-diagrams" class="nav-link" data-scroll-target="#generating-space-time-diagrams"><span class="header-section-number">8.3</span> Generating Space-Time Diagrams</a></li>
+  <li><a href="#rule-30-a-random-number-generator" id="toc-rule-30-a-random-number-generator" class="nav-link" data-scroll-target="#rule-30-a-random-number-generator"><span class="header-section-number">8.4</span> Rule 30: A Random Number Generator</a></li>
+  <li><a href="#rule-90-and-pascals-triangle" id="toc-rule-90-and-pascals-triangle" class="nav-link" data-scroll-target="#rule-90-and-pascals-triangle"><span class="header-section-number">8.5</span> Rule 90 and Pascal’s Triangle</a></li>
+  <li><a href="#symmetry-classes" id="toc-symmetry-classes" class="nav-link" data-scroll-target="#symmetry-classes"><span class="header-section-number">8.6</span> Symmetry Classes</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">8.7</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-automata-r1" id="toc-sec-automata-r1" class="nav-link" data-scroll-target="#sec-automata-r1"><span class="header-section-number">8.7.1</span> Topic 1 — Testing Rule 30 for Randomness</a></li>
+  <li><a href="#sec-automata-r2" id="toc-sec-automata-r2" class="nav-link" data-scroll-target="#sec-automata-r2"><span class="header-section-number">8.7.2</span> Topic 2 — Symmetry and Equivalence Classes</a></li>
+  <li><a href="#sec-automata-r3" id="toc-sec-automata-r3" class="nav-link" data-scroll-target="#sec-automata-r3"><span class="header-section-number">8.7.3</span> Topic 3 — Sensitivity to Initial Conditions</a></li>
+  <li><a href="#sec-automata-r4" id="toc-sec-automata-r4" class="nav-link" data-scroll-target="#sec-automata-r4"><span class="header-section-number">8.7.4</span> Topic 4 — 2D Totalistic Rules and Conway’s Game of Life</a></li>
+  <li><a href="#sec-automata-r5" id="toc-sec-automata-r5" class="nav-link" data-scroll-target="#sec-automata-r5"><span class="header-section-number">8.7.5</span> Topic 5 — Entropy and Wolfram’s Classification</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II — Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch08-automata.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II - Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch08-automata.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></h1>
+<h1 class="title"><span id="sec-automata" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></h1>
 </div>
 
 
@@ -312,9 +395,179 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="a-world-of-simple-rules" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="a-world-of-simple-rules"><span class="header-section-number">8.1</span> A World of Simple Rules</h2>
+<p>Imagine a row of light switches — each either on or off. At each tick of a clock, every switch changes state according to a rule that looks at itself and its two immediate neighbors. After many ticks, what patterns emerge?</p>
+<p>This is the setup for <strong>elementary cellular automata</strong> (ECA), introduced and systematically studied by Stephen Wolfram in the 1980s. Despite the extreme simplicity of the setup — one dimension, two states, neighbors of radius 1 — the variety of behaviors that emerges is astonishing.</p>
+<hr>
+</section>
+<section id="encoding-rules" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="encoding-rules"><span class="header-section-number">8.2</span> Encoding Rules</h2>
+<p>Each cell has two possible states (0 or 1). A cell and its two neighbors form a 3-bit pattern, giving <span class="math inline">\(2^3 = 8\)</span> possible neighborhood configurations. Each configuration maps to a new state (0 or 1). Therefore there are <span class="math inline">\(2^8 = 256\)</span> possible rules.</p>
+<p>We number rules 0 through 255 using the <strong>Wolfram code</strong>: the rule number in binary tells you what each of the 8 neighborhood configurations maps to.</p>
+<p>For example, Rule 30 in binary is <span class="math inline">\(00011110\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Neighborhood</th>
+<th>111</th>
+<th>110</th>
+<th>101</th>
+<th>100</th>
+<th>011</th>
+<th>010</th>
+<th>001</th>
+<th>000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New state</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ShowRule<span class="op">[</span><span class="dv">30</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Diagram showing all 8 neighborhood configurations as small grids of 3 cells (black=1, white=0), with an arrow pointing to the resulting cell state below each. Rule 30’s pattern: 00011110.]</em></p>
+<hr>
+</section>
+<section id="generating-space-time-diagrams" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="generating-space-time-diagrams"><span class="header-section-number">8.3</span> Generating Space-Time Diagrams</h2>
+<p>Starting from a single black cell and applying a rule repeatedly generates a <strong>space-time diagram</strong> — a 2D image where each row is one generation.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CellularAutomatonPlot<span class="op">[</span><span class="dv">30</span><span class="op">,</span> <span class="dv">200</span><span class="op">]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>CellularAutomatonPlot<span class="op">[</span><span class="dv">110</span><span class="op">,</span> <span class="dv">200</span><span class="op">]</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CellularAutomatonPlot<span class="op">[</span><span class="dv">90</span><span class="op">,</span> <span class="dv">200</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Three space-time diagrams, each 200 rows tall. Rule 30: chaotic, seemingly random pattern. Rule 110: complex irregular structures, triangles and gliders. Rule 90: perfect Sierpinski triangle.]</em></p>
+<p>Wolfram classified the 256 rules into four qualitative classes:</p>
+<ul>
+<li><strong>Class I:</strong> Fixed point — all cells die or all turn on. (e.g., Rule 0, Rule 255)</li>
+<li><strong>Class II:</strong> Periodic — simple repeating or symmetric patterns. (e.g., Rule 4, Rule 108)</li>
+<li><strong>Class III:</strong> Chaotic — irregular, random-looking patterns. (e.g., Rule 30, Rule 45)</li>
+<li><strong>Class IV:</strong> Complex — localized structures that interact. (e.g., Rule 110)</li>
+</ul>
+<p>Rule 110 has been proved <strong>computationally universal</strong> — it can simulate any computation, making it as powerful as a general-purpose computer, despite its absurdly simple description.</p>
+<hr>
+</section>
+<section id="rule-30-a-random-number-generator" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="rule-30-a-random-number-generator"><span class="header-section-number">8.4</span> Rule 30: A Random Number Generator</h2>
+<p>Rule 30 is used as Wolfram Language’s built-in pseudorandom number generator for some applications. The center column of the Rule 30 space-time diagram, starting from a single cell, produces the sequence:</p>
+<p><span class="math display">\[1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, \ldots\]</span></p>
+<p>This sequence passes many standard randomness tests. But it is completely deterministic — the same starting cell always produces the same sequence.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Rule30CenterColumn<span class="op">[</span><span class="dv">200</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[List of 200 binary digits from the center column of Rule 30. Looks random with no visible period.]</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Rule30RandomnessTests<span class="op">[</span><span class="dv">1000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Results of several randomness tests: digit frequency (near 50/50), run-length distribution (close to geometric), autocorrelation (near zero for lags &gt; 0). Rule 30 passes all.]</em></p>
+<hr>
+</section>
+<section id="rule-90-and-pascals-triangle" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="rule-90-and-pascals-triangle"><span class="header-section-number">8.5</span> Rule 90 and Pascal’s Triangle</h2>
+<p>Rule 90 generates a perfect Sierpinski triangle from a single cell — the same fractal pattern we saw in Chapter 5 when coloring Pascal’s triangle modulo 2. This is not a coincidence: Rule 90 is equivalent to XOR (addition modulo 2) of the two neighbors, and Pascal’s triangle mod 2 is built by the same operation.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>CompareRule90Pascal<span class="op">[</span><span class="dv">128</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Side-by-side images: Rule 90 space-time diagram (128 rows) and Pascal’s triangle mod 2 (128 rows). They are identical.]</em></p>
+<hr>
+</section>
+<section id="symmetry-classes" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="symmetry-classes"><span class="header-section-number">8.6</span> Symmetry Classes</h2>
+<p>Many of the 256 rules are equivalent under simple transformations: - <strong>Left-right reflection:</strong> swap the left and right neighbors. - <strong>Color inversion:</strong> swap 0 and 1. - Both combined.</p>
+<p>These symmetries partition the 256 rules into equivalence classes. Rules that are equivalent produce the same qualitative behavior (mirrored or color-inverted).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>WolframEquivalenceClasses<span class="op">[]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Summary: 256 rules organized into 88 distinct equivalence classes. Class sizes vary from 1 (self-symmetric rules) to 4.]</em></p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">8.7</span> Further Research Topics</h2>
+<section id="sec-automata-r1" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="sec-automata-r1"><span class="header-section-number">8.7.1</span> Topic 1 — Testing Rule 30 for Randomness</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Rule30Stats<span class="op">[</span><span class="dv">10000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table of statistical properties: digit frequency, run-length histogram, autocorrelation for lags 1–20, entropy. All consistent with random.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute 10,000 bits from the center column of Rule 30. Calculate the frequency of 0s and 1s. Is it close to 50/50?</li>
+<li>Compute the run-length distribution (lengths of consecutive runs of 0s or 1s). For a fair coin, run lengths should follow a geometric distribution. Does Rule 30?</li>
+<li>Compute the autocorrelation <span class="math inline">\(\sum_i b_i b_{i+k}\)</span> for lags <span class="math inline">\(k = 1\)</span> to 20. For a random sequence this should be near zero. What do you find?</li>
+<li>Compute the Shannon entropy of the Rule 30 center column in blocks of length <span class="math inline">\(k = 1, 2, 3, 4\)</span>. Compare to a truly random sequence (use <code>RandomInteger</code>). How close is Rule 30?</li>
+<li>Rule 30 is <em>not</em> truly random — it is periodic in theory (eventually repeating). Estimate the period length computationally. (It is astronomically large.)</li>
+</ol>
+<hr>
+</section>
+<section id="sec-automata-r2" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="sec-automata-r2"><span class="header-section-number">8.7.2</span> Topic 2 — Symmetry and Equivalence Classes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>RuleSymmetryTable<span class="op">[]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[256x4 table: each rule, its left-right mirror, its color inverse, and its combined transformation. Rules that map to themselves are self-symmetric.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For all 256 rules, compute the set of rules equivalent under left-right reflection and/or color inversion. How many distinct equivalence classes are there?</li>
+<li>Which rules are self-symmetric under left-right reflection? Under color inversion? Under both?</li>
+<li>Generate space-time diagrams for rules 30 and its three equivalents. Verify they look like reflections/inversions of each other.</li>
+<li>For each Wolfram class (I–IV): are the rules within a class closed under these symmetries? That is, if Rule <span class="math inline">\(r\)</span> is Class III, are all its equivalents also Class III?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-automata-r3" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="sec-automata-r3"><span class="header-section-number">8.7.3</span> Topic 3 — Sensitivity to Initial Conditions</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>SensitivityTest<span class="op">[</span><span class="dv">110</span><span class="op">,</span> <span class="dv">200</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two side-by-side space-time diagrams for Rule 110. Left: initial condition with a single 1 at center. Right: same but with one additional 1 placed 50 cells away. The two diagrams look identical at first, then diverge dramatically after about 80 rows.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For Rules 30, 90, and 110: start two runs, one from a single cell and one from that same configuration plus a single extra cell far away. At what row do the two diagrams first differ?</li>
+<li>For Rule 30: place the extra cell at various distances <span class="math inline">\(d = 10, 20, 50, 100\)</span> from the center. How does the row of first difference depend on <span class="math inline">\(d\)</span>?</li>
+<li>Class II rules are periodic — do they show sensitivity to initial conditions? Test Rule 4 and Rule 108.</li>
+<li>Define a “divergence distance” <span class="math inline">\(\delta(r, d)\)</span> for rule <span class="math inline">\(r\)</span> and initial separation <span class="math inline">\(d\)</span>. Plot <span class="math inline">\(\delta\)</span> vs.&nbsp;<span class="math inline">\(d\)</span> for Rule 30. Is the relationship linear, logarithmic, or something else?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-automata-r4" class="level3" data-number="8.7.4">
+<h3 data-number="8.7.4" class="anchored" data-anchor-id="sec-automata-r4"><span class="header-section-number">8.7.4</span> Topic 4 — 2D Totalistic Rules and Conway’s Game of Life</h3>
+<p>A <strong>totalistic</strong> 2D rule depends only on the <em>sum</em> of neighboring cells, not their arrangement. Conway’s Game of Life is a totalistic rule on a 2D grid:</p>
+<ul>
+<li>A live cell with 2 or 3 live neighbors survives.</li>
+<li>A dead cell with exactly 3 live neighbors becomes alive.</li>
+<li>All other cells die or stay dead.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>GameOfLifeSteps<span class="op">[</span>GliderPattern<span class="op">[],</span> <span class="dv">50</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Animation frames (or static grid) showing the “glider” pattern moving across the grid over 50 generations.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Implement the Game of Life (see <a href="app-b-wolfram.html#sec-app-game-of-life" class="quarto-xref"><span>Section 15.8.6</span></a>) and simulate the “glider” for 100 generations. Verify that it moves diagonally one cell every 4 generations.</li>
+<li>Find three other stable Game of Life patterns: a “still life” (never changes), an “oscillator” (period &gt; 1), and a pattern that eventually dies out.</li>
+<li>Invent a 2D totalistic rule (different from Life) that produces a “glider” — a pattern that moves across the grid. What structural constraints on the rule make this possible?</li>
+<li>Compute the entropy of the Game of Life space-time diagram for a random initial condition. Compare to Rule 30.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-automata-r5" class="level3" data-number="8.7.5">
+<h3 data-number="8.7.5" class="anchored" data-anchor-id="sec-automata-r5"><span class="header-section-number">8.7.5</span> Topic 5 — Entropy and Wolfram’s Classification</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>AllRuleEntropies<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Plot of Shannon entropy (of cell-state distribution in space-time diagrams) for all 256 rules, grouped by Wolfram class. Class I near 0, Class II near some constant, Class III near maximum entropy 1, Class IV intermediate.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For all 256 rules, generate 100-row space-time diagrams from a single-cell initial condition. Compute the Shannon entropy of the resulting binary image.</li>
+<li>Plot entropy vs.&nbsp;rule number. Color-code by Wolfram’s classification. Does entropy separate the classes cleanly?</li>
+<li>Compute entropy for the same rules starting from a <em>random</em> initial condition (50% of cells active). Does the classification order change?</li>
+<li>The Lempel-Ziv complexity is a compression-based complexity measure. Compute it for all 256 rule space-time diagrams and compare to entropy. Which measure better separates Wolfram’s classes?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +972,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch07-oeis.html" class="pagination-link" aria-label="Chapter 7: Integer Sequences and the OEIS">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span>
+      <a href="./ch07-oeis.html" class="pagination-link" aria-label="Chapter 7 — Integer Sequences and the OEIS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch09-logistic.html" class="pagination-link" aria-label="Chapter 9: Chaos in a Simple Formula — The Logistic Map">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch09-logistic.html" class="pagination-link" aria-label="Chapter 9 — Chaos in a Simple Formula: The Logistic Map">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

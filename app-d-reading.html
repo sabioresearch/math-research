@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Appendix D: Further Reading – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>17&nbsp; Appendix D — Further Reading – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -81,6 +81,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -93,7 +122,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-mathematica.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-d-reading.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-quickref.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-d-reading.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,7 +156,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -136,7 +165,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -148,31 +177,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -180,7 +209,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -189,13 +218,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -203,7 +232,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -212,13 +241,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -226,7 +255,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -235,13 +264,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -257,26 +286,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -286,15 +315,28 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#d.1-experimental-mathematics" id="toc-d.1-experimental-mathematics" class="nav-link active" data-scroll-target="#d.1-experimental-mathematics"><span class="header-section-number">17.1</span> D.1 Experimental Mathematics</a></li>
+  <li><a href="#d.2-number-theory" id="toc-d.2-number-theory" class="nav-link" data-scroll-target="#d.2-number-theory"><span class="header-section-number">17.2</span> D.2 Number Theory</a></li>
+  <li><a href="#d.3-chaos-and-dynamical-systems" id="toc-d.3-chaos-and-dynamical-systems" class="nav-link" data-scroll-target="#d.3-chaos-and-dynamical-systems"><span class="header-section-number">17.3</span> D.3 Chaos and Dynamical Systems</a></li>
+  <li><a href="#d.4-fractal-geometry" id="toc-d.4-fractal-geometry" class="nav-link" data-scroll-target="#d.4-fractal-geometry"><span class="header-section-number">17.4</span> D.4 Fractal Geometry</a></li>
+  <li><a href="#d.5-cellular-automata" id="toc-d.5-cellular-automata" class="nav-link" data-scroll-target="#d.5-cellular-automata"><span class="header-section-number">17.5</span> D.5 Cellular Automata</a></li>
+  <li><a href="#d.6-sequences-and-the-oeis" id="toc-d.6-sequences-and-the-oeis" class="nav-link" data-scroll-target="#d.6-sequences-and-the-oeis"><span class="header-section-number">17.6</span> D.6 Sequences and the OEIS</a></li>
+  <li><a href="#d.7-mathematical-writing-and-communication" id="toc-d.7-mathematical-writing-and-communication" class="nav-link" data-scroll-target="#d.7-mathematical-writing-and-communication"><span class="header-section-number">17.7</span> D.7 Mathematical Writing and Communication</a></li>
+  <li><a href="#d.8-tilings-and-symmetry" id="toc-d.8-tilings-and-symmetry" class="nav-link" data-scroll-target="#d.8-tilings-and-symmetry"><span class="header-section-number">17.8</span> D.8 Tilings and Symmetry</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-mathematica.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-d-reading.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-quickref.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-d-reading.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></h1>
+<h1 class="title"><span id="sec-app-reading" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></h1>
 </div>
 
 
@@ -311,9 +353,77 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<p>These are the books and resources that most directly connect to the themes of this book. They are organized by topic and annotated with the level of mathematical background needed.</p>
+<hr>
+<section id="d.1-experimental-mathematics" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="d.1-experimental-mathematics"><span class="header-section-number">17.1</span> D.1 Experimental Mathematics</h2>
+<p><strong>Borwein, J. and Bailey, D.</strong> <em>Mathematics by Experiment: Plausible Reasoning in the 21st Century.</em> A K Peters, 2004.</p>
+<p>The full technical version of the philosophy behind this book. Covers Ramanujan’s identities, the BBP formula for <span class="math inline">\(\pi\)</span>, integer relation algorithms, and much more. Requires calculus and some complex analysis for the later chapters. The source of the quote used in our preface.</p>
+<p><strong>Borwein, J., Bailey, D., and Girgensohn, R.</strong> <em>Experimentation in Mathematics: Computational Paths to Discovery.</em> A K Peters, 2004.</p>
+<p>More advanced companion to the above. Focused on specific research problems solved through computation.</p>
+<p><strong>Martin, C.</strong> <em>Keep It Real.</em> 2011. <em>(Available in this project’s reading list — see project files.)</em></p>
+<p>A practitioner’s guide to doing and communicating experimental mathematics research. Particularly useful for Chapter 13.</p>
+<hr>
+</section>
+<section id="d.2-number-theory" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="d.2-number-theory"><span class="header-section-number">17.2</span> D.2 Number Theory</h2>
+<p><strong>Hardy, G. H. and Wright, E. M.</strong> <em>An Introduction to the Theory of Numbers.</em> Oxford University Press, 6th ed.&nbsp;2008.</p>
+<p>The classic reference for elementary and analytic number theory. Covers primes, Fibonacci numbers, continued fractions, and much more with full proofs. Requires only high school algebra for the first several chapters; calculus for the later ones.</p>
+<p><strong>Sierpiński, W.</strong> <em>Elementary Theory of Numbers.</em> PWN, 1987.</p>
+<p>Accessible treatment of divisibility, primes, and Diophantine equations. Particularly good on Pell equations (Chapter 6) and Goldbach-type problems.</p>
+<p><strong>Guy, R. K.</strong> <em>Unsolved Problems in Number Theory.</em> 3rd ed. Springer, 2004.</p>
+<p>A catalog of open problems. The Collatz conjecture, Goldbach’s conjecture, and many others in this book appear here with references to partial results. Essential for understanding which problems are “known hard.”</p>
+<hr>
+</section>
+<section id="d.3-chaos-and-dynamical-systems" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="d.3-chaos-and-dynamical-systems"><span class="header-section-number">17.3</span> D.3 Chaos and Dynamical Systems</h2>
+<p><strong>Strogatz, S.</strong> <em>Nonlinear Dynamics and Chaos.</em> 2nd ed.&nbsp;Westview Press, 2015.</p>
+<p>The best introductory textbook on the logistic map, bifurcations, Lyapunov exponents, and chaos. Requires calculus. Chapter 9 of this book follows Strogatz’s approach.</p>
+<p><strong>Gleick, J.</strong> <em>Chaos: Making a New Science.</em> Viking, 1987.</p>
+<p>A narrative history of chaos theory, covering Feigenbaum’s constant, the Lorenz attractor, and fractal geometry. No mathematics required. Excellent motivation for the technical material.</p>
+<hr>
+</section>
+<section id="d.4-fractal-geometry" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="d.4-fractal-geometry"><span class="header-section-number">17.4</span> D.4 Fractal Geometry</h2>
+<p><strong>Mandelbrot, B.</strong> <em>The Fractal Geometry of Nature.</em> W. H. Freeman, 1982.</p>
+<p>The original text introducing fractal geometry. More philosophical and visual than mathematical; accessible to anyone. Chapter 10 draws directly on Mandelbrot’s ideas.</p>
+<p><strong>Barnsley, M.</strong> <em>Fractals Everywhere.</em> 2nd ed.&nbsp;Academic Press, 1993.</p>
+<p>Rigorous treatment of iterated function systems, the chaos game, and fractal dimension. Requires calculus and some real analysis.</p>
+<p><strong>Falconer, K.</strong> <em>Fractal Geometry: Mathematical Foundations and Applications.</em> 3rd ed.&nbsp;Wiley, 2014.</p>
+<p>The standard graduate textbook on fractal geometry. Covers Hausdorff dimension, self-similar sets, and the Mandelbrot set with full proofs. Requires real analysis.</p>
+<hr>
+</section>
+<section id="d.5-cellular-automata" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="d.5-cellular-automata"><span class="header-section-number">17.5</span> D.5 Cellular Automata</h2>
+<p><strong>Wolfram, S.</strong> <em>A New Kind of Science.</em> Wolfram Media, 2002.</p>
+<p>Stephen Wolfram’s comprehensive exploration of cellular automata, computation, and the nature of complexity. Freely available at wolframscience.com. Chapter 8 follows Wolfram’s classification. The book is long and occasionally controversial — read it critically.</p>
+<hr>
+</section>
+<section id="d.6-sequences-and-the-oeis" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="d.6-sequences-and-the-oeis"><span class="header-section-number">17.6</span> D.6 Sequences and the OEIS</h2>
+<p><strong>Sloane, N. J. A.</strong> <em>The On-Line Encyclopedia of Integer Sequences.</em> oeis.org. Continuously updated.</p>
+<p>The definitive reference for integer sequences. See Appendix C for guidance on using it.</p>
+<p><strong>Havil, J.</strong> <em>Gamma: Exploring Euler’s Constant.</em> Princeton University Press, 2003.</p>
+<p>A beautiful exploration of the Euler-Mascheroni constant <span class="math inline">\(\gamma \approx 0.5772\)</span>, which connects prime gaps, the harmonic series, and the Riemann zeta function. Accessible with only high school algebra.</p>
+<hr>
+</section>
+<section id="d.7-mathematical-writing-and-communication" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="d.7-mathematical-writing-and-communication"><span class="header-section-number">17.7</span> D.7 Mathematical Writing and Communication</h2>
+<p><strong>Halmos, P.</strong> <em>How to Write Mathematics.</em> American Mathematical Society, 1973.</p>
+<p>A short, classic essay on writing mathematical prose clearly. Essential reading before writing up your research (Chapter 13).</p>
+<p><strong>Knuth, D., Larrabee, T., and Roberts, P.</strong> <em>Mathematical Writing.</em> Mathematical Association of America, 1989.</p>
+<p>Based on a Stanford course. Covers notation, clarity, and the conventions of professional mathematical writing.</p>
+<hr>
+</section>
+<section id="d.8-tilings-and-symmetry" class="level2" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="d.8-tilings-and-symmetry"><span class="header-section-number">17.8</span> D.8 Tilings and Symmetry</h2>
+<p><strong>Grünbaum, B. and Shephard, G.</strong> <em>Tilings and Patterns.</em> W. H. Freeman, 1987.</p>
+<p>The definitive mathematical reference on tilings. Covers periodic tilings, symmetry groups, and aperiodic tilings including Penrose. Requires only geometric intuition for most chapters.</p>
+<p><strong>Penrose, R.</strong> <em>The Road to Reality.</em> Knopf, 2004.</p>
+<p>A comprehensive tour of modern physics and mathematics by the discoverer of Penrose tilings. Chapter 11 connects to his work on quasicrystals and aperiodic order.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -718,8 +828,8 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./app-c-oeis.html" class="pagination-link" aria-label="Appendix C: Guide to the OEIS">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span>
+      <a href="./app-c-oeis.html" class="pagination-link" aria-label="Appendix C — Guide to the OEIS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

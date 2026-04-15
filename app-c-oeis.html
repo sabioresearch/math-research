@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>16&nbsp; Appendix C: Guide to the OEIS – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>16&nbsp; Appendix C — Guide to the OEIS – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -34,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./app-d-reading.html" rel="next">
-<link href="./app-b-python.html" rel="prev">
+<link href="./app-b-wolfram.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-mathematica.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-c-oeis.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-quickref.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-c-oeis.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#c.1-searching-the-oeis" id="toc-c.1-searching-the-oeis" class="nav-link active" data-scroll-target="#c.1-searching-the-oeis"><span class="header-section-number">16.1</span> C.1 Searching the OEIS</a></li>
+  <li><a href="#c.2-reading-an-oeis-entry" id="toc-c.2-reading-an-oeis-entry" class="nav-link" data-scroll-target="#c.2-reading-an-oeis-entry"><span class="header-section-number">16.2</span> C.2 Reading an OEIS Entry</a></li>
+  <li><a href="#c.3-key-sequences-referenced-in-this-book" id="toc-c.3-key-sequences-referenced-in-this-book" class="nav-link" data-scroll-target="#c.3-key-sequences-referenced-in-this-book"><span class="header-section-number">16.3</span> C.3 Key Sequences Referenced in This Book</a></li>
+  <li><a href="#c.4-submitting-a-new-sequence" id="toc-c.4-submitting-a-new-sequence" class="nav-link" data-scroll-target="#c.4-submitting-a-new-sequence"><span class="header-section-number">16.4</span> C.4 Submitting a New Sequence</a></li>
+  <li><a href="#c.5-oeis-in-wolfram-language" id="toc-c.5-oeis-in-wolfram-language" class="nav-link" data-scroll-target="#c.5-oeis-in-wolfram-language"><span class="header-section-number">16.5</span> C.5 OEIS in Wolfram Language</a></li>
+  <li><a href="#c.6-generating-sequences-for-oeis-search" id="toc-c.6-generating-sequences-for-oeis-search" class="nav-link" data-scroll-target="#c.6-generating-sequences-for-oeis-search"><span class="header-section-number">16.6</span> C.6 Generating Sequences for OEIS Search</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-mathematica.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-c-oeis.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app-a-quickref.html">Appendices</a></li><li class="breadcrumb-item"><a href="./app-c-oeis.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></h1>
+<h1 class="title"><span id="sec-app-oeis" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></h1>
 </div>
 
 
@@ -312,9 +387,208 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<p>The <strong>Online Encyclopedia of Integer Sequences</strong> (oeis.org) is the indispensable reference for integer sequence research. This appendix explains how to use it effectively.</p>
+<hr>
+<section id="c.1-searching-the-oeis" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="c.1-searching-the-oeis"><span class="header-section-number">16.1</span> C.1 Searching the OEIS</h2>
+<p>Go to <a href="https://oeis.org">oeis.org</a> and enter your sequence terms separated by commas in the search box:</p>
+<pre><code>1, 1, 2, 3, 5, 8, 13, 21</code></pre>
+<p>Tips for better searches:</p>
+<ul>
+<li><strong>Enter at least 6 terms.</strong> Short sequences match too many entries.</li>
+<li><strong>Try without the first term.</strong> Some sequences are indexed differently.</li>
+<li><strong>Try with signs.</strong> If your sequence involves negative values, include them.</li>
+<li><strong>Try a subsequence.</strong> If your full sequence gives no results, try just the first 8–10 terms.</li>
+<li><strong>Search for a formula.</strong> You can search for words like “Fibonacci” or “prime” in the description box.</li>
+</ul>
+<hr>
+</section>
+<section id="c.2-reading-an-oeis-entry" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="c.2-reading-an-oeis-entry"><span class="header-section-number">16.2</span> C.2 Reading an OEIS Entry</h2>
+<p>Each OEIS entry (identified by an A-number, e.g., A000045) contains:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Name</strong></td>
+<td>Brief description of the sequence</td>
+</tr>
+<tr class="even">
+<td><strong>Data</strong></td>
+<td>First several terms</td>
+</tr>
+<tr class="odd">
+<td><strong>Offset</strong></td>
+<td>Index of the first term (0 or 1)</td>
+</tr>
+<tr class="even">
+<td><strong>Comments</strong></td>
+<td>Mathematical context and observations</td>
+</tr>
+<tr class="odd">
+<td><strong>References</strong></td>
+<td>Books and papers</td>
+</tr>
+<tr class="even">
+<td><strong>Links</strong></td>
+<td>URLs to related resources</td>
+</tr>
+<tr class="odd">
+<td><strong>Formula</strong></td>
+<td>Explicit, recursive, or generating function formulas</td>
+</tr>
+<tr class="even">
+<td><strong>Example</strong></td>
+<td>Worked examples</td>
+</tr>
+<tr class="odd">
+<td><strong>Mathematica</strong></td>
+<td>Wolfram Language code</td>
+</tr>
+<tr class="even">
+<td><strong>Python</strong></td>
+<td>Python code</td>
+</tr>
+<tr class="odd">
+<td><strong>Crossrefs</strong></td>
+<td>Related OEIS sequences</td>
+</tr>
+<tr class="even">
+<td><strong>Keyword</strong></td>
+<td>Tags (e.g., “core”, “easy”, “hard”, “more”)</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>offset</strong> field is important: A000045 (Fibonacci) has offset 0, meaning the first listed term is <span class="math inline">\(F_0 = 0\)</span>. Always check the offset before using formulas.</p>
+<hr>
+</section>
+<section id="c.3-key-sequences-referenced-in-this-book" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="c.3-key-sequences-referenced-in-this-book"><span class="header-section-number">16.3</span> C.3 Key Sequences Referenced in This Book</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>OEIS ID</th>
+<th>Sequence</th>
+<th>Chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A000040</td>
+<td>Prime numbers</td>
+<td><a href="ch01-primes.html" class="quarto-xref"><span>Chapter 1</span></a></td>
+</tr>
+<tr class="even">
+<td>A001223</td>
+<td>Prime gaps</td>
+<td><a href="ch01-primes.html" class="quarto-xref"><span>Chapter 1</span></a></td>
+</tr>
+<tr class="odd">
+<td>A006877</td>
+<td>Collatz delay records</td>
+<td><a href="ch02-collatz.html" class="quarto-xref"><span>Chapter 2</span></a></td>
+</tr>
+<tr class="even">
+<td>A006584</td>
+<td>Collatz stopping times</td>
+<td><a href="ch02-collatz.html" class="quarto-xref"><span>Chapter 2</span></a></td>
+</tr>
+<tr class="odd">
+<td>A000045</td>
+<td>Fibonacci numbers</td>
+<td><a href="ch03-fibonacci.html" class="quarto-xref"><span>Chapter 3</span></a></td>
+</tr>
+<tr class="even">
+<td>A001175</td>
+<td>Pisano periods</td>
+<td><a href="ch03-fibonacci.html" class="quarto-xref"><span>Chapter 3</span></a></td>
+</tr>
+<tr class="odd">
+<td>A000796</td>
+<td>Digits of <span class="math inline">\(\pi\)</span></td>
+<td><a href="ch04-digits.html" class="quarto-xref"><span>Chapter 4</span></a></td>
+</tr>
+<tr class="even">
+<td>A007318</td>
+<td>Pascal’s triangle</td>
+<td><a href="ch05-pascal.html" class="quarto-xref"><span>Chapter 5</span></a></td>
+</tr>
+<tr class="odd">
+<td>A001333</td>
+<td>CF convergents of <span class="math inline">\(\sqrt{2}\)</span></td>
+<td><a href="ch06-continued.html" class="quarto-xref"><span>Chapter 6</span></a></td>
+</tr>
+<tr class="even">
+<td>A005132</td>
+<td>Recamán’s sequence</td>
+<td><a href="ch07-oeis.html" class="quarto-xref"><span>Chapter 7</span></a></td>
+</tr>
+<tr class="odd">
+<td>A005150</td>
+<td>Look-and-say sequence</td>
+<td><a href="ch07-oeis.html" class="quarto-xref"><span>Chapter 7</span></a></td>
+</tr>
+<tr class="even">
+<td>A000108</td>
+<td>Catalan numbers</td>
+<td><a href="ch07-oeis.html" class="quarto-xref"><span>Chapter 7</span></a></td>
+</tr>
+<tr class="odd">
+<td>A002386</td>
+<td>Maximal prime gaps</td>
+<td><a href="ch01-primes.html#sec-primes-r1" class="quarto-xref"><span>Section 1.7.1</span></a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="c.4-submitting-a-new-sequence" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="c.4-submitting-a-new-sequence"><span class="header-section-number">16.4</span> C.4 Submitting a New Sequence</h2>
+<p>If your sequence is not in the OEIS and you believe it is new:</p>
+<ol type="1">
+<li><strong>Double-check your computation.</strong> Verify at least 15 terms independently.</li>
+<li><strong>Search for subsequences and transformations.</strong> Try the sequence starting from the second term; try differences; try the sequence mod 2 or mod 3.</li>
+<li><strong>Create an account</strong> at oeis.org.</li>
+<li><strong>Submit</strong> using the “Submit a new sequence” link.</li>
+<li><strong>Include:</strong>
+<ul>
+<li>At least 15 terms</li>
+<li>A precise definition</li>
+<li>Your name and any observations</li>
+<li>Wolfram Language or Python code to generate the sequence</li>
+</ul></li>
+<li><strong>Wait</strong> for review. An editor will check and may accept the sequence.</li>
+</ol>
+<p>The OEIS has A-numbers beyond A380000 as of 2025 — there is room for well-documented new sequences.</p>
+<hr>
+</section>
+<section id="c.5-oeis-in-wolfram-language" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="c.5-oeis-in-wolfram-language"><span class="header-section-number">16.5</span> C.5 OEIS in Wolfram Language</h2>
+<p>Wolfram Language has a built-in connection to the OEIS:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">(* Search for a sequence by terms *)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">WolframAlpha</span><span class="op">[</span><span class="st">"1, 1, 2, 3, 5, 8, 13"</span><span class="op">,</span> <span class="op">{{</span><span class="st">"OEISResults"</span><span class="op">,</span> <span class="dv">1</span><span class="op">},</span> <span class="st">"Content"</span><span class="op">}]</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">(* Or use the OEIS directly in a browser and copy the A-number *)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">(* Then look up in WL: *)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>OEIS<span class="op">[</span><span class="st">"A000045"</span><span class="op">]</span>   <span class="co">(* if you have a package that supports this *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For direct programmatic access, the OEIS provides a simple API:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">(* Fetch OEIS entry A000045 as JSON *)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ex">=</span> <span class="fu">Import</span><span class="op">[</span><span class="st">"https://oeis.org/search?q=id:A000045&amp;fmt=json"</span><span class="op">,</span> <span class="st">"JSON"</span><span class="op">]</span>;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data<span class="op">[[</span><span class="st">"results"</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="st">"data"</span><span class="op">]]</span>   <span class="co">(* first several terms *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="c.6-generating-sequences-for-oeis-search" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="c.6-generating-sequences-for-oeis-search"><span class="header-section-number">16.6</span> C.6 Generating Sequences for OEIS Search</h2>
+<p>The helper function <code>GenerateAndSearch</code> (see <a href="app-b-wolfram.html#sec-app-oeis-helper" class="quarto-xref"><span>Section 15.7.8</span></a>) formats a computed sequence for pasting into the OEIS search box.</p>
+<p>For sequences you compute in this book, a good habit is to always run <code>GenerateAndSearch</code> on any novel sequence you find — even if you suspect it is known. You may be surprised.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +993,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./app-b-python.html" class="pagination-link" aria-label="Appendix B: Python Quick Reference">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span>
+      <a href="./app-b-wolfram.html" class="pagination-link" aria-label="Appendix B — Wolfram Language Function Reference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./app-d-reading.html" class="pagination-link" aria-label="Appendix D: Further Reading">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./app-d-reading.html" class="pagination-link" aria-label="Appendix D — Further Reading">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

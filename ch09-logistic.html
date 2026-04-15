@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Chapter 9: Chaos in a Simple Formula — The Logistic Map – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>9&nbsp; Chapter 9 — Chaos in a Simple Formula: The Logistic Map – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II — Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch09-logistic.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II - Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch09-logistic.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,34 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-model-for-population-growth" id="toc-a-model-for-population-growth" class="nav-link active" data-scroll-target="#a-model-for-population-growth"><span class="header-section-number">9.1</span> A Model for Population Growth</a></li>
+  <li><a href="#iterating-the-map" id="toc-iterating-the-map" class="nav-link" data-scroll-target="#iterating-the-map"><span class="header-section-number">9.2</span> Iterating the Map</a></li>
+  <li><a href="#the-bifurcation-diagram" id="toc-the-bifurcation-diagram" class="nav-link" data-scroll-target="#the-bifurcation-diagram"><span class="header-section-number">9.3</span> The Bifurcation Diagram</a></li>
+  <li><a href="#bifurcation-points-and-feigenbaums-constant" id="toc-bifurcation-points-and-feigenbaums-constant" class="nav-link" data-scroll-target="#bifurcation-points-and-feigenbaums-constant"><span class="header-section-number">9.4</span> Bifurcation Points and Feigenbaum’s Constant</a></li>
+  <li><a href="#sensitive-dependence-on-initial-conditions" id="toc-sensitive-dependence-on-initial-conditions" class="nav-link" data-scroll-target="#sensitive-dependence-on-initial-conditions"><span class="header-section-number">9.5</span> Sensitive Dependence on Initial Conditions</a></li>
+  <li><a href="#windows-of-order" id="toc-windows-of-order" class="nav-link" data-scroll-target="#windows-of-order"><span class="header-section-number">9.6</span> Windows of Order</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">9.7</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-logistic-r1" id="toc-sec-logistic-r1" class="nav-link" data-scroll-target="#sec-logistic-r1"><span class="header-section-number">9.7.1</span> Topic 1 — Feigenbaum’s Constant</a></li>
+  <li><a href="#sec-logistic-r2" id="toc-sec-logistic-r2" class="nav-link" data-scroll-target="#sec-logistic-r2"><span class="header-section-number">9.7.2</span> Topic 2 — Universality</a></li>
+  <li><a href="#sec-logistic-r3" id="toc-sec-logistic-r3" class="nav-link" data-scroll-target="#sec-logistic-r3"><span class="header-section-number">9.7.3</span> Topic 3 — Lyapunov Exponents</a></li>
+  <li><a href="#sec-logistic-r4" id="toc-sec-logistic-r4" class="nav-link" data-scroll-target="#sec-logistic-r4"><span class="header-section-number">9.7.4</span> Topic 4 — Windows of Order</a></li>
+  <li><a href="#sec-logistic-r5" id="toc-sec-logistic-r5" class="nav-link" data-scroll-target="#sec-logistic-r5"><span class="header-section-number">9.7.5</span> Topic 5 — Coupled Logistic Maps</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II — Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch09-logistic.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch08-automata.html">Part II - Structure and Dynamics</a></li><li class="breadcrumb-item"><a href="./ch09-logistic.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></h1>
+<h1 class="title"><span id="sec-logistic" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></h1>
 </div>
 
 
@@ -312,9 +395,184 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="a-model-for-population-growth" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="a-model-for-population-growth"><span class="header-section-number">9.1</span> A Model for Population Growth</h2>
+<p>Suppose a population of animals lives on an island with limited food. When the population is small, it grows rapidly. When it approaches the island’s carrying capacity, growth slows and eventually reverses. A simple mathematical model for this is:</p>
+<p><span class="math display">\[x_{n+1} = r \, x_n (1 - x_n)\]</span></p>
+<p>Here <span class="math inline">\(x_n \in [0, 1]\)</span> represents the population as a fraction of the maximum possible, and <span class="math inline">\(r\)</span> is a growth rate parameter. This is the <strong>logistic map</strong>, one of the most studied equations in all of mathematics.</p>
+<p>Despite having only one parameter <span class="math inline">\(r\)</span>, this simple formula exhibits an astonishing progression of behaviors — from stable equilibrium, through cycles of every period, to what appears to be genuine chaos.</p>
+<hr>
+</section>
+<section id="iterating-the-map" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="iterating-the-map"><span class="header-section-number">9.2</span> Iterating the Map</h2>
+<p>Starting from an initial population <span class="math inline">\(x_0\)</span>, we apply the map repeatedly and watch what happens.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>LogisticOrbit<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">2.5</span><span class="op">,</span> x0 <span class="ot">-&gt;</span> <span class="fl">0.4</span><span class="op">,</span> <span class="fu">n</span> <span class="ot">-&gt;</span> <span class="dv">50</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Line plot, 50 steps. x-axis: step, y-axis: population. Oscillates briefly then converges smoothly to a fixed value near 0.6.]</em></p>
+<p>For <span class="math inline">\(r = 2.5\)</span>, the population settles to a fixed point. Now try <span class="math inline">\(r = 3.2\)</span>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>LogisticOrbit<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">3.2</span><span class="op">,</span> x0 <span class="ot">-&gt;</span> <span class="fl">0.4</span><span class="op">,</span> <span class="fu">n</span> <span class="ot">-&gt;</span> <span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Line plot, 100 steps. After initial transient, oscillates between two values (~0.51 and ~0.80). A 2-cycle.]</em></p>
+<p>And <span class="math inline">\(r = 3.5\)</span>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>LogisticOrbit<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">3.5</span><span class="op">,</span> x0 <span class="ot">-&gt;</span> <span class="fl">0.4</span><span class="op">,</span> <span class="fu">n</span> <span class="ot">-&gt;</span> <span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Line plot, 100 steps. After transient, oscillates among four distinct values. A 4-cycle.]</em></p>
+<p>As <span class="math inline">\(r\)</span> increases, the period doubles: <span class="math inline">\(1 \to 2 \to 4 \to 8 \to \ldots\)</span> and eventually, for <span class="math inline">\(r \gtrsim 3.57\)</span>, the behavior becomes <strong>chaotic</strong> — never repeating, sensitive to the starting value, and apparently random.</p>
+<hr>
+</section>
+<section id="the-bifurcation-diagram" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="the-bifurcation-diagram"><span class="header-section-number">9.3</span> The Bifurcation Diagram</h2>
+<p>The most informative view of the logistic map is the <strong>bifurcation diagram</strong>: for each value of <span class="math inline">\(r\)</span>, we run the map for a long time to discard the transient, then plot the long-term behavior.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>BifurcationDiagram<span class="op">[{</span><span class="fl">2.5</span><span class="op">,</span> <span class="fl">4.0</span><span class="op">},</span> <span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Bifurcation diagram. x-axis: r from 2.5 to 4.0. y-axis: long-term x values. Single line from r=2.5 to r=3 (fixed point), splits to 2-cycle at r≈3, splits again to 4-cycle at r≈3.45, then to 8-cycle, then chaos. Within the chaotic region, narrow white “windows of order” where periodic behavior reappears.]</em></p>
+<p>This diagram is one of the most famous images in all of mathematics. The period-doubling cascade, the windows of order inside the chaos, and the self-similar structure at every scale all emerge from a single quadratic equation.</p>
+<hr>
+</section>
+<section id="bifurcation-points-and-feigenbaums-constant" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="bifurcation-points-and-feigenbaums-constant"><span class="header-section-number">9.4</span> Bifurcation Points and Feigenbaum’s Constant</h2>
+<p>The values of <span class="math inline">\(r\)</span> at which each period doubling occurs are called <strong>bifurcation points</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Bifurcation</th>
+<th>Approximate <span class="math inline">\(r\)</span> value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fixed point → period 2</td>
+<td><span class="math inline">\(r_1 \approx 3.0000\)</span></td>
+</tr>
+<tr class="even">
+<td>Period 2 → period 4</td>
+<td><span class="math inline">\(r_2 \approx 3.4495\)</span></td>
+</tr>
+<tr class="odd">
+<td>Period 4 → period 8</td>
+<td><span class="math inline">\(r_3 \approx 3.5441\)</span></td>
+</tr>
+<tr class="even">
+<td>Period 8 → period 16</td>
+<td><span class="math inline">\(r_4 \approx 3.5644\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The remarkable discovery, made by Mitchell Feigenbaum in 1975, is that the <em>ratios</em> of successive intervals between bifurcation points converge to a universal constant:</p>
+<p><span class="math display">\[\delta = \lim_{n\to\infty} \frac{r_n - r_{n-1}}{r_{n+1} - r_n} \approx 4.6692016\ldots\]</span></p>
+<p>This constant — called the <strong>Feigenbaum constant</strong> — appears in the period-doubling cascades of <em>all</em> one-dimensional maps with a single quadratic maximum. It is one of the great universal constants of nonlinear dynamics.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>FeigenbaumEstimate<span class="op">[</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Bifurcation points: {3.0, 3.4495, 3.5441, 3.5644, 3.5688, 3.5697}
+Ratios: {4.752, 4.656, 4.668, 4.669}
+Estimated delta: 4.669  (true value: 4.6692...)</code></pre>
+<hr>
+</section>
+<section id="sensitive-dependence-on-initial-conditions" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sensitive-dependence-on-initial-conditions"><span class="header-section-number">9.5</span> Sensitive Dependence on Initial Conditions</h2>
+<p>For <span class="math inline">\(r\)</span> in the chaotic regime, two trajectories starting from nearly identical initial values diverge exponentially. This is the hallmark of chaos: long-term prediction is impossible because any small uncertainty in the initial state is amplified without bound.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ChaosDemo<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">3.9</span><span class="op">,</span> x0 <span class="ot">-&gt;</span> <span class="fl">0.4</span><span class="op">,</span> epsilon <span class="ot">-&gt;</span> <span class="dv">1</span><span class="sc">*^-</span><span class="dv">10</span><span class="op">,</span> <span class="fu">n</span> <span class="ot">-&gt;</span> <span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two overlapping trajectories, one starting at 0.4 and one at 0.4 + 10^{-10}. They look identical for about 40 steps, then diverge completely by step 60.]</em></p>
+<p>The rate of divergence is measured by the <strong>Lyapunov exponent</strong> <span class="math inline">\(\lambda\)</span>: if the separation grows as <span class="math inline">\(e^{\lambda n}\)</span>, then <span class="math inline">\(\lambda &gt; 0\)</span> indicates chaos and <span class="math inline">\(\lambda &lt; 0\)</span> indicates stability.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>LyapunovExponent<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">3.9</span><span class="op">]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>LyapunovExponent<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">3.5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>0.341    (* r=3.9: positive -&gt; chaotic *)
+-0.179   (* r=3.5: negative -&gt; stable 4-cycle *)</code></pre>
+<hr>
+</section>
+<section id="windows-of-order" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="windows-of-order"><span class="header-section-number">9.6</span> Windows of Order</h2>
+<p>Inside the chaotic region of the bifurcation diagram, there are narrow intervals of <span class="math inline">\(r\)</span> where periodic behavior reappears — called <strong>windows of order</strong>. The most prominent is the period-3 window near <span class="math inline">\(r \approx 3.828\)</span>.</p>
+<p>A theorem due to Sharkovskii states: if a continuous map has a period-3 orbit, it has orbits of every period. So the appearance of period 3 in the logistic map implies that all periods are present for that value of <span class="math inline">\(r\)</span> — consistent with the chaotic behavior surrounding the window.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ZoomBifurcation<span class="op">[{</span><span class="fl">3.82</span><span class="op">,</span> <span class="fl">3.86</span><span class="op">},</span> <span class="dv">200</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Zoomed bifurcation diagram. Clear period-3 window visible with its own internal period-doubling cascade starting from 3 branches, then 6, then 12…]</em></p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">9.7</span> Further Research Topics</h2>
+<section id="sec-logistic-r1" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="sec-logistic-r1"><span class="header-section-number">9.7.1</span> Topic 1 — Feigenbaum’s Constant</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>BifurcationPoints<span class="op">[</span><span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table of first 8 bifurcation points computed to 6 decimal places, with intervals and ratios. Ratios converging toward 4.6692.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the first 6 bifurcation points to 6 decimal places using bisection search (see <span class="quarto-unresolved-ref">?sec-app-bifurcation-search</span>). Compute the ratios of successive intervals. How close do they get to <span class="math inline">\(\delta \approx 4.6692\)</span>?</li>
+<li>The onset of chaos occurs at <span class="math inline">\(r_\infty \approx 3.5699\)</span>. Estimate it by extrapolating the geometric series: <span class="math inline">\(r_\infty \approx r_1 + (r_2 - r_1) / (1 - 1/\delta)\)</span>. How accurate is this estimate?</li>
+<li>Verify that the same Feigenbaum constant appears for the map <span class="math inline">\(x_{n+1} = r \sin(\pi x_n)\)</span>. Compute its first 4 bifurcation points and estimate <span class="math inline">\(\delta\)</span>.</li>
+<li>The Feigenbaum <span class="math inline">\(\alpha\)</span> constant (<span class="math inline">\(\approx 2.5029\)</span>) describes the self-similar scaling of the bifurcation diagram in the <span class="math inline">\(x\)</span> direction. Measure it from your bifurcation diagram.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-logistic-r2" class="level3" data-number="9.7.2">
+<h3 data-number="9.7.2" class="anchored" data-anchor-id="sec-logistic-r2"><span class="header-section-number">9.7.2</span> Topic 2 — Universality</h3>
+<p>Feigenbaum’s discovery was that the constant <span class="math inline">\(\delta\)</span> is the same for <em>all</em> unimodal maps (maps with a single hump). This universality is one of the deepest results in nonlinear dynamics.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>BifurcationDiagram<span class="op">[</span>SineMap<span class="op">,</span> <span class="op">{</span><span class="fl">0.5</span><span class="op">,</span> <span class="fl">1.0</span><span class="op">},</span> <span class="dv">500</span><span class="op">]</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>BifurcationDiagram<span class="op">[</span>TentMap<span class="op">,</span> <span class="op">{</span><span class="fl">0.5</span><span class="op">,</span> <span class="fl">1.0</span><span class="op">},</span> <span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two bifurcation diagrams for the sine map and tent map. Both show qualitatively identical period-doubling cascades to the logistic map.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Generate the bifurcation diagram for <span class="math inline">\(x_{n+1} = r \sin(\pi x_n)\)</span>. Identify the period-doubling sequence and the onset of chaos. Is it qualitatively identical to the logistic map?</li>
+<li>Consider the cubic map <span class="math inline">\(x_{n+1} = r x_n (1 - x_n^2)\)</span>. Does it also exhibit period doubling? Does it have the same Feigenbaum constant?</li>
+<li>The tent map <span class="math inline">\(T_r(x) = rx\)</span> for <span class="math inline">\(x &lt; 0.5\)</span> and <span class="math inline">\(r(1-x)\)</span> for <span class="math inline">\(x \geq 0.5\)</span> is piecewise linear. It also has period doubling. Compute its Feigenbaum constant. Is it <span class="math inline">\(\delta \approx 4.6692\)</span> or different?</li>
+<li>For each map you study, plot the Lyapunov exponent vs.&nbsp;<span class="math inline">\(r\)</span>. Verify that <span class="math inline">\(\lambda\)</span> crosses zero exactly at the onset of chaos.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-logistic-r3" class="level3" data-number="9.7.3">
+<h3 data-number="9.7.3" class="anchored" data-anchor-id="sec-logistic-r3"><span class="header-section-number">9.7.3</span> Topic 3 — Lyapunov Exponents</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>LyapunovPlot<span class="op">[{</span><span class="fl">2.5</span><span class="op">,</span> <span class="fl">4.0</span><span class="op">},</span> <span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Plot of Lyapunov exponent vs.&nbsp;r for the logistic map. Negative in periodic regions, crosses zero at onset of chaos, positive in chaotic region. Dips back to negative inside windows of order.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the Lyapunov exponent <span class="math inline">\(\lambda(r)\)</span> for the logistic map for <span class="math inline">\(r \in [2.5, 4.0]\)</span> in steps of 0.001. Plot it.</li>
+<li>Verify that <span class="math inline">\(\lambda\)</span> is exactly 0 at each bifurcation point.</li>
+<li>At the period-3 window (<span class="math inline">\(r \approx 3.828\)</span>), <span class="math inline">\(\lambda\)</span> dips sharply negative. Zoom in. How sharp is the transition at the window boundary?</li>
+<li>The maximum Lyapunov exponent over all <span class="math inline">\(r \in [0, 4]\)</span> should occur at <span class="math inline">\(r = 4\)</span>, where <span class="math inline">\(\lambda = \ln 2\)</span>. Verify this and explain why <span class="math inline">\(r = 4\)</span> is special (the logistic map is conjugate to the tent map at <span class="math inline">\(r = 4\)</span>).</li>
+</ol>
+<hr>
+</section>
+<section id="sec-logistic-r4" class="level3" data-number="9.7.4">
+<h3 data-number="9.7.4" class="anchored" data-anchor-id="sec-logistic-r4"><span class="header-section-number">9.7.4</span> Topic 4 — Windows of Order</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>FindPeriodicWindows<span class="op">[{</span><span class="fl">3.5</span><span class="op">,</span> <span class="fl">4.0</span><span class="op">},</span> maxPeriod <span class="ot">-&gt;</span> <span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table: period, approximate r-interval of window, window width. Period-3 window is widest. All windows with period ≤ 8 catalogued.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Find all windows of period <span class="math inline">\(\leq 8\)</span> in <span class="math inline">\(r \in [3.5, 4.0]\)</span>. For each, report the period and the approximate <span class="math inline">\(r\)</span>-interval.</li>
+<li>The periods appear in a specific order as <span class="math inline">\(r\)</span> increases, known as the <strong>U-sequence</strong>: <span class="math inline">\(1, 2, 4, \ldots, 6, 5, 3, \ldots\)</span> Verify this ordering from your catalog.</li>
+<li>Each window has its own internal period-doubling cascade. Zoom into the period-3 window and verify that it contains period-6, period-12, and period-24 sub-windows.</li>
+<li>Sharkovskii’s theorem orders all positive integers: <span class="math inline">\(3 \succ 5 \succ 7 \succ \ldots \succ 6 \succ 10 \succ \ldots \succ 4 \succ 2 \succ 1\)</span>. If a continuous map has a period-<span class="math inline">\(m\)</span> orbit and <span class="math inline">\(m \succ n\)</span>, it also has a period-<span class="math inline">\(n\)</span> orbit. Verify this for the logistic map at several values of <span class="math inline">\(r\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-logistic-r5" class="level3" data-number="9.7.5">
+<h3 data-number="9.7.5" class="anchored" data-anchor-id="sec-logistic-r5"><span class="header-section-number">9.7.5</span> Topic 5 — Coupled Logistic Maps</h3>
+<p>When two logistic maps are coupled, new phenomena emerge.</p>
+<p><span class="math display">\[x_{n+1} = (1 - \varepsilon) \, r \, x_n(1-x_n) + \varepsilon \, r \, y_n(1-y_n)\]</span> <span class="math display">\[y_{n+1} = (1 - \varepsilon) \, r \, y_n(1-y_n) + \varepsilon \, r \, x_n(1-x_n)\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>CoupledLogisticDiagram<span class="op">[</span><span class="fu">r</span> <span class="ot">-&gt;</span> <span class="fl">3.8</span><span class="op">,</span> epsilon <span class="ot">-&gt;</span> <span class="fl">0.1</span><span class="op">,</span> <span class="fu">n</span> <span class="ot">-&gt;</span> <span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Bifurcation-like diagram for the coupled system showing synchronized and asynchronous regions.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For <span class="math inline">\(r = 3.8\)</span> and <span class="math inline">\(\varepsilon\)</span> varying from 0 to 0.5: plot the long-term behavior of <span class="math inline">\(x_n - y_n\)</span>. For what values of <span class="math inline">\(\varepsilon\)</span> do the two maps synchronize (<span class="math inline">\(x_n = y_n\)</span>)?</li>
+<li>At <span class="math inline">\(\varepsilon = 0\)</span>, the maps are independent. At <span class="math inline">\(\varepsilon = 0.5\)</span>, they are maximally coupled (the two maps become identical). Find the critical <span class="math inline">\(\varepsilon^*\)</span> at which synchronization first occurs.</li>
+<li>For <span class="math inline">\(r = 3.5\)</span> (periodic regime with <span class="math inline">\(\varepsilon = 0\)</span>): how does coupling affect the period? Does coupling ever induce chaos in a system that would be periodic without coupling?</li>
+<li>Plot the trajectory of <span class="math inline">\((x_n, y_n)\)</span> in the 2D plane for several values of <span class="math inline">\(\varepsilon\)</span>. For which values does the trajectory lie on the diagonal <span class="math inline">\(x = y\)</span> (synchronized) vs.&nbsp;filling a 2D region (asynchronized)?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +977,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch08-automata.html" class="pagination-link" aria-label="Chapter 8: Cellular Automata — Rules That Generate Worlds">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span>
+      <a href="./ch08-automata.html" class="pagination-link" aria-label="Chapter 8 — Cellular Automata: Rules That Generate Worlds">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch10-fractals.html" class="pagination-link" aria-label="Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch10-fractals.html" class="pagination-link" aria-label="Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

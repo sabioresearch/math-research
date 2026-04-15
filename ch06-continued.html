@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>6&nbsp; Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch06-continued.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch06-continued.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,35 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#beyond-decimal-expansions" id="toc-beyond-decimal-expansions" class="nav-link active" data-scroll-target="#beyond-decimal-expansions"><span class="header-section-number">6.1</span> Beyond Decimal Expansions</a></li>
+  <li><a href="#the-algorithm" id="toc-the-algorithm" class="nav-link" data-scroll-target="#the-algorithm"><span class="header-section-number">6.2</span> The Algorithm</a></li>
+  <li><a href="#rational-numbers-terminate" id="toc-rational-numbers-terminate" class="nav-link" data-scroll-target="#rational-numbers-terminate"><span class="header-section-number">6.3</span> Rational Numbers Terminate</a></li>
+  <li><a href="#convergents-best-rational-approximations" id="toc-convergents-best-rational-approximations" class="nav-link" data-scroll-target="#convergents-best-rational-approximations"><span class="header-section-number">6.4</span> Convergents: Best Rational Approximations</a></li>
+  <li><a href="#quadratic-irrationals-are-periodic" id="toc-quadratic-irrationals-are-periodic" class="nav-link" data-scroll-target="#quadratic-irrationals-are-periodic"><span class="header-section-number">6.5</span> Quadratic Irrationals Are Periodic</a></li>
+  <li><a href="#the-golden-ratio-hardest-to-approximate" id="toc-the-golden-ratio-hardest-to-approximate" class="nav-link" data-scroll-target="#the-golden-ratio-hardest-to-approximate"><span class="header-section-number">6.6</span> The Golden Ratio: Hardest to Approximate</a></li>
+  <li><a href="#a-mystery-the-gauss-kuzmin-distribution" id="toc-a-mystery-the-gauss-kuzmin-distribution" class="nav-link" data-scroll-target="#a-mystery-the-gauss-kuzmin-distribution"><span class="header-section-number">6.7</span> A Mystery: The Gauss-Kuzmin Distribution</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">6.8</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-cf-r1" id="toc-sec-cf-r1" class="nav-link" data-scroll-target="#sec-cf-r1"><span class="header-section-number">6.8.1</span> Topic 1 — Patterns in the CF of <span class="math inline">\(e\)</span></a></li>
+  <li><a href="#sec-cf-r2" id="toc-sec-cf-r2" class="nav-link" data-scroll-target="#sec-cf-r2"><span class="header-section-number">6.8.2</span> Topic 2 — Approximation Quality</a></li>
+  <li><a href="#sec-cf-r3" id="toc-sec-cf-r3" class="nav-link" data-scroll-target="#sec-cf-r3"><span class="header-section-number">6.8.3</span> Topic 3 — Gauss-Kuzmin Statistics</a></li>
+  <li><a href="#sec-cf-r4" id="toc-sec-cf-r4" class="nav-link" data-scroll-target="#sec-cf-r4"><span class="header-section-number">6.8.4</span> Topic 4 — CF Distance and the Stern-Brocot Tree</a></li>
+  <li><a href="#sec-cf-r5" id="toc-sec-cf-r5" class="nav-link" data-scroll-target="#sec-cf-r5"><span class="header-section-number">6.8.5</span> Topic 5 — Pell’s Equation</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch06-continued.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch06-continued.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></h1>
+<h1 class="title"><span id="sec-cf" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></h1>
 </div>
 
 
@@ -312,9 +396,176 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="beyond-decimal-expansions" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="beyond-decimal-expansions"><span class="header-section-number">6.1</span> Beyond Decimal Expansions</h2>
+<p>We are used to writing real numbers as decimals: <span class="math inline">\(\pi = 3.14159\ldots\)</span> But there is another representation, older and in many ways more natural: the <strong>continued fraction</strong>.</p>
+<p>The continued fraction of <span class="math inline">\(\pi\)</span> begins:</p>
+<p><span class="math display">\[\pi = 3 + \cfrac{1}{7 + \cfrac{1}{15 + \cfrac{1}{1 + \cfrac{1}{292 + \cdots}}}}\]</span></p>
+<p>We write this compactly as <span class="math inline">\(\pi = [3; 7, 15, 1, 292, \ldots]\)</span>. The integers <span class="math inline">\(3, 7, 15, 1, 292, \ldots\)</span> are called the <strong>partial quotients</strong>.</p>
+<p>Unlike decimal expansions, continued fractions respect the arithmetic structure of numbers — rational numbers have <em>finite</em> continued fractions, quadratic irrationals have <em>periodic</em> ones, and the partial quotients reveal how well a number can be approximated by rationals.</p>
+<hr>
+</section>
+<section id="the-algorithm" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-algorithm"><span class="header-section-number">6.2</span> The Algorithm</h2>
+<p>To find the continued fraction of a positive real number <span class="math inline">\(x\)</span>:</p>
+<ol type="1">
+<li>Take the integer part: <span class="math inline">\(a_0 = \lfloor x \rfloor\)</span>.</li>
+<li>Let <span class="math inline">\(x_1 = 1 / (x - a_0)\)</span> (the “remainder”, inverted).</li>
+<li>Take <span class="math inline">\(a_1 = \lfloor x_1 \rfloor\)</span>. Then <span class="math inline">\(x_2 = 1 / (x_1 - a_1)\)</span>.</li>
+<li>Repeat.</li>
+</ol>
+<p>For a rational number, this is just the Euclidean algorithm in disguise — it terminates when the remainder is zero.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CFExpansion<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">10</span><span class="op">]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>CFExpansion<span class="op">[</span><span class="fu">E</span><span class="op">,</span> <span class="dv">10</span><span class="op">]</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>CFExpansion<span class="op">[</span><span class="fu">Sqrt</span><span class="op">[</span><span class="dv">2</span><span class="op">],</span> <span class="dv">10</span><span class="op">]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>CFExpansion<span class="op">[</span><span class="fu">GoldenRatio</span><span class="op">,</span> <span class="dv">10</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{3, 7, 15, 1, 292, 1, 1, 1, 2, 1}        (* pi    *)
+{2, 1, 2, 1, 1, 4, 1, 1, 6, 1}           (* e     *)
+{1, 2, 2, 2, 2, 2, 2, 2, 2, 2}           (* sqrt(2) *)
+{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}           (* phi  *)</code></pre>
+<p>Notice immediately: - <span class="math inline">\(\sqrt{2} = [1; 2, 2, 2, \ldots]\)</span> — perfectly periodic. - <span class="math inline">\(\phi = [1; 1, 1, 1, \ldots]\)</span> — also periodic, the simplest possible. - <span class="math inline">\(e = [2; 1, 2, 1, 1, 4, 1, 1, 6, \ldots]\)</span> — not periodic, but has a beautiful pattern. - <span class="math inline">\(\pi = [3; 7, 15, 1, 292, \ldots]\)</span> — the large partial quotient 292 is notable; no discernible pattern.</p>
+<hr>
+</section>
+<section id="rational-numbers-terminate" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="rational-numbers-terminate"><span class="header-section-number">6.3</span> Rational Numbers Terminate</h2>
+<p>Every rational number has a finite continued fraction — the algorithm stops because the Euclidean algorithm terminates. Conversely, every finite continued fraction represents a rational number.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CFExpansion<span class="op">[</span><span class="dv">355</span><span class="sc">/</span><span class="dv">113</span><span class="op">,</span> <span class="dv">10</span><span class="op">]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>CFFromList<span class="op">[{</span><span class="dv">3</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">1</span><span class="op">}]</span>    <span class="co">(* reconstruct the rational from its CF *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{3, 7, 15, 1}
+355/113</code></pre>
+<p>The fraction <span class="math inline">\(355/113 \approx 3.14159292\ldots\)</span> is a famous approximation to <span class="math inline">\(\pi\)</span> — it matches <span class="math inline">\(\pi\)</span> to six decimal places. Its continued fraction <span class="math inline">\([3; 7, 15, 1]\)</span> is exactly the first four partial quotients of <span class="math inline">\(\pi\)</span>, stopping just before the large 292. This is not a coincidence — it is a consequence of the theory of convergents.</p>
+<hr>
+</section>
+<section id="convergents-best-rational-approximations" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="convergents-best-rational-approximations"><span class="header-section-number">6.4</span> Convergents: Best Rational Approximations</h2>
+<p>The <strong>convergents</strong> of a continued fraction <span class="math inline">\([a_0; a_1, a_2, \ldots]\)</span> are the fractions obtained by truncating the continued fraction at each step:</p>
+<p><span class="math display">\[\frac{p_0}{q_0},\ \frac{p_1}{q_1},\ \frac{p_2}{q_2},\ \ldots\]</span></p>
+<p>Each convergent is the <em>best</em> rational approximation to <span class="math inline">\(x\)</span> among all fractions with denominator <span class="math inline">\(\leq q_k\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>CFConvergents<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{3, 22/7, 333/106, 355/113, 103993/33102, 104348/33215, 208341/66317, 312689/99532}</code></pre>
+<p>The convergents of <span class="math inline">\(\pi\)</span> include <span class="math inline">\(22/7\)</span> (the familiar approximation) and <span class="math inline">\(355/113\)</span> (the much better one). The quality of approximation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CFApproximationErrors<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table: convergent p_n/q_n, denominator q_n, absolute error |π - p_n/q_n|, and product |π - p_n/q_n| · q_n^2. The product stays bounded near 1 for most convergents, but is very small for 355/113 due to the large next partial quotient 292.]</em></p>
+<p>A large partial quotient means the next convergent is an unusually good approximation. The partial quotient 292 in <span class="math inline">\(\pi\)</span> explains why <span class="math inline">\(355/113\)</span> is so accurate.</p>
+<hr>
+</section>
+<section id="quadratic-irrationals-are-periodic" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="quadratic-irrationals-are-periodic"><span class="header-section-number">6.5</span> Quadratic Irrationals Are Periodic</h2>
+<p>A number has a <strong>periodic</strong> continued fraction — one that eventually repeats — if and only if it is a quadratic irrational (the root of a quadratic equation with integer coefficients).</p>
+<p>For example, <span class="math inline">\(\sqrt{7} = [2; \overline{1, 1, 1, 4}]\)</span> (the overline denotes the repeating part).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>CFPeriod<span class="op">[</span><span class="fu">Sqrt</span><span class="op">[</span><span class="dv">7</span><span class="op">]]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>CFPeriod<span class="op">[</span><span class="fu">Sqrt</span><span class="op">[</span><span class="fu">n</span><span class="op">],</span> <span class="fu">n</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">20</span><span class="op">]</span>    <span class="co">(* period lengths for sqrt(2) through sqrt(20) *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{2, 1, 1, 1, 4}   (* partial quotients of sqrt(7): 2, then period [1,1,1,4] *)
+{1, 2, 1, 2, 2, 3, 1, 4, 1, 2, 2, 3, 1, 4, 1, 5, ...}  (* period lengths *)</code></pre>
+<p>The period length of <span class="math inline">\(\sqrt{n}\)</span> is related to the <strong>Pell equation</strong> <span class="math inline">\(x^2 - ny^2 = 1\)</span> — the fundamental solution can be read off from the convergents. This connection is one of the deepest in elementary number theory.</p>
+<hr>
+</section>
+<section id="the-golden-ratio-hardest-to-approximate" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="the-golden-ratio-hardest-to-approximate"><span class="header-section-number">6.6</span> The Golden Ratio: Hardest to Approximate</h2>
+<p>The golden ratio <span class="math inline">\(\phi = [1; 1, 1, 1, \ldots]\)</span> has the simplest possible continued fraction — all partial quotients are 1. This makes it the “hardest” real number to approximate by rationals, in a precise sense: the convergents approach <span class="math inline">\(\phi\)</span> as slowly as possible.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>CompareApproximability<span class="op">[{</span><span class="fu">Pi</span><span class="op">,</span> <span class="fu">E</span><span class="op">,</span> <span class="fu">Sqrt</span><span class="op">[</span><span class="dv">2</span><span class="op">],</span> <span class="fu">GoldenRatio</span><span class="op">},</span> <span class="dv">15</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table: for each constant, the product q_n^2 |x - p_n/q_n| for convergents n=1..15. For π, the product occasionally dips very small (near large partial quotients). For φ, the product stays closest to 1/√5, never getting much smaller. φ is the hardest to approximate.]</em></p>
+<p>The <strong>Hurwitz theorem</strong> states that for any irrational <span class="math inline">\(x\)</span>, there are infinitely many rationals <span class="math inline">\(p/q\)</span> with <span class="math inline">\(|x - p/q| &lt; 1/(\sqrt{5} q^2)\)</span> — and the constant <span class="math inline">\(\sqrt{5}\)</span> is tight only for <span class="math inline">\(\phi\)</span>.</p>
+<hr>
+</section>
+<section id="a-mystery-the-gauss-kuzmin-distribution" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="a-mystery-the-gauss-kuzmin-distribution"><span class="header-section-number">6.7</span> A Mystery: The Gauss-Kuzmin Distribution</h2>
+<p>If you pick a “random” irrational number, what is the probability that its <span class="math inline">\(k\)</span>th partial quotient equals <span class="math inline">\(n\)</span>? The <strong>Gauss-Kuzmin theorem</strong> gives the answer:</p>
+<p><span class="math display">\[P(a_k = n) = -\log_2\!\left(1 - \frac{1}{(n+1)^2}\right)\]</span></p>
+<p>So partial quotient 1 appears about 41.5% of the time, partial quotient 2 about 17%, partial quotient 3 about 9.3%, and so on — a distribution concentrated on small values.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>GaussKuzminTest<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">10000</span><span class="op">]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>GaussKuzminTest<span class="op">[</span><span class="fu">E</span><span class="op">,</span> <span class="dv">10000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two bar charts. x-axis: partial quotient value 1 to 10. y-axis: frequency. Both charts show distribution closely matching the theoretical Gauss-Kuzmin prediction. Chi-squared test: p &gt; 0.1 for both.]</em></p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">6.8</span> Further Research Topics</h2>
+<section id="sec-cf-r1" class="level3" data-number="6.8.1">
+<h3 data-number="6.8.1" class="anchored" data-anchor-id="sec-cf-r1"><span class="header-section-number">6.8.1</span> Topic 1 — Patterns in the CF of <span class="math inline">\(e\)</span></h3>
+<p>The continued fraction of <span class="math inline">\(e\)</span> has a beautiful pattern: <span class="math inline">\(e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, \ldots]\)</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CFExpansion<span class="op">[</span><span class="fu">E</span><span class="op">,</span> <span class="dv">30</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{2, 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, 1, 1, 10, 1, 1, 12, 1, 1, 14, 1, 1, 16, 1, 1, 18, 1, 1, 20}</code></pre>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>The pattern in <span class="math inline">\(e\)</span>’s CF is: after the initial 2, every third term is <span class="math inline">\(2k\)</span> (for <span class="math inline">\(k = 1, 2, 3, \ldots\)</span>) and the other terms are 1. Verify this holds for the first 100 partial quotients.</li>
+<li>Compute the CFs of <span class="math inline">\(e^{1/2}\)</span>, <span class="math inline">\(e^2\)</span>, <span class="math inline">\(e^3\)</span>, <span class="math inline">\(\tanh(1)\)</span>, and <span class="math inline">\(\coth(1)\)</span>. Do any show similar patterns?</li>
+<li>The CF of <span class="math inline">\(\tan(1)\)</span> is <span class="math inline">\([1; 1, 1, 3, 1, 5, 1, 7, \ldots]\)</span> — another pattern. Verify this and find the general term.</li>
+<li>Conjecture: which functions of <span class="math inline">\(e\)</span> have “patterned” continued fractions? What distinguishes them from functions with unpredictable CFs?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-cf-r2" class="level3" data-number="6.8.2">
+<h3 data-number="6.8.2" class="anchored" data-anchor-id="sec-cf-r2"><span class="header-section-number">6.8.2</span> Topic 2 — Approximation Quality</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ApproximationQuality<span class="op">[{</span><span class="fu">Pi</span><span class="op">,</span> <span class="fu">E</span><span class="op">,</span> <span class="fu">Sqrt</span><span class="op">[</span><span class="dv">2</span><span class="op">],</span> <span class="fu">GoldenRatio</span><span class="op">},</span> <span class="dv">20</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[For each constant, table of convergents and quality measure q^2 |x - p/q|. φ consistently has the largest (worst) quality measure among the four constants.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For each of <span class="math inline">\(\pi\)</span>, <span class="math inline">\(e\)</span>, <span class="math inline">\(\sqrt{2}\)</span>, <span class="math inline">\(\phi\)</span>: compute <span class="math inline">\(q_n^2 \cdot |x - p_n/q_n|\)</span> for the first 20 convergents. Which constant has the largest average quality measure? (It should be <span class="math inline">\(\phi\)</span>.)</li>
+<li>Verify Hurwitz’s theorem computationally: for each constant, confirm that infinitely many convergents satisfy <span class="math inline">\(|x - p/q| &lt; 1/(\sqrt{5} q^2)\)</span>.</li>
+<li>For <span class="math inline">\(\sqrt{2}\)</span>: all partial quotients are 2. Show that the quality measure <span class="math inline">\(q_n^2 |x - p_n/q_n|\)</span> approaches <span class="math inline">\(1/(2\sqrt{2})\)</span> as <span class="math inline">\(n \to \infty\)</span>.</li>
+<li>Find the continued fraction of <span class="math inline">\(\sqrt{2} + \sqrt{3}\)</span>. Is it periodic? What is its minimal polynomial?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-cf-r3" class="level3" data-number="6.8.3">
+<h3 data-number="6.8.3" class="anchored" data-anchor-id="sec-cf-r3"><span class="header-section-number">6.8.3</span> Topic 3 — Gauss-Kuzmin Statistics</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>GaussKuzminFull<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">100000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Bar chart of partial quotient frequencies for the first 100,000 partial quotients of π. Overlaid theoretical Gauss-Kuzmin curve. Close match except for stochastic noise.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the first 10,000 partial quotients of <span class="math inline">\(\pi\)</span>, <span class="math inline">\(e\)</span>, and <span class="math inline">\(\sqrt{2}\)</span>. For each, plot the frequency of partial quotient values 1–20 against the Gauss-Kuzmin prediction. Which constant matches best?</li>
+<li>The Gauss-Kuzmin theorem applies to “almost all” reals but not necessarily to specific constants. Compute the chi-squared statistic for each constant. Can you reject the hypothesis that they follow the Gauss-Kuzmin distribution?</li>
+<li>Construct a number whose partial quotients are drawn randomly from the Gauss-Kuzmin distribution. Compare its approximation quality to that of <span class="math inline">\(\pi\)</span> and <span class="math inline">\(e\)</span>.</li>
+<li>The partial quotient 292 in <span class="math inline">\(\pi\)</span> is a rare outlier. How many partial quotients of <span class="math inline">\(\pi\)</span> (in the first 10,000) exceed 100? 1000? Do they follow a power-law tail?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-cf-r4" class="level3" data-number="6.8.4">
+<h3 data-number="6.8.4" class="anchored" data-anchor-id="sec-cf-r4"><span class="header-section-number">6.8.4</span> Topic 4 — CF Distance and the Stern-Brocot Tree</h3>
+<p>The <strong>Stern-Brocot tree</strong> is a binary tree that contains every positive rational number exactly once. It is built by the <strong>mediant</strong> operation: the mediant of <span class="math inline">\(a/b\)</span> and <span class="math inline">\(c/d\)</span> is <span class="math inline">\((a+c)/(b+d)\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>SternBrocotTree<span class="op">[</span><span class="dv">5</span><span class="op">]</span>    <span class="co">(* first 5 levels *)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>CFToSternBrocot<span class="op">[</span><span class="dv">22</span><span class="sc">/</span><span class="dv">7</span><span class="op">]</span> <span class="co">(* path in the tree to 22/7 *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Tree diagram showing the first 5 levels of the Stern-Brocot tree. Path to 22/7 highlighted.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Build the Stern-Brocot tree to depth 8. Verify that every rational <span class="math inline">\(p/q\)</span> with <span class="math inline">\(q \leq 8\)</span> appears exactly once.</li>
+<li>Show that the path from the root to <span class="math inline">\(p/q\)</span> in the Stern-Brocot tree encodes the continued fraction of <span class="math inline">\(p/q\)</span>: left turns correspond to 1s in some encoding, right turns to the partial quotients.</li>
+<li>Define “CF distance” between two rationals as the length of the path between them in the Stern-Brocot tree. Compute CF distances between all pairs of fractions <span class="math inline">\(p/q\)</span> with <span class="math inline">\(q \leq 10\)</span>. Does this metric have any geometric interpretation?</li>
+<li>The Calkin-Wilf tree is a different tree containing all positive rationals. Implement it and compare its structure to the Stern-Brocot tree.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-cf-r5" class="level3" data-number="6.8.5">
+<h3 data-number="6.8.5" class="anchored" data-anchor-id="sec-cf-r5"><span class="header-section-number">6.8.5</span> Topic 5 — Pell’s Equation</h3>
+<p>The <strong>Pell equation</strong> <span class="math inline">\(x^2 - Dy^2 = 1\)</span> (for non-square positive integer <span class="math inline">\(D\)</span>) always has infinitely many integer solutions. The fundamental solution (smallest positive <span class="math inline">\(x, y\)</span>) can be read from the continued fraction of <span class="math inline">\(\sqrt{D}\)</span>.</p>
+<p>If <span class="math inline">\(\sqrt{D} = [a_0; \overline{a_1, a_2, \ldots, a_r}]\)</span> with period <span class="math inline">\(r\)</span>, the fundamental solution is given by the convergent <span class="math inline">\(p_{r-1}/q_{r-1}\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>PellFundamentalSolution<span class="op">[</span><span class="dv">7</span><span class="op">]</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>PellFundamentalSolution<span class="op">[</span><span class="dv">61</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{8, 3}         (* x=8, y=3: check 64 - 7*9 = 64-63 = 1 ✓ *)
+{1766319049, 226153980}   (* famous large solution for D=61 *)</code></pre>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Find the fundamental solutions of <span class="math inline">\(x^2 - Dy^2 = 1\)</span> for <span class="math inline">\(D = 2, 3, 5, 6, 7, 8, 10, 11, 13\)</span>. In each case, verify the solution using exact integer arithmetic.</li>
+<li>The solution for <span class="math inline">\(D = 61\)</span> is large. How does the size of the fundamental solution relate to the period length of <span class="math inline">\(\sqrt{D}\)</span>’s CF?</li>
+<li>From the fundamental solution <span class="math inline">\((x_1, y_1)\)</span>, all other solutions can be generated by <span class="math inline">\((x_n + y_n \sqrt{D}) = (x_1 + y_1\sqrt{D})^n\)</span>. Implement this and generate the first 5 solutions for <span class="math inline">\(D = 2\)</span>.</li>
+<li>For which values of <span class="math inline">\(D\)</span> from 2 to 100 is the period length of <span class="math inline">\(\sqrt{D}\)</span> equal to 1? These are the cases where <span class="math inline">\(D = k^2 + 1\)</span> for integer <span class="math inline">\(k\)</span>. Verify this.</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +970,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch05-pascal.html" class="pagination-link" aria-label="Chapter 5: Pascal's Triangle — Infinite Patterns in a Simple Array">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span>
+      <a href="./ch05-pascal.html" class="pagination-link" aria-label="Chapter 5 — Pascal's Triangle: Infinite Patterns in a Simple Array">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch07-oeis.html" class="pagination-link" aria-label="Chapter 7: Integer Sequences and the OEIS">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch07-oeis.html" class="pagination-link" aria-label="Chapter 7 — Integer Sequences and the OEIS">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

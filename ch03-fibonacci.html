@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Chapter 3: Fibonacci Numbers and Their Cousins – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>3&nbsp; Chapter 3 — Fibonacci Numbers and Their Cousins – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch03-fibonacci.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch03-fibonacci.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,35 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#rabbits-and-a-famous-sequence" id="toc-rabbits-and-a-famous-sequence" class="nav-link active" data-scroll-target="#rabbits-and-a-famous-sequence"><span class="header-section-number">3.1</span> Rabbits and a Famous Sequence</a></li>
+  <li><a href="#computing-fibonacci-numbers" id="toc-computing-fibonacci-numbers" class="nav-link" data-scroll-target="#computing-fibonacci-numbers"><span class="header-section-number">3.2</span> Computing Fibonacci Numbers</a></li>
+  <li><a href="#matrix-exponentiation" id="toc-matrix-exponentiation" class="nav-link" data-scroll-target="#matrix-exponentiation"><span class="header-section-number">3.3</span> Matrix Exponentiation</a></li>
+  <li><a href="#identities" id="toc-identities" class="nav-link" data-scroll-target="#identities"><span class="header-section-number">3.4</span> Identities</a></li>
+  <li><a href="#zeckendorfs-theorem" id="toc-zeckendorfs-theorem" class="nav-link" data-scroll-target="#zeckendorfs-theorem"><span class="header-section-number">3.5</span> Zeckendorf’s Theorem</a></li>
+  <li><a href="#pisano-periods" id="toc-pisano-periods" class="nav-link" data-scroll-target="#pisano-periods"><span class="header-section-number">3.6</span> Pisano Periods</a></li>
+  <li><a href="#the-golden-ratio" id="toc-the-golden-ratio" class="nav-link" data-scroll-target="#the-golden-ratio"><span class="header-section-number">3.7</span> The Golden Ratio</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">3.8</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-fibonacci-r1" id="toc-sec-fibonacci-r1" class="nav-link" data-scroll-target="#sec-fibonacci-r1"><span class="header-section-number">3.8.1</span> Topic 1 — Pisano Periods and Primes</a></li>
+  <li><a href="#sec-fibonacci-r2" id="toc-sec-fibonacci-r2" class="nav-link" data-scroll-target="#sec-fibonacci-r2"><span class="header-section-number">3.8.2</span> Topic 2 — Tribonacci and Zeckendorf Generalizations</a></li>
+  <li><a href="#sec-fibonacci-r3" id="toc-sec-fibonacci-r3" class="nav-link" data-scroll-target="#sec-fibonacci-r3"><span class="header-section-number">3.8.3</span> Topic 3 — Fibonacci Primes</a></li>
+  <li><a href="#sec-fibonacci-r4" id="toc-sec-fibonacci-r4" class="nav-link" data-scroll-target="#sec-fibonacci-r4"><span class="header-section-number">3.8.4</span> Topic 4 — GCD Identity</a></li>
+  <li><a href="#sec-fibonacci-r5" id="toc-sec-fibonacci-r5" class="nav-link" data-scroll-target="#sec-fibonacci-r5"><span class="header-section-number">3.8.5</span> Topic 5 — Lucas Numbers and Parallel Identities</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch03-fibonacci.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch03-fibonacci.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></h1>
+<h1 class="title"><span id="sec-fibonacci" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></h1>
 </div>
 
 
@@ -312,9 +396,182 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="rabbits-and-a-famous-sequence" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="rabbits-and-a-famous-sequence"><span class="header-section-number">3.1</span> Rabbits and a Famous Sequence</h2>
+<p>In 1202, the Italian mathematician Leonardo of Pisa — known as Fibonacci — posed a problem about breeding rabbits. Suppose a pair of rabbits produces a new pair every month, starting from their second month of life, and rabbits never die. How many pairs are there after <span class="math inline">\(n\)</span> months?</p>
+<p>The answer leads to the sequence:</p>
+<p><span class="math display">\[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \ldots\]</span></p>
+<p>Each term is the sum of the two before it. Formally, the <strong>Fibonacci sequence</strong> is defined by:</p>
+<p><span class="math display">\[F_1 = 1, \quad F_2 = 1, \quad F_n = F_{n-1} + F_{n-2} \text{ for } n \geq 3\]</span></p>
+<p>This sequence appears in an astonishing variety of contexts: the spirals in sunflower heads, the branching of trees, the arrangement of leaves on a stem, and the construction of the golden ratio. It also has deep connections to number theory that we will explore here.</p>
+<hr>
+</section>
+<section id="computing-fibonacci-numbers" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="computing-fibonacci-numbers"><span class="header-section-number">3.2</span> Computing Fibonacci Numbers</h2>
+<p>The most direct implementation follows the recurrence:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>FibSequence<span class="op">[</span><span class="dv">20</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765}</code></pre>
+<p>This works well for small <span class="math inline">\(n\)</span>, but computing <span class="math inline">\(F_{1000}\)</span> by recursion requires millions of additions. There is a much faster method using matrix exponentiation.</p>
+<hr>
+</section>
+<section id="matrix-exponentiation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="matrix-exponentiation"><span class="header-section-number">3.3</span> Matrix Exponentiation</h2>
+<p>The key identity connecting Fibonacci numbers to matrices is:</p>
+<p><span class="math display">\[\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}^n = \begin{pmatrix} F_{n+1} &amp; F_n \\ F_n &amp; F_{n-1} \end{pmatrix}\]</span></p>
+<p>To compute <span class="math inline">\(F_{1000}\)</span>, we only need to raise a <span class="math inline">\(2 \times 2\)</span> matrix to the 1000th power. By repeated squaring, this takes only about <span class="math inline">\(\log_2(1000) \approx 10\)</span> matrix multiplications instead of 999 additions.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>FibMatrix<span class="op">[</span><span class="dv">1000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>4346655768693745643568852767504062580256466051737178040248172908953655541
+7940350962049196745545949652220...   (209 digits)</code></pre>
+<p>The exact value has 209 decimal digits. Wolfram Language computes it instantly using exact integer arithmetic (see <a href="app-b-wolfram.html#sec-app-fib-matrix" class="quarto-xref"><span>Section 15.3.2</span></a>).</p>
+<hr>
+</section>
+<section id="identities" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="identities"><span class="header-section-number">3.4</span> Identities</h2>
+<p>The Fibonacci sequence satisfies dozens of remarkable identities. Here are two of the most famous.</p>
+<p><strong>Cassini’s Identity:</strong></p>
+<p><span class="math display">\[F_{n-1} F_{n+1} - F_n^2 = (-1)^n\]</span></p>
+<p>For example: <span class="math inline">\(F_4 F_6 - F_5^2 = 3 \cdot 8 - 5^2 = 24 - 25 = -1 = (-1)^5\)</span>.</p>
+<p><strong>The Hockey Stick Identity</strong> (sum of Fibonacci numbers):</p>
+<p><span class="math display">\[\sum_{k=1}^{n} F_k = F_{n+2} - 1\]</span></p>
+<p>We can verify both identities computationally for the first 50 terms:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>VerifyFibIdentities<span class="op">[</span><span class="dv">50</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Cassini's identity: verified for n = 2 to 50
+Hockey stick identity: verified for n = 1 to 50</code></pre>
+<p>Computational verification is not a proof — it only confirms the identities for small <span class="math inline">\(n\)</span>. But it is an essential first step. If your computation ever returns <code>False</code>, it means either the identity is wrong or there is a bug in your code. Either way, you have learned something.</p>
+<hr>
+</section>
+<section id="zeckendorfs-theorem" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="zeckendorfs-theorem"><span class="header-section-number">3.5</span> Zeckendorf’s Theorem</h2>
+<p><strong>Theorem (Zeckendorf, 1972):</strong> Every positive integer has a unique representation as a sum of <em>non-consecutive</em> Fibonacci numbers.</p>
+<p>For example: <span class="math display">\[100 = 89 + 8 + 3 = F_{11} + F_6 + F_4\]</span></p>
+<p>Note that 89, 8, and 3 are not consecutive Fibonacci numbers (<span class="math inline">\(F_{11}, F_6, F_4\)</span> — indices 11, 6, 4 have gaps of at least 2).</p>
+<p>The greedy algorithm finds the Zeckendorf representation: at each step, subtract the largest Fibonacci number that does not exceed the remainder.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ZeckendorfRepresentation<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ZeckendorfRepresentation<span class="op">[</span><span class="dv">1000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{89, 8, 3}
+{987, 13}</code></pre>
+<p>We can verify uniqueness by checking that no two representations of the same number exist for all integers up to 500 (see <a href="app-b-wolfram.html#sec-app-zeckendorf" class="quarto-xref"><span>Section 15.3.4</span></a>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>VerifyZeckendorfUniqueness<span class="op">[</span><span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>True  (* all integers 1 to 500 have a unique non-consecutive Fibonacci representation *)</code></pre>
+<hr>
+</section>
+<section id="pisano-periods" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="pisano-periods"><span class="header-section-number">3.6</span> Pisano Periods</h2>
+<p>When we compute Fibonacci numbers modulo <span class="math inline">\(m\)</span>, a remarkable thing happens: the sequence is eventually periodic. For example, the Fibonacci sequence mod 3 is:</p>
+<p><span class="math display">\[1, 1, 2, 0, 2, 2, 1, 0, 1, 1, 2, 0, \ldots\]</span></p>
+<p>The pattern <span class="math inline">\(1, 1, 2, 0, 2, 2, 1, 0\)</span> repeats with period 8. This period is called the <strong>Pisano period</strong> <span class="math inline">\(\pi(m)\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>PisanoPeriod<span class="op">[</span><span class="dv">3</span><span class="op">]</span>    <span class="co">(* 8  *)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>PisanoPeriod<span class="op">[</span><span class="dv">7</span><span class="op">]</span>    <span class="co">(* 16 *)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>PisanoPeriod<span class="op">[</span><span class="dv">10</span><span class="op">]</span>   <span class="co">(* 60 *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>8
+16
+60</code></pre>
+<p>The Pisano period <span class="math inline">\(\pi(10) = 60\)</span> means the last digit of the Fibonacci sequence repeats every 60 terms. Let us plot Pisano periods for all <span class="math inline">\(m\)</span> from 2 to 100:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>PlotPisanoPeriods<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Scatter plot. x-axis: m from 2 to 100. y-axis: Pisano period π(m). Mostly irregular. Some large spikes at specific values. Powers of 2 tend to have smaller periods. Values divisible by 5 show notable periodicity.]</em></p>
+<p>The plot hides elegant structure. For prime <span class="math inline">\(m\)</span>, the Pisano period either divides <span class="math inline">\(m-1\)</span> or divides <span class="math inline">\(2(m+1)\)</span>, depending on whether <span class="math inline">\(m \equiv \pm 1 \pmod 5\)</span>. This is Research Topic 1.</p>
+<hr>
+</section>
+<section id="the-golden-ratio" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="the-golden-ratio"><span class="header-section-number">3.7</span> The Golden Ratio</h2>
+<p>The ratio of consecutive Fibonacci numbers converges to the <strong>golden ratio</strong>:</p>
+<p><span class="math display">\[\phi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887\ldots\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>FibRatios<span class="op">[</span><span class="dv">20</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1, 2, 1.5, 1.667, 1.6, 1.625, 1.615, 1.619, 1.618, 1.618, ...}</code></pre>
+<p>The convergence is slow at first but accelerates. The golden ratio has the property that <span class="math inline">\(\phi^2 = \phi + 1\)</span>, which is exactly the Fibonacci recurrence expressed algebraically. It also has the continued fraction expansion <span class="math inline">\(\phi = [1; 1, 1, 1, \ldots]\)</span> — we will revisit this in Chapter 6.</p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">3.8</span> Further Research Topics</h2>
+<section id="sec-fibonacci-r1" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="sec-fibonacci-r1"><span class="header-section-number">3.8.1</span> Topic 1 — Pisano Periods and Primes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>PisanoPrimeSurvey<span class="op">[</span><span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table: prime p, Pisano period π(p), p mod 5, and whether π(p) divides p-1 or 2(p+1). Pattern visible: primes ≡ ±1 (mod 5) have π(p) | p-1; primes ≡ ±2 (mod 5) have π(p) | 2(p+1).]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute <span class="math inline">\(\pi(p)\)</span> for all primes <span class="math inline">\(p \leq 500\)</span>. Tabulate <span class="math inline">\(\pi(p) \bmod (p-1)\)</span> and <span class="math inline">\(\pi(p) \bmod (p+1)\)</span>. Identify the pattern based on <span class="math inline">\(p \bmod 5\)</span>.</li>
+<li>For composite <span class="math inline">\(m = p \cdot q\)</span>: is <span class="math inline">\(\pi(pq)\)</span> determined by <span class="math inline">\(\pi(p)\)</span> and <span class="math inline">\(\pi(q)\)</span>? Test for all composite <span class="math inline">\(m \leq 100\)</span> and conjecture a formula.</li>
+<li>Find all <span class="math inline">\(m \leq 500\)</span> for which <span class="math inline">\(\pi(m) = m - 1\)</span>. What do these values have in common?</li>
+<li>The sequence of Pisano periods is OEIS A001175. Look it up and compare the known formula with your computational results.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-fibonacci-r2" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="sec-fibonacci-r2"><span class="header-section-number">3.8.2</span> Topic 2 — Tribonacci and Zeckendorf Generalizations</h3>
+<p>Define <strong>tribonacci numbers</strong> by <span class="math inline">\(T_1 = T_2 = T_3 = 1\)</span> and <span class="math inline">\(T_n = T_{n-1} + T_{n-2} + T_{n-3}\)</span> for <span class="math inline">\(n \geq 4\)</span>:</p>
+<p><span class="math display">\[1, 1, 1, 3, 5, 9, 17, 31, 57, 105, \ldots\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>TribonacciSequence<span class="op">[</span><span class="dv">20</span><span class="op">]</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ZeckendorfTribonacci<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Tribonacci sequence. Then the representation of 100 as a sum of non-consecutive tribonacci numbers — “non-consecutive” meaning no two adjacent in index.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Does Zeckendorf’s theorem generalize? Implement a greedy algorithm for tribonacci representations and test whether every integer up to 500 has a unique representation as a sum of tribonacci numbers with no two consecutive in index.</li>
+<li>Compute the ratio <span class="math inline">\(T_{n+1}/T_n\)</span> for large <span class="math inline">\(n\)</span>. Does it converge? To what value? (The tribonacci constant <span class="math inline">\(\approx 1.8393\)</span>.)</li>
+<li>Define the tribonacci matrix analog and verify an identity like Cassini’s for tribonacci numbers.</li>
+<li>Compute Pisano-like periods for the tribonacci sequence modulo <span class="math inline">\(m\)</span> for <span class="math inline">\(m = 2\)</span> to <span class="math inline">\(50\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-fibonacci-r3" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="sec-fibonacci-r3"><span class="header-section-number">3.8.3</span> Topic 3 — Fibonacci Primes</h3>
+<p>A <strong>Fibonacci prime</strong> is a Fibonacci number that is itself prime: <span class="math inline">\(2, 3, 5, 13, 89, 233, 1597, \ldots\)</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>FibonacciPrimes<span class="op">[</span><span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Indices n for which F_n is prime, up to F_500. Results: n = 3, 4, 5, 7, 11, 13, 17, 23, 29, 43, 47, 83, 131, 137, 359, 431, 433, 449, …]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For each Fibonacci prime <span class="math inline">\(F_n\)</span> found, is the index <span class="math inline">\(n\)</span> itself prime? Find all exceptions. (There is exactly one: <span class="math inline">\(F_4 = 3\)</span> with <span class="math inline">\(n = 4 = 2^2\)</span>.)</li>
+<li>Does the converse hold — if <span class="math inline">\(n\)</span> is prime, is <span class="math inline">\(F_n\)</span> necessarily prime? Find counterexamples.</li>
+<li>Plot the indices of Fibonacci primes. Do they appear to grow at a predictable rate?</li>
+<li>A <strong>Fibonacci semiprime</strong> is a Fibonacci number that is the product of exactly two primes. Find all Fibonacci semiprimes up to <span class="math inline">\(F_{100}\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-fibonacci-r4" class="level3" data-number="3.8.4">
+<h3 data-number="3.8.4" class="anchored" data-anchor-id="sec-fibonacci-r4"><span class="header-section-number">3.8.4</span> Topic 4 — GCD Identity</h3>
+<p>There is a beautiful identity: <span class="math inline">\(\gcd(F_m, F_n) = F_{\gcd(m,n)}\)</span>.</p>
+<p>For example: <span class="math inline">\(\gcd(F_{12}, F_8) = \gcd(144, 21) = 3 = F_4 = F_{\gcd(12,8)}\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>VerifyGCDIdentity<span class="op">[</span><span class="dv">200</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>True  (* identity verified for 200 random pairs (m,n) with m,n &lt;= 100 *)</code></pre>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Verify the identity for 1000 random pairs <span class="math inline">\((m, n)\)</span> with <span class="math inline">\(m, n \leq 200\)</span>.</li>
+<li>Use the identity to prove (computationally): <span class="math inline">\(F_m \mid F_n\)</span> if and only if <span class="math inline">\(m \mid n\)</span>. Test for all pairs up to <span class="math inline">\(n = 50\)</span>.</li>
+<li>Find all <span class="math inline">\(n \leq 200\)</span> such that <span class="math inline">\(F_n\)</span> and <span class="math inline">\(F_{n+1}\)</span> share a common factor. (The answer should be “none” — prove this computationally and explain why.)</li>
+<li>What is <span class="math inline">\(\gcd(F_n, F_{n+2})\)</span> for all <span class="math inline">\(n\)</span>? Conjecture a closed form and verify it.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-fibonacci-r5" class="level3" data-number="3.8.5">
+<h3 data-number="3.8.5" class="anchored" data-anchor-id="sec-fibonacci-r5"><span class="header-section-number">3.8.5</span> Topic 5 — Lucas Numbers and Parallel Identities</h3>
+<p>The <strong>Lucas sequence</strong> is defined by <span class="math inline">\(L_1 = 1, L_2 = 3\)</span>, with the same recurrence <span class="math inline">\(L_n = L_{n-1} + L_{n-2}\)</span>:</p>
+<p><span class="math display">\[1, 3, 4, 7, 11, 18, 29, 47, 76, 123, \ldots\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>LucasSequence<span class="op">[</span><span class="dv">20</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843, 1364, 2207, 3571, 5778, 9349, 15127}</code></pre>
+<p>Lucas and Fibonacci numbers are related by: <span class="math inline">\(L_n = F_{n-1} + F_{n+1}\)</span>.</p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For each Fibonacci identity you verified in the main chapter (Cassini, hockey stick), find and verify the Lucas analogue.</li>
+<li>Compute <span class="math inline">\(\gcd(F_n, L_n)\)</span> for <span class="math inline">\(n = 1\)</span> to 100. Conjecture a pattern (it is either 1 or 2 depending on <span class="math inline">\(n \bmod 3\)</span>).</li>
+<li>Define the sequence <span class="math inline">\(S_n = F_n + L_n\)</span>. Identify it by searching OEIS. What famous sequence is it?</li>
+<li>Compute Pisano periods for the Lucas sequence modulo <span class="math inline">\(m\)</span> for <span class="math inline">\(m = 2\)</span> to <span class="math inline">\(50\)</span>. How do they compare to the Fibonacci Pisano periods?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -724,8 +981,8 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch04-digits.html" class="pagination-link" aria-label="Chapter 4: Digits, Bases, and Normal Numbers">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch04-digits.html" class="pagination-link" aria-label="Chapter 4 — Digits, Bases, and Normal Numbers">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

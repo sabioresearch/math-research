@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Chapter 12: When the Computer Misleads You – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>12&nbsp; Chapter 12 — When the Computer Misleads You – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV — The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch12-misleads.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV - The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch12-misleads.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,39 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-danger-of-computational-evidence" id="toc-the-danger-of-computational-evidence" class="nav-link active" data-scroll-target="#the-danger-of-computational-evidence"><span class="header-section-number">12.1</span> The Danger of Computational Evidence</a></li>
+  <li><a href="#patterns-that-fail-eventually" id="toc-patterns-that-fail-eventually" class="nav-link" data-scroll-target="#patterns-that-fail-eventually"><span class="header-section-number">12.2</span> Patterns That Fail Eventually</a>
+  <ul class="collapse">
+  <li><a href="#the-pólya-conjecture" id="toc-the-pólya-conjecture" class="nav-link" data-scroll-target="#the-pólya-conjecture"><span class="header-section-number">12.2.1</span> The Pólya Conjecture</a></li>
+  <li><a href="#the-almost-prime-polynomial" id="toc-the-almost-prime-polynomial" class="nav-link" data-scroll-target="#the-almost-prime-polynomial"><span class="header-section-number">12.2.2</span> The Almost-Prime Polynomial</a></li>
+  <li><a href="#the-false-pattern-in-pi" id="toc-the-false-pattern-in-pi" class="nav-link" data-scroll-target="#the-false-pattern-in-pi"><span class="header-section-number">12.2.3</span> The False Pattern in <span class="math inline">\(\pi\)</span></a></li>
+  </ul></li>
+  <li><a href="#floating-point-arithmetic" id="toc-floating-point-arithmetic" class="nav-link" data-scroll-target="#floating-point-arithmetic"><span class="header-section-number">12.3</span> Floating-Point Arithmetic</a></li>
+  <li><a href="#exact-arithmetic-as-safeguard" id="toc-exact-arithmetic-as-safeguard" class="nav-link" data-scroll-target="#exact-arithmetic-as-safeguard"><span class="header-section-number">12.4</span> Exact Arithmetic as Safeguard</a></li>
+  <li><a href="#catastrophic-cancellation-a-case-study" id="toc-catastrophic-cancellation-a-case-study" class="nav-link" data-scroll-target="#catastrophic-cancellation-a-case-study"><span class="header-section-number">12.5</span> Catastrophic Cancellation: A Case Study</a></li>
+  <li><a href="#the-strong-law-of-small-numbers" id="toc-the-strong-law-of-small-numbers" class="nav-link" data-scroll-target="#the-strong-law-of-small-numbers"><span class="header-section-number">12.6</span> The Strong Law of Small Numbers</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">12.7</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-misleads-r1" id="toc-sec-misleads-r1" class="nav-link" data-scroll-target="#sec-misleads-r1"><span class="header-section-number">12.7.1</span> Topic 1 — False Polynomial Patterns</a></li>
+  <li><a href="#sec-misleads-r2" id="toc-sec-misleads-r2" class="nav-link" data-scroll-target="#sec-misleads-r2"><span class="header-section-number">12.7.2</span> Topic 2 — Floating-Point Drift</a></li>
+  <li><a href="#sec-misleads-r3" id="toc-sec-misleads-r3" class="nav-link" data-scroll-target="#sec-misleads-r3"><span class="header-section-number">12.7.3</span> Topic 3 — The Strong Law of Small Numbers</a></li>
+  <li><a href="#sec-misleads-r4" id="toc-sec-misleads-r4" class="nav-link" data-scroll-target="#sec-misleads-r4"><span class="header-section-number">12.7.4</span> Topic 4 — Mersenne Non-Primes</a></li>
+  <li><a href="#sec-misleads-r5" id="toc-sec-misleads-r5" class="nav-link" data-scroll-target="#sec-misleads-r5"><span class="header-section-number">12.7.5</span> Topic 5 — Euler’s Product and Convergence Rate</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV — The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch12-misleads.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV - The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch12-misleads.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></h1>
+<h1 class="title"><span id="sec-misleads" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></h1>
 </div>
 
 
@@ -312,9 +400,176 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="the-danger-of-computational-evidence" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="the-danger-of-computational-evidence"><span class="header-section-number">12.1</span> The Danger of Computational Evidence</h2>
+<p>Throughout this book, we have used the computer to discover patterns, verify identities, and test conjectures. The computer is an extraordinarily powerful tool for mathematical exploration. But it has fundamental limitations that every experimental mathematician must understand.</p>
+<p>This chapter is about what can go wrong — and how to protect yourself against it. The goal is not to discourage computation but to make you a <em>skeptical</em> experimenter: one who knows when to trust a computation and when to demand more evidence.</p>
+<p>There are two distinct failure modes:</p>
+<ol type="1">
+<li><p><strong>The pattern is simply false at large scale.</strong> The computer can only check finitely many cases. A pattern that holds for millions of examples can still fail eventually.</p></li>
+<li><p><strong>The computer’s arithmetic is giving wrong answers.</strong> Floating-point arithmetic introduces rounding errors that accumulate over many operations.</p></li>
+</ol>
+<hr>
+</section>
+<section id="patterns-that-fail-eventually" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="patterns-that-fail-eventually"><span class="header-section-number">12.2</span> Patterns That Fail Eventually</h2>
+<section id="the-pólya-conjecture" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="the-pólya-conjecture"><span class="header-section-number">12.2.1</span> The Pólya Conjecture</h3>
+<p>In 1919, the mathematician George Pólya conjectured: for every integer <span class="math inline">\(n \geq 2\)</span>, at least half of the integers from 1 to <span class="math inline">\(n\)</span> have an <em>odd</em> number of prime factors (counted with multiplicity). This held for every value tested — for decades.</p>
+<p>In 1962, it was proved false. The first counterexample is <span class="math inline">\(n = 906,150,257\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PolyaCheck<span class="op">[</span><span class="dv">10</span><span class="sc">^</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Polya's conjecture holds for all n from 2 to 10^6: True</code></pre>
+<p>So a million cases of computational evidence — and the conjecture is still false.</p>
+</section>
+<section id="the-almost-prime-polynomial" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="the-almost-prime-polynomial"><span class="header-section-number">12.2.2</span> The Almost-Prime Polynomial</h3>
+<p>The polynomial <span class="math inline">\(n^2 + n + 41\)</span> is prime for <span class="math inline">\(n = 0, 1, 2, \ldots, 39\)</span>. Forty consecutive prime values from a quadratic polynomial is remarkable.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PrimePolynomialRun<span class="op">[</span><span class="fu">n</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">n</span> <span class="sc">+</span> <span class="dv">41</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>n^2 + n + 41 produces primes for n = 0, 1, ..., 39
+First composite: n = 40, value = 1681 = 41^2</code></pre>
+<p>Forty successes, then failure. If you only tested <span class="math inline">\(n = 0, \ldots, 30\)</span>, you might have conjectured “this polynomial always gives primes” — and been wrong.</p>
+</section>
+<section id="the-false-pattern-in-pi" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="the-false-pattern-in-pi"><span class="header-section-number">12.2.3</span> The False Pattern in <span class="math inline">\(\pi\)</span></h3>
+<p>The first <span class="math inline">\(10^7\)</span> digits of <span class="math inline">\(\pi\)</span> contain the digit sequence 0123456789. Does <span class="math inline">\(\pi\)</span> contain every possible finite digit sequence? This is the <strong>normal number conjecture</strong> for <span class="math inline">\(\pi\)</span>, and it remains unproven. The computer can only tell you that specific sequences appear in the digits you have computed.</p>
+<hr>
+</section>
+</section>
+<section id="floating-point-arithmetic" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="floating-point-arithmetic"><span class="header-section-number">12.3</span> Floating-Point Arithmetic</h2>
+<p>Every real number stored in a computer is approximated by a <strong>floating-point number</strong> — a finite binary decimal. Standard 64-bit floating point gives about 15–16 decimal digits of precision.</p>
+<p>This causes problems when: - Subtracting two nearly equal numbers (<strong>catastrophic cancellation</strong>) - Accumulating small errors over many iterations - Computing limits or derivatives numerically</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>FloatingPointDemo<span class="op">[]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>(1.0 + 10^-16) - 1.0 = 0.0    (* catastrophic cancellation *)
+Sum[1/n^2, {n, 1, 10^7}] = 1.6449330...   (* correct: pi^2/6 = 1.6449340... *)
+Error after 10^7 steps: 1.0 x 10^-6</code></pre>
+<p>The sum of <span class="math inline">\(1/n^2\)</span> is off by <span class="math inline">\(10^{-6}\)</span> after ten million terms. This is not a mistake — it is floating-point arithmetic working as designed, but the accumulated rounding error is visible.</p>
+<hr>
+</section>
+<section id="exact-arithmetic-as-safeguard" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="exact-arithmetic-as-safeguard"><span class="header-section-number">12.4</span> Exact Arithmetic as Safeguard</h2>
+<p>Wolfram Language performs <strong>exact arithmetic</strong> by default for integers and rational numbers. This means calculations involving integers never accumulate rounding errors.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ExactVsFloating<span class="op">[]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Exact:    Sum[1/n^2, {n,1,1000}] = (huge exact fraction)
+          N[%, 20] = 1.6439345666815599932
+Floating: N[Sum[1/n^2, {n,1,1000}]] = 1.6439345666815597
+Difference: 2 x 10^-16  (* floating-point error *)
+
+Exact:    Fibonacci[10000] = (exact 2090-digit integer)
+Floating: N[Fibonacci[10000]] differs in last few digits</code></pre>
+<p>Whenever you are testing an identity about integers — like the GCD identity for Fibonacci numbers, or Goldbach’s conjecture — use exact arithmetic. Never test integer identities with floating-point numbers.</p>
+<hr>
+</section>
+<section id="catastrophic-cancellation-a-case-study" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="catastrophic-cancellation-a-case-study"><span class="header-section-number">12.5</span> Catastrophic Cancellation: A Case Study</h2>
+<p>The formula <span class="math inline">\(e^x \approx 1 + x\)</span> for small <span class="math inline">\(x\)</span> seems safe to evaluate directly. But for computing <span class="math inline">\(e^x - 1\)</span> when <span class="math inline">\(x\)</span> is small, catastrophic cancellation destroys all precision.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>CancellationDemo<span class="op">[</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">15</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Direct:    Exp[10^-15] - 1.0 = 1.11022 x 10^-15  (* only 3 sig figs correct *)
+Exact WL: Exp[10^-15] - 1 = 10^-15 + (10^-30)/2 + ...  (* exact *)
+Taylor:   x + x^2/2 + x^3/6 = 1.0 x 10^-15 + 5.0 x 10^-31 + ...</code></pre>
+<p>The built-in Wolfram Language function <code>Expm1[x]</code> (computing <span class="math inline">\(e^x - 1\)</span>) handles this correctly using a numerically stable algorithm. The lesson: use library functions that are designed to avoid cancellation whenever possible.</p>
+<hr>
+</section>
+<section id="the-strong-law-of-small-numbers" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="the-strong-law-of-small-numbers"><span class="header-section-number">12.6</span> The Strong Law of Small Numbers</h2>
+<p>The mathematician Richard Guy articulated a principle: <strong>there are not enough small numbers to satisfy all the demands placed on them.</strong> Small numbers appear in many patterns by coincidence, not by necessity. This makes it easy to mistake coincidence for law.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>SmallNumberCoincidences<span class="op">[]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>1 = 1^1 = 1^2 = 1^3 = ...    (trivially)
+2^1 - 1 = 1 (prime)
+2^2 - 1 = 3 (prime)
+2^3 - 1 = 7 (prime)
+2^5 - 1 = 31 (prime)
+...but 2^11 - 1 = 2047 = 23 x 89 (NOT prime)
+
+n^2 + n + 41 prime for n = 0,...,39 (then fails at n=40)
+
+First 4 Fermat numbers 2^(2^n)+1 are prime... 5th is not (n=5)</code></pre>
+<p>Each of these looks like a pattern at small scale and breaks at larger scale.</p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">12.7</span> Further Research Topics</h2>
+<section id="sec-misleads-r1" class="level3" data-number="12.7.1">
+<h3 data-number="12.7.1" class="anchored" data-anchor-id="sec-misleads-r1"><span class="header-section-number">12.7.1</span> Topic 1 — False Polynomial Patterns</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>PrimePolynomialSearch<span class="op">[</span>maxRun <span class="ot">-&gt;</span> <span class="dv">30</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table of quadratic polynomials n^2 + n + p that produce primes for long initial runs. Sorted by run length.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Find 5 quadratic polynomials of the form <span class="math inline">\(n^2 + n + p\)</span> (for prime <span class="math inline">\(p\)</span>) that produce primes for at least 20 consecutive values of <span class="math inline">\(n = 0, 1, \ldots\)</span>. For each, find the first <span class="math inline">\(n\)</span> where it fails.</li>
+<li>Conjecture: what property of the discriminant <span class="math inline">\(b^2 - 4ac\)</span> determines the length of the prime-producing run? Test your conjecture on 20 examples.</li>
+<li>The polynomial <span class="math inline">\(2n^2 + 29\)</span> produces primes for <span class="math inline">\(n = 0, \ldots, 28\)</span>. Verify this and find the first composite value.</li>
+<li>Can you find a polynomial (of degree <span class="math inline">\(\geq 3\)</span>) that produces primes for more than 40 consecutive values?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-misleads-r2" class="level3" data-number="12.7.2">
+<h3 data-number="12.7.2" class="anchored" data-anchor-id="sec-misleads-r2"><span class="header-section-number">12.7.2</span> Topic 2 — Floating-Point Drift</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SinAccumulationDemo<span class="op">[</span><span class="dv">10000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Plot of |sin(n) - sin_accumulated(n)| vs n for two methods: using built-in Sin[] vs.&nbsp;adding sin(1) repeatedly. Error grows roughly linearly.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute <span class="math inline">\(\sin(n)\)</span> for <span class="math inline">\(n = 1, \ldots, 10000\)</span> two ways: using the built-in <code>Sin[n]</code> each time, and using the addition formula <span class="math inline">\(\sin(n) = 2\cos(1)\sin(n-1) - \sin(n-2)\)</span> iteratively. Plot the error <span class="math inline">\(|\sin_{\text{builtin}}(n) - \sin_{\text{accumulated}}(n)|\)</span>. How fast does the error grow?</li>
+<li>Repeat in exact arithmetic using <code>N[Sin[n], 50]</code> (50-digit precision) and compare to 16-digit precision. At what <span class="math inline">\(n\)</span> does the error in 16-digit arithmetic reach 1%?</li>
+<li>The Mandelbrot set computation uses floating-point arithmetic. For a point near the boundary, compute its orbit using 16-digit, 32-digit, and 64-digit precision. At what iteration do the orbits first diverge?</li>
+<li>Implement interval arithmetic: instead of a single floating-point value, track a guaranteed interval <span class="math inline">\([a, b]\)</span> that contains the true value. Apply it to compute the first 20 Fibonacci numbers and verify the intervals remain tight.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-misleads-r3" class="level3" data-number="12.7.3">
+<h3 data-number="12.7.3" class="anchored" data-anchor-id="sec-misleads-r3"><span class="header-section-number">12.7.3</span> Topic 3 — The Strong Law of Small Numbers</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>CollectSmallNumberPatterns<span class="op">[{</span>FibSequence<span class="op">[</span><span class="dv">20</span><span class="op">],</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">Table</span><span class="op">[</span><span class="fu">Prime</span><span class="op">[</span><span class="fu">n</span><span class="op">],</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">20</span><span class="op">}],</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">Table</span><span class="op">[</span><span class="dv">2</span><span class="sc">^</span><span class="fu">n</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">19</span><span class="op">}]}]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>From your earlier chapters, collect 10 patterns that held for all cases you tested. For each, either find a counterexample or prove (computationally, by exhaustion) that it holds up to a much larger bound.</li>
+<li>The “almost-prime” polynomial <span class="math inline">\(n^2 + n + 41\)</span> fails at <span class="math inline">\(n = 40\)</span>. Without knowing this in advance: if you had only tested <span class="math inline">\(n = 0, \ldots, 20\)</span>, what confidence level would you assign to the conjecture? How should computational evidence be quantified?</li>
+<li>The Fermat numbers <span class="math inline">\(F_n = 2^{2^n} + 1\)</span> are prime for <span class="math inline">\(n = 0, 1, 2, 3, 4\)</span> but composite for <span class="math inline">\(n = 5\)</span>. Verify <span class="math inline">\(F_5 = 4294967297 = 641 \times 6700417\)</span> using exact arithmetic.</li>
+<li>Find your own “misleading small pattern” — a sequence where the first 10 terms suggest one formula but the 11th term breaks it.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-misleads-r4" class="level3" data-number="12.7.4">
+<h3 data-number="12.7.4" class="anchored" data-anchor-id="sec-misleads-r4"><span class="header-section-number">12.7.4</span> Topic 4 — Mersenne Non-Primes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>MersenneCheck<span class="op">[</span><span class="fu">Range</span><span class="op">[</span><span class="dv">1</span><span class="op">,</span> <span class="dv">30</span><span class="op">]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table of p values, whether p is prime, and whether 2^p - 1 is prime. Several prime p give composite 2^p - 1.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>The pattern “<span class="math inline">\(2^p - 1\)</span> is prime whenever <span class="math inline">\(p\)</span> is prime” holds for <span class="math inline">\(p = 2, 3, 5, 7\)</span> then fails at <span class="math inline">\(p = 11\)</span> (<span class="math inline">\(2^{11} - 1 = 2047 = 23 \times 89\)</span>). Verify this.</li>
+<li>Among all primes <span class="math inline">\(p \leq 100\)</span>: what fraction give Mersenne primes? Compute this ratio.</li>
+<li>Use the Lucas-Lehmer test (<a href="app-b-wolfram.html#sec-app-lucas-lehmer" class="quarto-xref"><span>Section 15.1.11</span></a>) to verify all Mersenne primes up to <span class="math inline">\(2^{100} - 1\)</span>.</li>
+<li>The composite Mersenne number <span class="math inline">\(2^{11} - 1 = 2047\)</span> has factor 23. Verify that <span class="math inline">\(23 \equiv 1 \pmod{22}\)</span> (i.e., <span class="math inline">\(23 \equiv \pm 1 \pmod{2 \cdot 11}\)</span>). This is a necessary condition for a prime <span class="math inline">\(q\)</span> to divide <span class="math inline">\(2^p - 1\)</span>. Verify it for all prime factors of composite Mersenne numbers you find.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-misleads-r5" class="level3" data-number="12.7.5">
+<h3 data-number="12.7.5" class="anchored" data-anchor-id="sec-misleads-r5"><span class="header-section-number">12.7.5</span> Topic 5 — Euler’s Product and Convergence Rate</h3>
+<p>The Euler product formula connects the Riemann zeta function to the primes:</p>
+<p><span class="math display">\[\prod_{p \text{ prime}} \frac{1}{1-p^{-s}} = \sum_{n=1}^{\infty} \frac{1}{n^s}\]</span></p>
+<p>For <span class="math inline">\(s = 2\)</span>, the right side equals <span class="math inline">\(\pi^2/6\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>EulerProductConvergence<span class="op">[</span><span class="fu">s</span> <span class="ot">-&gt;</span> <span class="dv">2</span><span class="op">,</span> maxPrimes <span class="ot">-&gt;</span> <span class="dv">1000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two convergence plots. Left: partial products up to the kth prime, compared to pi^2/6. Right: partial sums of the zeta series. Product converges much faster than the sum.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the partial product <span class="math inline">\(\prod_{p \leq P} (1 - p^{-2})^{-1}\)</span> for $P = $ the first 10, 100, 500, 1000 primes. How many primes are needed to get 5 decimal places of <span class="math inline">\(\pi^2/6 \approx 1.6449340\)</span>?</li>
+<li>Compare convergence speed of the Euler product vs.&nbsp;the direct sum <span class="math inline">\(\sum_{n=1}^{N} n^{-2}\)</span>. Which requires more terms for the same accuracy?</li>
+<li>Repeat for <span class="math inline">\(s = 4\)</span> (where <span class="math inline">\(\sum n^{-4} = \pi^4/90\)</span>). Does the relative speed advantage of the product hold?</li>
+<li>The Euler product is valid only for <span class="math inline">\(s &gt; 1\)</span>. What happens numerically when you try <span class="math inline">\(s = 1\)</span> (the harmonic series)? Compute it for the first 10,000 terms and observe the divergence.</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +974,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch11-tilings.html" class="pagination-link" aria-label="Chapter 11: Tilings and Symmetry">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span>
+      <a href="./ch11-tilings.html" class="pagination-link" aria-label="Chapter 11 — Tilings and Symmetry">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch13-communication.html" class="pagination-link" aria-label="Chapter 13: From Conjecture to Communication">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch13-communication.html" class="pagination-link" aria-label="Chapter 13 — From Conjecture to Communication">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

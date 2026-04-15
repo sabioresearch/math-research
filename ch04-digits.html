@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Chapter 4: Digits, Bases, and Normal Numbers – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>4&nbsp; Chapter 4 — Digits, Bases, and Normal Numbers – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch04-digits.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch04-digits.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,34 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#numbers-through-their-digits" id="toc-numbers-through-their-digits" class="nav-link active" data-scroll-target="#numbers-through-their-digits"><span class="header-section-number">4.1</span> Numbers Through Their Digits</a></li>
+  <li><a href="#digit-frequencies-in-famous-constants" id="toc-digit-frequencies-in-famous-constants" class="nav-link" data-scroll-target="#digit-frequencies-in-famous-constants"><span class="header-section-number">4.2</span> Digit Frequencies in Famous Constants</a></li>
+  <li><a href="#normal-numbers" id="toc-normal-numbers" class="nav-link" data-scroll-target="#normal-numbers"><span class="header-section-number">4.3</span> Normal Numbers</a></li>
+  <li><a href="#kaprekars-routine" id="toc-kaprekars-routine" class="nav-link" data-scroll-target="#kaprekars-routine"><span class="header-section-number">4.4</span> Kaprekar’s Routine</a></li>
+  <li><a href="#benfords-law" id="toc-benfords-law" class="nav-link" data-scroll-target="#benfords-law"><span class="header-section-number">4.5</span> Benford’s Law</a></li>
+  <li><a href="#self-describing-numbers" id="toc-self-describing-numbers" class="nav-link" data-scroll-target="#self-describing-numbers"><span class="header-section-number">4.6</span> Self-Describing Numbers</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">4.7</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-digits-r1" id="toc-sec-digits-r1" class="nav-link" data-scroll-target="#sec-digits-r1"><span class="header-section-number">4.7.1</span> Topic 1 — Benford’s Law in Detail</a></li>
+  <li><a href="#sec-digits-r2" id="toc-sec-digits-r2" class="nav-link" data-scroll-target="#sec-digits-r2"><span class="header-section-number">4.7.2</span> Topic 2 — Kaprekar in Other Bases and Lengths</a></li>
+  <li><a href="#sec-digits-r3" id="toc-sec-digits-r3" class="nav-link" data-scroll-target="#sec-digits-r3"><span class="header-section-number">4.7.3</span> Topic 3 — Champernowne and Normality</a></li>
+  <li><a href="#sec-digits-r4" id="toc-sec-digits-r4" class="nav-link" data-scroll-target="#sec-digits-r4"><span class="header-section-number">4.7.4</span> Topic 4 — Automorphic Numbers</a></li>
+  <li><a href="#sec-digits-r5" id="toc-sec-digits-r5" class="nav-link" data-scroll-target="#sec-digits-r5"><span class="header-section-number">4.7.5</span> Topic 5 — Digital Roots and Persistence</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch04-digits.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch04-digits.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></h1>
+<h1 class="title"><span id="sec-digits" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></h1>
 </div>
 
 
@@ -312,9 +395,164 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="numbers-through-their-digits" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="numbers-through-their-digits"><span class="header-section-number">4.1</span> Numbers Through Their Digits</h2>
+<p>When we write a number like <span class="math inline">\(3.14159\ldots\)</span>, we are recording a sequence of digits in base 10. But a number is not its decimal representation — it is a mathematical object that exists independently of any base. Writing it in base 10 is a choice, not a property. The same number in base 2 is <span class="math inline">\(11.001001000011\ldots\)</span></p>
+<p>This chapter asks: what can we learn about numbers by studying their digits? Are the digits of famous constants like <span class="math inline">\(\pi\)</span> and <span class="math inline">\(e\)</span> distributed randomly? Are there numbers that somehow <em>describe themselves</em> through their own digits? These questions turn out to be surprisingly deep.</p>
+<hr>
+</section>
+<section id="digit-frequencies-in-famous-constants" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="digit-frequencies-in-famous-constants"><span class="header-section-number">4.2</span> Digit Frequencies in Famous Constants</h2>
+<p>Consider the decimal expansion of <span class="math inline">\(\pi = 3.14159265358979\ldots\)</span> How often does each digit 0–9 appear? If <span class="math inline">\(\pi\)</span> were a “typical” real number, each digit would appear roughly <span class="math inline">\(10\%\)</span> of the time.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DigitFrequency<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Bar chart. x-axis: digits 0–9. y-axis: frequency (fraction). All bars near 0.10. Small variations visible but no digit appears dramatically more or less often than 10%.]</em></p>
+<p>The digits look uniformly distributed. Now compare with <span class="math inline">\(e\)</span> and <span class="math inline">\(\sqrt{2}\)</span>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CompareDigitFrequencies<span class="op">[{</span><span class="fu">Pi</span><span class="op">,</span> <span class="fu">E</span><span class="op">,</span> <span class="fu">Sqrt</span><span class="op">[</span><span class="dv">2</span><span class="op">],</span> <span class="fu">Sqrt</span><span class="op">[</span><span class="dv">3</span><span class="op">]},</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Side-by-side bar charts for π, e, √2, √3. All four show near-uniform distribution across digits 0–9. Slight variations differ between constants but none is dramatic.]</em></p>
+<p>None of these constants show any digit that is dramatically over- or under-represented — consistent with a uniform distribution, but not proof of one.</p>
+<hr>
+</section>
+<section id="normal-numbers" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="normal-numbers"><span class="header-section-number">4.3</span> Normal Numbers</h2>
+<p>A real number is called <strong>normal in base <span class="math inline">\(b\)</span></strong> if every digit sequence of length <span class="math inline">\(k\)</span> appears in its base-<span class="math inline">\(b\)</span> expansion with frequency <span class="math inline">\(b^{-k}\)</span>. Informally, a normal number’s digits look random — every pattern appears as often as expected.</p>
+<p>Normality in base 10 means: - Each digit 0–9 appears <span class="math inline">\(\approx 10\%\)</span> of the time. - Each two-digit block 00–99 appears <span class="math inline">\(\approx 1\%\)</span> of the time. - And so on for longer blocks.</p>
+<p>The constant <span class="math inline">\(\pi\)</span> is <em>conjectured</em> to be normal, but this has never been proved. In fact, no naturally occurring constant (<span class="math inline">\(e\)</span>, <span class="math inline">\(\sqrt{2}\)</span>, <span class="math inline">\(\ln 2\)</span>, <span class="math inline">\(\ldots\)</span>) has been proved normal, despite decades of effort. We can construct normal numbers artificially — for example, the Champernowne number <span class="math inline">\(0.123456789101112\ldots\)</span> is provably normal — but proving normality for “naturally defined” constants remains an open problem.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NormalityTest<span class="op">[</span><span class="fu">Pi</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Chi-squared test results for digit uniformity. Test statistic ~9.2, p-value ~0.51. Conclusion: no evidence against uniformity in the first 10^6 digits. This is consistent with, but does not prove, normality.]</em></p>
+<hr>
+</section>
+<section id="kaprekars-routine" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="kaprekars-routine"><span class="header-section-number">4.4</span> Kaprekar’s Routine</h2>
+<p>Take any 4-digit number with at least two different digits. Rearrange its digits to form the largest and smallest possible numbers. Subtract the smaller from the larger. Repeat.</p>
+<p>For example, starting from 1234:</p>
+<p><span class="math display">\[4321 - 1234 = 3087 \to 8730 - 0378 = 8352 \to 8532 - 2358 = 6174\]</span></p>
+<p>Once we reach 6174, we are stuck: <span class="math inline">\(7641 - 1467 = 6174\)</span>. This fixed point is called the <strong>Kaprekar constant</strong>.</p>
+<p>The remarkable fact: <em>every</em> 4-digit number (with at least two different digits) reaches 6174 in at most 7 steps.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>KaprekarRoutine<span class="op">[</span><span class="dv">1234</span><span class="op">]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>KaprekarRoutine<span class="op">[</span><span class="dv">9999</span><span class="op">]</span>   <span class="co">(* degenerate case: all digits equal *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1234, 3087, 8352, 6174}
+{9999, 0}  (* 9999 - 9999 = 0, does not reach 6174 *)</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>PlotKaprekarSteps<span class="op">[</span><span class="dv">4</span><span class="op">]</span>    <span class="co">(* steps to reach 6174 for all 4-digit numbers *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Histogram. x-axis: number of steps (1 to 7). y-axis: count of starting numbers. Most numbers reach 6174 in 5 or 6 steps. None takes more than 7.]</em></p>
+<hr>
+</section>
+<section id="benfords-law" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="benfords-law"><span class="header-section-number">4.5</span> Benford’s Law</h2>
+<p>In 1938, physicist Frank Benford noticed something puzzling about logarithm tables: the early pages (covering numbers starting with 1) were much more worn than the later pages. He systematically tested leading-digit frequencies in dozens of real-world datasets — river lengths, population figures, physical constants — and found that the leading digit <span class="math inline">\(d\)</span> appears with frequency:</p>
+<p><span class="math display">\[P(d) = \log_{10}\!\left(1 + \frac{1}{d}\right)\]</span></p>
+<p>So digit 1 appears about 30.1% of the time, while digit 9 appears only about 4.6% of the time — the opposite of what you might expect from a uniform distribution.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BenfordTest<span class="op">[</span><span class="fu">Table</span><span class="op">[</span><span class="dv">2</span><span class="sc">^</span><span class="fu">n</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1000</span><span class="op">}]]</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>BenfordTest<span class="op">[</span>FibSequence<span class="op">[</span><span class="dv">1000</span><span class="op">]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[For powers of 2: bar chart of leading digit frequencies closely matches Benford’s prediction. For Fibonacci numbers: also closely matches. Chi-squared test in both cases: p-value &gt; 0.1, consistent with Benford’s law.]</em></p>
+<p>Benford’s law holds for sequences that span many orders of magnitude. It fails for data confined to a narrow range (like human heights in centimeters).</p>
+<hr>
+</section>
+<section id="self-describing-numbers" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="self-describing-numbers"><span class="header-section-number">4.6</span> Self-Describing Numbers</h2>
+<p>A <strong>self-describing number</strong> is a number where the digit at position <span class="math inline">\(k\)</span> (starting from 0) tells you how many times digit <span class="math inline">\(k\)</span> appears in the entire number.</p>
+<p>For example, 6210001000 is self-describing: - Position 0: digit is 6 → there are six 0s. ✓ - Position 1: digit is 2 → there are two 1s. ✓ - Position 2: digit is 1 → there is one 2. ✓ - Position 3: digit is 0 → there are zero 3s. ✓ - …and so on.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>SelfDescribingCheck<span class="op">[</span><span class="dv">6210001000</span><span class="op">]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>FindSelfDescribingNumbers<span class="op">[</span><span class="dv">10</span><span class="op">]</span>    <span class="co">(* search up to 10 digits *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>True
+{1210, 2020, 21200, 3211000, 42101000, 521001000, 6210001000}</code></pre>
+<p>There are very few self-describing numbers. In base 10, there are only four of them (the others are variations). In Research Topic 4 you will explore other bases.</p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">4.7</span> Further Research Topics</h2>
+<section id="sec-digits-r1" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="sec-digits-r1"><span class="header-section-number">4.7.1</span> Topic 1 — Benford’s Law in Detail</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>BenfordComparison<span class="op">[{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Table</span><span class="op">[</span><span class="dv">2</span><span class="sc">^</span><span class="fu">n</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1000</span><span class="op">}],</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  FibSequence<span class="op">[</span><span class="dv">1000</span><span class="op">],</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Table</span><span class="op">[</span><span class="fu">n</span><span class="sc">^</span><span class="dv">2</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1000</span><span class="op">}],</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Table</span><span class="op">[</span><span class="fu">Prime</span><span class="op">[</span><span class="fu">n</span><span class="op">],</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1000</span><span class="op">}]</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="op">}]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Grid of bar charts. Powers of 2 and Fibonacci fit Benford well. Squares are borderline. Primes do not fit Benford’s law.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Test Benford’s law on: powers of 2, Fibonacci numbers, factorials, prime numbers, and populations of world countries (use Wolfram Language’s <code>CountryData</code>). Which obey Benford’s law and which do not?</li>
+<li>Conjecture: what property of a sequence determines Benford compliance? (Hint: think about what “spanning many orders of magnitude” means precisely.)</li>
+<li>The theoretical derivation of Benford’s law uses the fact that <span class="math inline">\(\log_{10}(2)\)</span> is irrational. Verify computationally that <span class="math inline">\(\{n \log_{10} 2 \bmod 1 : n = 1, \ldots, 10000\}\)</span> is uniformly distributed on <span class="math inline">\([0,1]\)</span>.</li>
+<li>Test Benford’s law in base 2: leading <em>binary</em> digit frequencies. Is there a Benford analog for base 2? (There cannot be — in base 2, the only nonzero leading digit is 1, so it always appears 100%.)</li>
+</ol>
+<hr>
+</section>
+<section id="sec-digits-r2" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="sec-digits-r2"><span class="header-section-number">4.7.2</span> Topic 2 — Kaprekar in Other Bases and Lengths</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>KaprekarConstant<span class="op">[</span><span class="dv">3</span><span class="op">,</span> <span class="dv">10</span><span class="op">]</span>    <span class="co">(* 3-digit Kaprekar in base 10 *)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>KaprekarConstant<span class="op">[</span><span class="dv">4</span><span class="op">,</span> <span class="dv">8</span><span class="op">]</span>     <span class="co">(* 4-digit Kaprekar in base 8  *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[For 3 digits base 10: fixed point is 495. For 4 digits base 8: results vary — may be a fixed point or cycle.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Find the Kaprekar constant for 3-digit numbers in base 10 (it is 495). Verify all 3-digit numbers reach it in at most 5 steps.</li>
+<li>For 4-digit numbers in bases 5, 6, 7, 8: does each base have a single fixed point, or can there be cycles? Build a complete classification table.</li>
+<li>For 4-digit numbers in base 10: we know 6174 is the fixed point. Are there any 4-digit numbers that reach a cycle instead of 6174?</li>
+<li>Define the “Kaprekar length” of <span class="math inline">\(n\)</span> as the number of steps to reach the fixed point. For all 4-digit numbers in base 10, find the distribution of Kaprekar lengths and verify the maximum is 7.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-digits-r3" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="sec-digits-r3"><span class="header-section-number">4.7.3</span> Topic 3 — Champernowne and Normality</h3>
+<p>The <strong>Champernowne number</strong> is constructed by concatenating all positive integers:</p>
+<p><span class="math display">\[C_{10} = 0.123456789101112131415\ldots\]</span></p>
+<p>It is provably normal in base 10.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ChampernowneDigits<span class="op">[</span><span class="dv">10</span><span class="op">,</span> <span class="dv">1000</span><span class="op">]</span>    <span class="co">(* first 1000 digits of C_10 *)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>NormalityTest<span class="op">[</span>Champernowne<span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[First 1000 digits. Normality test: very flat chi-squared, strong p-value. Consistent with normality.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the first 10,000 digits of the binary Champernowne number <span class="math inline">\(C_2 = 0.1\ 10\ 11\ 100\ 101\ldots\)</span> (concatenate binary representations of 1, 2, 3, …). Test its digit frequencies in base 2.</li>
+<li>Construct <span class="math inline">\(C_3\)</span> and <span class="math inline">\(C_4\)</span> (base 3 and base 4 Champernowne numbers). Test their digit frequencies.</li>
+<li>Is <span class="math inline">\(C_{10}\)</span> normal in base 2? That is, do the bits of <span class="math inline">\(C_{10}\)</span>’s binary expansion appear uniformly? (This is an open question — just test the first <span class="math inline">\(10^5\)</span> bits.)</li>
+<li>The Copeland-Erdős constant concatenates prime numbers: <span class="math inline">\(0.2357111317\ldots\)</span> It is also provably normal. Compute its first 1000 digits and verify the digit frequencies.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-digits-r4" class="level3" data-number="4.7.4">
+<h3 data-number="4.7.4" class="anchored" data-anchor-id="sec-digits-r4"><span class="header-section-number">4.7.4</span> Topic 4 — Automorphic Numbers</h3>
+<p>A positive integer <span class="math inline">\(n\)</span> is <strong>automorphic</strong> if <span class="math inline">\(n^2\)</span> ends in the digits of <span class="math inline">\(n\)</span>. For example: <span class="math inline">\(5^2 = 25\)</span> ends in 5; <span class="math inline">\(6^2 = 36\)</span> ends in 6; <span class="math inline">\(76^2 = 5776\)</span> ends in 76; <span class="math inline">\(376^2 = 141376\)</span> ends in 376.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>FindAutomorphicNumbers<span class="op">[</span><span class="dv">10</span><span class="op">]</span>    <span class="co">(* up to 10 digits *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1, 5, 6, 25, 76, 376, 625, 9376, 90625, 109376, 890625, ...}</code></pre>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Find all automorphic numbers up to 10 digits. Do they come in pairs summing to <span class="math inline">\(10^k + 1\)</span> for each <span class="math inline">\(k\)</span>-digit automorphic number?</li>
+<li>In which bases <span class="math inline">\(b\)</span> do automorphic numbers (other than 0 and 1) exist? Test bases 2 through 12. Conjecture the condition on <span class="math inline">\(b\)</span>.</li>
+<li>Compute the sequence of “trimorphic numbers” — integers <span class="math inline">\(n\)</span> where <span class="math inline">\(n^3\)</span> ends in <span class="math inline">\(n\)</span>. Find all trimorphic numbers up to 6 digits.</li>
+<li>Define <span class="math inline">\(k\)</span>-morphic numbers where <span class="math inline">\(n^k\)</span> ends in <span class="math inline">\(n\)</span>. For <span class="math inline">\(k = 2, 3, 4, 5\)</span>: find all such numbers up to 6 digits. Is any number morphic for all <span class="math inline">\(k\)</span>?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-digits-r5" class="level3" data-number="4.7.5">
+<h3 data-number="4.7.5" class="anchored" data-anchor-id="sec-digits-r5"><span class="header-section-number">4.7.5</span> Topic 5 — Digital Roots and Persistence</h3>
+<p>The <strong>digital root</strong> of <span class="math inline">\(n\)</span> is obtained by repeatedly summing the digits of <span class="math inline">\(n\)</span> until a single digit remains. The digital root of 493 is <span class="math inline">\(4+9+3 = 16 \to 1+6 = 7\)</span>.</p>
+<p>The <strong>multiplicative persistence</strong> of <span class="math inline">\(n\)</span> is the number of times you must multiply digits together until you reach a single digit.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>DigitalRoot<span class="op">[{</span><span class="fu">n</span><span class="sc">^</span><span class="dv">2</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">30</span><span class="op">}}]</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>MultiplicativePersistence<span class="op">[</span><span class="fu">Range</span><span class="op">[</span><span class="dv">1</span><span class="op">,</span> <span class="dv">100</span><span class="op">]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Digital roots of n^2 for n=1..30: the pattern 1,4,9,7,7,9,4,1,9,1,4,9,7,7,9,4,1,9,… repeats with period 9. Multiplicative persistence: most numbers in 1-100 have persistence ≤ 4. The number 77 has persistence 4.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the digital roots of <span class="math inline">\(n^2, n^3, F_n\)</span> for <span class="math inline">\(n = 1\)</span> to 100. Identify the repeating period in each case. Can you predict the digital root of <span class="math inline">\(n^k\)</span> from <span class="math inline">\(n\)</span> alone?</li>
+<li>Find the smallest integer with multiplicative persistence exactly 1, 2, 3, 4, 5. (The record as of 2024 is persistence 11, held by certain 233-digit numbers.)</li>
+<li>The <strong>additive persistence</strong> of <span class="math inline">\(n\)</span> is the number of times you must sum digits until you reach a single digit. Find all integers below 10,000 with additive persistence exactly 4.</li>
+<li>Compute the digital root of <span class="math inline">\(n!\)</span> for <span class="math inline">\(n = 1\)</span> to 30. What single value does it always become for large <span class="math inline">\(n\)</span>? Why?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +957,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch03-fibonacci.html" class="pagination-link" aria-label="Chapter 3: Fibonacci Numbers and Their Cousins">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span>
+      <a href="./ch03-fibonacci.html" class="pagination-link" aria-label="Chapter 3 — Fibonacci Numbers and Their Cousins">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch05-pascal.html" class="pagination-link" aria-label="Chapter 5: Pascal's Triangle — Infinite Patterns in a Simple Array">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch05-pascal.html" class="pagination-link" aria-label="Chapter 5 — Pascal's Triangle: Infinite Patterns in a Simple Array">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

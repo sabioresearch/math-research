@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Chapter 13: From Conjecture to Communication – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>13&nbsp; Chapter 13 — From Conjecture to Communication – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./app-a-mathematica.html" rel="next">
+<link href="./app-a-quickref.html" rel="next">
 <link href="./ch12-misleads.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV — The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch13-communication.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV - The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch13-communication.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,36 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#mathematics-is-a-conversation" id="toc-mathematics-is-a-conversation" class="nav-link active" data-scroll-target="#mathematics-is-a-conversation"><span class="header-section-number">13.1</span> Mathematics Is a Conversation</a></li>
+  <li><a href="#the-anatomy-of-a-mathematical-conjecture" id="toc-the-anatomy-of-a-mathematical-conjecture" class="nav-link" data-scroll-target="#the-anatomy-of-a-mathematical-conjecture"><span class="header-section-number">13.2</span> The Anatomy of a Mathematical Conjecture</a></li>
+  <li><a href="#documenting-computational-evidence" id="toc-documenting-computational-evidence" class="nav-link" data-scroll-target="#documenting-computational-evidence"><span class="header-section-number">13.3</span> Documenting Computational Evidence</a></li>
+  <li><a href="#writing-up-a-research-report" id="toc-writing-up-a-research-report" class="nav-link" data-scroll-target="#writing-up-a-research-report"><span class="header-section-number">13.4</span> Writing Up a Research Report</a></li>
+  <li><a href="#effective-mathematical-visualizations" id="toc-effective-mathematical-visualizations" class="nav-link" data-scroll-target="#effective-mathematical-visualizations"><span class="header-section-number">13.5</span> Effective Mathematical Visualizations</a></li>
+  <li><a href="#pseudocode-vs.-code" id="toc-pseudocode-vs.-code" class="nav-link" data-scroll-target="#pseudocode-vs.-code"><span class="header-section-number">13.6</span> Pseudocode vs.&nbsp;Code</a></li>
+  <li><a href="#where-to-share-your-work" id="toc-where-to-share-your-work" class="nav-link" data-scroll-target="#where-to-share-your-work"><span class="header-section-number">13.7</span> Where to Share Your Work</a>
+  <ul class="collapse">
+  <li><a href="#competitions" id="toc-competitions" class="nav-link" data-scroll-target="#competitions"><span class="header-section-number">13.7.1</span> Competitions</a></li>
+  <li><a href="#journals-for-student-research" id="toc-journals-for-student-research" class="nav-link" data-scroll-target="#journals-for-student-research"><span class="header-section-number">13.7.2</span> Journals for Student Research</a></li>
+  <li><a href="#preprint-servers" id="toc-preprint-servers" class="nav-link" data-scroll-target="#preprint-servers"><span class="header-section-number">13.7.3</span> Preprint Servers</a></li>
+  <li><a href="#local-opportunities" id="toc-local-opportunities" class="nav-link" data-scroll-target="#local-opportunities"><span class="header-section-number">13.7.4</span> Local Opportunities</a></li>
+  </ul></li>
+  <li><a href="#a-rubric-for-evaluating-research-reports" id="toc-a-rubric-for-evaluating-research-reports" class="nav-link" data-scroll-target="#a-rubric-for-evaluating-research-reports"><span class="header-section-number">13.8</span> A Rubric for Evaluating Research Reports</a></li>
+  <li><a href="#a-sample-write-up-stopping-time-records" id="toc-a-sample-write-up-stopping-time-records" class="nav-link" data-scroll-target="#a-sample-write-up-stopping-time-records"><span class="header-section-number">13.9</span> A Sample Write-Up: Stopping Time Records</a></li>
+  <li><a href="#summary-the-experimental-mathematics-workflow" id="toc-summary-the-experimental-mathematics-workflow" class="nav-link" data-scroll-target="#summary-the-experimental-mathematics-workflow"><span class="header-section-number">13.10</span> Summary: The Experimental Mathematics Workflow</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV — The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch13-communication.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch12-misleads.html">Part IV - The Experimental Method</a></li><li class="breadcrumb-item"><a href="./ch13-communication.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></h1>
+<h1 class="title"><span id="sec-communication" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></h1>
 </div>
 
 
@@ -312,9 +397,220 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="mathematics-is-a-conversation" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="mathematics-is-a-conversation"><span class="header-section-number">13.1</span> Mathematics Is a Conversation</h2>
+<p>Every result in this book — the Collatz conjecture, Goldbach’s conjecture, the normality of <span class="math inline">\(\pi\)</span> — exists as a piece of public knowledge because someone wrote it down clearly and shared it. Mathematical ideas do not become part of the collective record until they are communicated.</p>
+<p>This chapter is about how to do that: how to turn a computational experiment into a written conjecture, how to document your evidence honestly, and how to present your work to others.</p>
+<hr>
+</section>
+<section id="the-anatomy-of-a-mathematical-conjecture" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="the-anatomy-of-a-mathematical-conjecture"><span class="header-section-number">13.2</span> The Anatomy of a Mathematical Conjecture</h2>
+<p>A well-stated conjecture has four components:</p>
+<ol type="1">
+<li><p><strong>Precise statement.</strong> The conjecture says exactly what is claimed, with no ambiguity. It uses mathematical notation or careful English with defined terms.</p></li>
+<li><p><strong>Domain.</strong> The conjecture specifies what it applies to: “for all positive integers <span class="math inline">\(n\)</span>”, “for all primes <span class="math inline">\(p\)</span>”, “for <span class="math inline">\(n\)</span> sufficiently large.”</p></li>
+<li><p><strong>Evidence.</strong> The conjecture is supported by specific computational evidence: “verified for all <span class="math inline">\(n \leq 10^6\)</span>”, “holds for 1000 randomly chosen cases.”</p></li>
+<li><p><strong>Limitations.</strong> The conjecture acknowledges what is <em>not</em> known: whether the evidence rules out all failure modes, whether it has been searched at large scale.</p></li>
+</ol>
+<p><strong>Bad conjecture:</strong> “It seems like the sequence always grows.”</p>
+<p><strong>Good conjecture:</strong> “Conjecture: For all positive integers <span class="math inline">\(n\)</span>, the Collatz stopping time satisfies <span class="math inline">\(T(n) \leq 100 \log_2 n\)</span>. Evidence: verified computationally for all <span class="math inline">\(n \leq 10^6\)</span>. The maximum ratio <span class="math inline">\(T(n)/\log_2 n\)</span> observed was 26.8 at <span class="math inline">\(n = 837799\)</span>.”</p>
+<hr>
+</section>
+<section id="documenting-computational-evidence" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="documenting-computational-evidence"><span class="header-section-number">13.3</span> Documenting Computational Evidence</h2>
+<p>When you report computational evidence, include:</p>
+<ul>
+<li><strong>The exact computation performed</strong> (not just “I tested many cases”)</li>
+<li><strong>The range tested</strong> (“all <span class="math inline">\(n\)</span> from 1 to <span class="math inline">\(10^6\)</span>”)</li>
+<li><strong>The result</strong> (“conjecture holds for all tested values” or “first exception at <span class="math inline">\(n = 42\)</span>”)</li>
+<li><strong>Any qualifications</strong> (“computation used floating-point arithmetic; exact verification was done for <span class="math inline">\(n \leq 10^4\)</span>”)</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ConjectureReport<span class="op">[</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  conjecture <span class="ot">-&gt;</span> <span class="st">"Collatz stopping time &lt; 100 Log2[n]"</span><span class="op">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  testRange <span class="ot">-&gt;</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span><span class="op">},</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  testFunction <span class="ot">-&gt;</span> <span class="fu">Function</span><span class="op">[</span><span class="fu">n</span><span class="op">,</span> TotalStoppingTime<span class="op">[</span><span class="fu">n</span><span class="op">]</span> &lt; <span class="dv">100</span><span class="sc">*</span><span class="fu">Log</span><span class="op">[</span><span class="dv">2</span><span class="op">,</span><span class="fu">n</span><span class="op">]],</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  sampleExtremes <span class="ot">-&gt;</span> <span class="cn">True</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Conjecture: T(n) &lt; 100 log2(n) for all positive integers n
+Test range: n = 1 to 1000000
+Result: True for all tested values
+Maximum ratio T(n)/log2(n): 26.84 at n = 837799
+Computation time: 43 seconds
+Arithmetic: exact integer (stopping times), floating-point (log)</code></pre>
+<hr>
+</section>
+<section id="writing-up-a-research-report" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="writing-up-a-research-report"><span class="header-section-number">13.4</span> Writing Up a Research Report</h2>
+<p>A mathematical research report — even for a student — should contain:</p>
+<p><strong>1. Introduction</strong> - State the problem in plain language - Explain why it is interesting - State the main conjecture or result</p>
+<p><strong>2. Background</strong> - Define all notation - State any known results you are building on - Cite sources (OEIS entries, textbooks, papers)</p>
+<p><strong>3. Experiments</strong> - Describe what you computed and how - Present key plots and tables - Walk the reader through your reasoning</p>
+<p><strong>4. Conjecture or Result</strong> - State it precisely (see above) - Give evidence - State limitations clearly</p>
+<p><strong>5. Further Questions</strong> - What would it take to prove the conjecture? - What related questions remain open? - What would a larger computation tell you?</p>
+<hr>
+</section>
+<section id="effective-mathematical-visualizations" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="effective-mathematical-visualizations"><span class="header-section-number">13.5</span> Effective Mathematical Visualizations</h2>
+<p>A good plot tells a story. Before making a plot, ask: what question does this answer?</p>
+<p><strong>Scatter plot:</strong> shows the relationship between two quantities. Good for stopping times vs.&nbsp;<span class="math inline">\(n\)</span>, or gap size vs.&nbsp;prime.</p>
+<p><strong>Histogram:</strong> shows the distribution of a quantity. Good for prime gaps, Pisano periods, CF partial quotients.</p>
+<p><strong>Line plot:</strong> shows how a quantity evolves over time or iterations. Good for trajectories, convergence.</p>
+<p><strong>Heatmap / array plot:</strong> shows 2D structure. Good for Pascal’s triangle mod <span class="math inline">\(p\)</span>, cellular automata.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PlotGuidelines<span class="op">[]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Rules of thumb: - Label all axes - Include a title that states what the plot shows - Use color purposefully (not just decoration) - Annotate special features (e.g., “first counterexample at <span class="math inline">\(n = 40\)</span>”) - Show the scale (log vs.&nbsp;linear)</p>
+<hr>
+</section>
+<section id="pseudocode-vs.-code" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="pseudocode-vs.-code"><span class="header-section-number">13.6</span> Pseudocode vs.&nbsp;Code</h2>
+<p>When writing up your work, you face a choice: include actual code, pseudocode, or neither?</p>
+<p><strong>Actual code</strong> is precise and reproducible — a reader can run it. But it may be too detailed and obscure the mathematical idea.</p>
+<p><strong>Pseudocode</strong> communicates the algorithm at the right level of abstraction. Use it to describe algorithms clearly:</p>
+<pre><code>Algorithm: Zeckendorf representation of n
+1. Find the largest Fibonacci number F ≤ n
+2. Record F; subtract F from n
+3. Find the largest Fibonacci number F' ≤ n with F' not adjacent to F
+4. Repeat until n = 0</code></pre>
+<p><strong>Neither:</strong> for simple procedures, English prose is enough: “We applied the Collatz rule repeatedly until reaching 1 and counted the steps.”</p>
+<hr>
+</section>
+<section id="where-to-share-your-work" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="where-to-share-your-work"><span class="header-section-number">13.7</span> Where to Share Your Work</h2>
+<section id="competitions" class="level3" data-number="13.7.1">
+<h3 data-number="13.7.1" class="anchored" data-anchor-id="competitions"><span class="header-section-number">13.7.1</span> Competitions</h3>
+<ul>
+<li><strong>Regeneron Science Talent Search (STS):</strong> Annual US competition for high school students. Accepts mathematical research.</li>
+<li><strong>MIT PRIMES:</strong> Research program for high school students working with MIT mathematicians.</li>
+<li><strong>ARML (American Regions Mathematics League):</strong> Team competition.</li>
+<li><strong>Intel ISEF:</strong> International fair accepting mathematical research.</li>
+</ul>
+</section>
+<section id="journals-for-student-research" class="level3" data-number="13.7.2">
+<h3 data-number="13.7.2" class="anchored" data-anchor-id="journals-for-student-research"><span class="header-section-number">13.7.2</span> Journals for Student Research</h3>
+<ul>
+<li><em>Mathematics Magazine</em> (MAA)</li>
+<li><em>Pi Mu Epsilon Journal</em></li>
+<li><em>UMAP Journal</em> (applied mathematics)</li>
+<li><em>Rose-Hulman Undergraduate Mathematics Journal</em> (college-level)</li>
+</ul>
+</section>
+<section id="preprint-servers" class="level3" data-number="13.7.3">
+<h3 data-number="13.7.3" class="anchored" data-anchor-id="preprint-servers"><span class="header-section-number">13.7.3</span> Preprint Servers</h3>
+<ul>
+<li><strong>arXiv.org</strong> (math section): where professional mathematicians post papers before journal publication</li>
+<li><strong>OEIS:</strong> if you found a new integer sequence, submit it</li>
+</ul>
+</section>
+<section id="local-opportunities" class="level3" data-number="13.7.4">
+<h3 data-number="13.7.4" class="anchored" data-anchor-id="local-opportunities"><span class="header-section-number">13.7.4</span> Local Opportunities</h3>
+<ul>
+<li>Science fair</li>
+<li>Math department at a local university</li>
+<li>Math circles and clubs</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="a-rubric-for-evaluating-research-reports" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="a-rubric-for-evaluating-research-reports"><span class="header-section-number">13.8</span> A Rubric for Evaluating Research Reports</h2>
+<p>Use this rubric to evaluate your own work before submitting:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Strong</th>
+<th>Adequate</th>
+<th>Weak</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Problem statement</strong></td>
+<td>Precisely stated, well-motivated</td>
+<td>Stated but imprecise</td>
+<td>Vague or missing</td>
+</tr>
+<tr class="even">
+<td><strong>Background</strong></td>
+<td>Proper context, relevant prior work cited</td>
+<td>Some context</td>
+<td>No context</td>
+</tr>
+<tr class="odd">
+<td><strong>Experiments</strong></td>
+<td>Clearly described, reproducible</td>
+<td>Described but incomplete</td>
+<td>Not reproducible</td>
+</tr>
+<tr class="even">
+<td><strong>Conjecture</strong></td>
+<td>Precisely stated with domain</td>
+<td>Stated but imprecise</td>
+<td>Only informal</td>
+</tr>
+<tr class="odd">
+<td><strong>Evidence</strong></td>
+<td>Specific ranges, qualifications</td>
+<td>Some evidence</td>
+<td>“I tested it”</td>
+</tr>
+<tr class="even">
+<td><strong>Limitations</strong></td>
+<td>Explicitly acknowledged</td>
+<td>Partially acknowledged</td>
+<td>Not mentioned</td>
+</tr>
+<tr class="odd">
+<td><strong>Visualization</strong></td>
+<td>Labeled, purposeful, informative</td>
+<td>Present but unlabeled</td>
+<td>Absent or misleading</td>
+</tr>
+<tr class="even">
+<td><strong>Further questions</strong></td>
+<td>Substantive, specific</td>
+<td>Generic</td>
+<td>Absent</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="a-sample-write-up-stopping-time-records" class="level2" data-number="13.9">
+<h2 data-number="13.9" class="anchored" data-anchor-id="a-sample-write-up-stopping-time-records"><span class="header-section-number">13.9</span> A Sample Write-Up: Stopping Time Records</h2>
+<p>Here is an example of the kind of write-up you might produce from Chapter 2.</p>
+<hr>
+<p><strong>Title:</strong> Record Stopping Times in the Collatz Sequence</p>
+<p><strong>Introduction:</strong> The Collatz conjecture states that iterating the rule <span class="math inline">\(C(n) = n/2\)</span> (if <span class="math inline">\(n\)</span> even) or <span class="math inline">\(3n+1\)</span> (if <span class="math inline">\(n\)</span> odd) always reaches 1. We investigate which starting values produce the longest trajectories.</p>
+<p><strong>Conjecture:</strong> We conjecture that the stopping time <span class="math inline">\(T(n)\)</span> satisfies <span class="math inline">\(T(n) \leq 27 \lceil \log_2 n \rceil\)</span> for all <span class="math inline">\(n \leq 10^6\)</span>.</p>
+<p><strong>Evidence:</strong> We computed <span class="math inline">\(T(n)\)</span> for all <span class="math inline">\(n\)</span> from 1 to <span class="math inline">\(10^6\)</span> using exact integer arithmetic. The maximum ratio <span class="math inline">\(T(n)/\log_2 n\)</span> was <span class="math inline">\(26.84\)</span> at <span class="math inline">\(n = 837799\)</span> with <span class="math inline">\(T(837799) = 524\)</span>. No value exceeded our bound of <span class="math inline">\(27 \log_2 n\)</span> in this range.</p>
+<p><strong>Limitations:</strong> This is verified only for <span class="math inline">\(n \leq 10^6\)</span>. The bound <span class="math inline">\(27\log_2 n\)</span> was chosen to fit the observed data and has no theoretical justification. A larger computation might reveal exceptions.</p>
+<p><strong>Further questions:</strong> Does the maximum ratio <span class="math inline">\(T(n)/\log_2 n\)</span> stay bounded as <span class="math inline">\(n \to \infty\)</span>? The best known bound (from theory) is much weaker. Can we find a sharper empirical bound?</p>
+<hr>
+</section>
+<section id="summary-the-experimental-mathematics-workflow" class="level2" data-number="13.10">
+<h2 data-number="13.10" class="anchored" data-anchor-id="summary-the-experimental-mathematics-workflow"><span class="header-section-number">13.10</span> Summary: The Experimental Mathematics Workflow</h2>
+<p>This book has followed one workflow, applied to many problems:</p>
+<ol type="1">
+<li><strong>Start with curiosity.</strong> Pick something concrete and ask: what happens?</li>
+<li><strong>Compute.</strong> Generate examples, sequences, plots.</li>
+<li><strong>Notice patterns.</strong> Look for regularities.</li>
+<li><strong>State a conjecture.</strong> Precisely, with a domain.</li>
+<li><strong>Test it harder.</strong> Larger range, edge cases, random cases.</li>
+<li><strong>Question the computation.</strong> Is the arithmetic exact? Are you measuring the right thing?</li>
+<li><strong>Communicate.</strong> Write it up as if a skeptical reader will check every step.</li>
+</ol>
+<p>The computer is a lens, not an oracle. It lets you see farther and more clearly than unaided intuition. But what you see still requires human judgment to interpret — and human language to share.</p>
+<hr>
+<p><em>This completes Part IV and the main text of the book. Turn to the appendices for Wolfram Language syntax, full function implementations, and guidance on using the OEIS.</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +1015,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch12-misleads.html" class="pagination-link" aria-label="Chapter 12: When the Computer Misleads You">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span>
+      <a href="./ch12-misleads.html" class="pagination-link" aria-label="Chapter 12 — When the Computer Misleads You">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./app-a-mathematica.html" class="pagination-link" aria-label="Appendix A: Mathematica Quick Reference">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./app-a-quickref.html" class="pagination-link" aria-label="Appendix A — Wolfram Language Quick Reference">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

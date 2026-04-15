@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James H. Choi, Ph.D.">
-<meta name="dcterms.date" content="2026-04-09">
+<meta name="author" content="James H. Choi, Ph.D. assisted by LLMs">
+<meta name="dcterms.date" content="2026-04-15">
 
 <title>Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
@@ -83,6 +83,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -129,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -138,7 +167,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -150,31 +179,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -182,7 +211,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -191,13 +220,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -205,7 +234,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -214,13 +243,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,7 +257,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -237,13 +266,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -259,26 +288,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -293,7 +322,16 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#to-the-student" id="toc-to-the-student" class="nav-link" data-scroll-target="#to-the-student">To the Student</a></li>
+  <li><a href="#what-this-book-is-about" id="toc-what-this-book-is-about" class="nav-link" data-scroll-target="#what-this-book-is-about">What This Book Is About</a></li>
+  <li><a href="#on-artificial-intelligence" id="toc-on-artificial-intelligence" class="nav-link" data-scroll-target="#on-artificial-intelligence">On Artificial Intelligence</a></li>
+  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#a-note-on-proof" id="toc-a-note-on-proof" class="nav-link" data-scroll-target="#a-note-on-proof">A Note on Proof</a></li>
+  <li><a href="#what-you-need" id="toc-what-you-need" class="nav-link" data-scroll-target="#what-you-need">What You Need</a></li>
+  <li><a href="#a-personal-note" id="toc-a-personal-note" class="nav-link" data-scroll-target="#a-personal-note">A Personal Note</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -313,14 +351,14 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>James H. Choi, Ph.D. </p>
+             <p>James H. Choi, Ph.D.<br>assisted by LLMs </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 9, 2026</p>
+      <p class="date">April 15, 2026</p>
     </div>
   </div>
   
@@ -334,10 +372,70 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
+<section id="to-the-student" class="level2">
+<h2 class="anchored" data-anchor-id="to-the-student">To the Student</h2>
+<p>You are living through a strange moment in the history of mathematics.</p>
+<p>Tools that once required years of training to use — symbolic algebra systems, high-precision numerical computation, visualization of complex structures — now fit in your pocket. Artificial intelligence can write code, solve equations, and explain concepts on demand. The barriers that once separated professional mathematicians from curious beginners have never been lower.</p>
+<p>This should be cause for excitement. It is also cause for caution.</p>
+<p>When a tool can do almost anything, the hardest question becomes: <em>what should I ask it to do?</em> A calculator is useless to someone who does not understand arithmetic. A powerful AI assistant is useless — or worse, misleading — to someone who does not understand what a valid mathematical argument looks like, what makes evidence convincing, or what it means to ask a precise question.</p>
+<p>This book is about developing that understanding. Not by memorizing formulas, but by doing what mathematicians have always done: picking a problem, playing with it, noticing patterns, and asking why.</p>
+<hr>
+</section>
+<section id="what-this-book-is-about" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-book-is-about">What This Book Is About</h2>
+<p>Every chapter in this book starts with a question simple enough to state in one sentence:</p>
+<p><em>Does the Collatz sequence always reach 1?</em></p>
+<p><em>Are the digits of <span class="math inline">\(\pi\)</span> randomly distributed?</em></p>
+<p><em>Can two simple tile shapes cover the infinite plane without ever repeating?</em></p>
+<p>None of these questions has been fully answered. Some have resisted the efforts of the best mathematicians alive for decades or centuries. You will not solve them in a weekend — but you can explore them, discover real patterns, formulate precise conjectures, and produce genuine mathematical insight.</p>
+<p>The computer is your laboratory instrument. Wolfram Language, the computational environment used throughout this book, is designed precisely for this kind of experimental exploration: exact integer arithmetic, symbolic computation, seamless visualization, and access to real-world data all in one place. You will write code not to produce correct answers to known problems, but to generate data from which you will extract your own questions.</p>
+<p>This is experimental mathematics — a style of research pioneered in the modern era by mathematicians like Jonathan Borwein and David Bailey, who argued that the computer deserved the same status in mathematics that the telescope holds in astronomy: not a replacement for theory, but an instrument that reveals phenomena theory has not yet reached.</p>
+<hr>
+</section>
+<section id="on-artificial-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="on-artificial-intelligence">On Artificial Intelligence</h2>
+<p>You will, inevitably, use AI tools while working through this book. That is fine. Use them to debug code, to look up syntax, to get a second explanation of a concept you found confusing.</p>
+<p>But be careful about using AI to answer the research questions. Not because the AI will necessarily give you wrong answers — though it sometimes will — but because getting the answer is not the point. The point is the process: the moment when you notice something unexpected in a plot, form a hypothesis, design a test, and find out whether you were right. That process cannot be outsourced. It is the entire value of the exercise.</p>
+<p>There is a deeper reason to be careful. The AI systems you are using were trained on mathematical text written by humans who did the hard work themselves. Their ability to appear mathematically fluent is built on a foundation of genuine human understanding. If you skip the foundation, you will eventually find yourself unable to evaluate whether the AI’s output is correct, insightful, or subtly wrong in ways that matter.</p>
+<p>The students who will thrive in the AI era are not those who are best at prompting AI systems. They are those who understand their subject deeply enough to direct, evaluate, and correct AI output — and to ask questions the AI has not been trained to answer because no one has answered them yet.</p>
+<p>Mathematical research is one of the last domains where genuine novelty is accessible to a motivated beginner. The questions in this book are real open problems or close relatives of them. The OEIS contains sequences that no one has studied yet. The patterns you find in your computational experiments may not be recorded anywhere. That is not a flaw in the book’s design. It is the design.</p>
+<hr>
+</section>
+<section id="how-to-use-this-book" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h2>
+<p>Each chapter has two parts: the main exposition and the research topics.</p>
+<p>The <strong>main exposition</strong> introduces a mathematical area through a sequence of concrete computations. Follow along in Wolfram Language. Run the code. Look at the output. Try changing parameters. The understanding you build by <em>doing</em> is qualitatively different from the understanding you build by reading.</p>
+<p>The <strong>research topics</strong> are open-ended investigations. They are designed to be hard enough that you cannot complete them in an hour, but tractable enough that a persistent student with the tools in this book can make real progress. They are not homework problems with known answers in the back. Some of them may have known answers in the mathematical literature — look them up after you have formed your own conjecture, not before.</p>
+<p>The <strong>appendices</strong> contain full Wolfram Language implementations of every named function used in the chapters. When a chapter uses a function like <code>CollatzSequence</code> or <code>PisanoPeriod</code>, the appendix gives you the complete code with explanation. Read those implementations. Understanding <em>why</em> a function is written the way it is will teach you more about both Wolfram Language and the underlying mathematics than any tutorial.</p>
+<hr>
+</section>
+<section id="a-note-on-proof" class="level2">
+<h2 class="anchored" data-anchor-id="a-note-on-proof">A Note on Proof</h2>
+<p>This book does not ask you to write proofs. The research topics ask you to conjecture, test, and document — the experimental phase of mathematical work.</p>
+<p>This is not because proofs are unimportant. They are the final standard of mathematical truth, and every conjecture in this book is only a conjecture until it is proved. But proof requires a level of theoretical machinery — real analysis, abstract algebra, number theory — that takes years to develop. Experimental mathematics is what you do <em>before</em> you can prove something, and sometimes it is what motivates someone else to develop the machinery needed for a proof.</p>
+<p>Gauss discovered the Prime Number Theorem empirically — plotting <span class="math inline">\(\pi(x)\)</span> and noticing it looked like <span class="math inline">\(x/\ln x\)</span> — decades before Hadamard and de la Vallée Poussin proved it. Ramanujan wrote down hundreds of formulas he “saw” through intuition and computation before Hardy and Littlewood developed the tools to prove them. Fermat stated his Last Theorem as a conjecture in a margin note in 1637. It was proved in 1995.</p>
+<p>You are in good company when you conjecture without proving.</p>
+<hr>
+</section>
+<section id="what-you-need" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-need">What You Need</h2>
+<p>This book assumes you know high school algebra and are comfortable with the idea of a function. Familiarity with calculus is useful but not required — the few places where it appears are labeled, and the underlying ideas can be followed computationally.</p>
+<p>You need a working installation of Wolfram Language. The free Wolfram Engine (available at wolfram.com) runs all the code in this book. Wolfram Language is also available through Wolfram Cloud at no cost, and as part of Mathematica, which is available at many schools and universities.</p>
+<p>You need curiosity and stubbornness. The research topics will resist you. That resistance is the point.</p>
+<hr>
+</section>
+<section id="a-personal-note" class="level2">
+<h2 class="anchored" data-anchor-id="a-personal-note">A Personal Note</h2>
+<p>Mathematics is not a spectator sport. It is not a collection of facts to be memorized, or a set of procedures to be executed. It is a practice — a way of seeing the world as a place full of hidden structure, waiting to be found.</p>
+<p>The problems in this book are invitations to that practice. Some of them have fascinated professional mathematicians for generations. You have the same computational tools they have. You have the same basic human capacity to notice a pattern and wonder why.</p>
+<p>The landscape around you is changing fast. The tools change. The interfaces change. The AI systems improve. What does not change is the satisfaction of understanding something you did not understand before — of having followed a chain of reasoning from a question to an answer, however partial, that you built yourself.</p>
+<p>That satisfaction is what this book is designed to give you access to.</p>
+<p>Now open a notebook, and let’s begin.</p>
+<hr>
+<p><em>James H. Choi, Ph.D.</em> <em>A Certified Wolfram Language Instructor</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -745,8 +843,8 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch01-primes.html" class="pagination-link" aria-label="Chapter 1: Prime Numbers — The Atoms of Arithmetic">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch01-primes.html" class="pagination-link" aria-label="Chapter 1 — Prime Numbers: The Atoms of Arithmetic">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

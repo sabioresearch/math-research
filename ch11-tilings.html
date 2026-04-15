@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Chapter 11: Tilings and Symmetry – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>11&nbsp; Chapter 11 — Tilings and Symmetry – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch10-fractals.html">Part III — Geometry Through Computation</a></li><li class="breadcrumb-item"><a href="./ch11-tilings.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch10-fractals.html">Part III - Geometry Through Computation</a></li><li class="breadcrumb-item"><a href="./ch11-tilings.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,34 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#covering-the-plane" id="toc-covering-the-plane" class="nav-link active" data-scroll-target="#covering-the-plane"><span class="header-section-number">11.1</span> Covering the Plane</a></li>
+  <li><a href="#regular-and-semi-regular-tilings" id="toc-regular-and-semi-regular-tilings" class="nav-link" data-scroll-target="#regular-and-semi-regular-tilings"><span class="header-section-number">11.2</span> Regular and Semi-Regular Tilings</a></li>
+  <li><a href="#symmetry-groups" id="toc-symmetry-groups" class="nav-link" data-scroll-target="#symmetry-groups"><span class="header-section-number">11.3</span> Symmetry Groups</a></li>
+  <li><a href="#aperiodic-tilings-penrose" id="toc-aperiodic-tilings-penrose" class="nav-link" data-scroll-target="#aperiodic-tilings-penrose"><span class="header-section-number">11.4</span> Aperiodic Tilings: Penrose</a></li>
+  <li><a href="#generating-penrose-tilings-by-substitution" id="toc-generating-penrose-tilings-by-substitution" class="nav-link" data-scroll-target="#generating-penrose-tilings-by-substitution"><span class="header-section-number">11.5</span> Generating Penrose Tilings by Substitution</a></li>
+  <li><a href="#testing-for-aperiodicity" id="toc-testing-for-aperiodicity" class="nav-link" data-scroll-target="#testing-for-aperiodicity"><span class="header-section-number">11.6</span> Testing for Aperiodicity</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">11.7</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-tilings-r1" id="toc-sec-tilings-r1" class="nav-link" data-scroll-target="#sec-tilings-r1"><span class="header-section-number">11.7.1</span> Topic 1 — Vertex Configurations</a></li>
+  <li><a href="#sec-tilings-r2" id="toc-sec-tilings-r2" class="nav-link" data-scroll-target="#sec-tilings-r2"><span class="header-section-number">11.7.2</span> Topic 2 — Golden Ratio in Penrose Tilings</a></li>
+  <li><a href="#sec-tilings-r3" id="toc-sec-tilings-r3" class="nav-link" data-scroll-target="#sec-tilings-r3"><span class="header-section-number">11.7.3</span> Topic 3 — Design Your Own Substitution Tiling</a></li>
+  <li><a href="#sec-tilings-r4" id="toc-sec-tilings-r4" class="nav-link" data-scroll-target="#sec-tilings-r4"><span class="header-section-number">11.7.4</span> Topic 4 — Chromatic Number of Tilings</a></li>
+  <li><a href="#sec-tilings-r5" id="toc-sec-tilings-r5" class="nav-link" data-scroll-target="#sec-tilings-r5"><span class="header-section-number">11.7.5</span> Topic 5 — Cut-and-Project Method</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch10-fractals.html">Part III — Geometry Through Computation</a></li><li class="breadcrumb-item"><a href="./ch11-tilings.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch10-fractals.html">Part III - Geometry Through Computation</a></li><li class="breadcrumb-item"><a href="./ch11-tilings.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></h1>
+<h1 class="title"><span id="sec-tilings" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></h1>
 </div>
 
 
@@ -312,9 +395,156 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="covering-the-plane" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="covering-the-plane"><span class="header-section-number">11.1</span> Covering the Plane</h2>
+<p>A <strong>tiling</strong> (or <strong>tessellation</strong>) is a covering of the plane by non-overlapping shapes with no gaps. The floor you walk on, the pattern on a honeycomb, the brickwork on a wall — these are all tilings.</p>
+<p>The mathematical questions are: which shapes can tile the plane? Can they do so in only one way, or many? Can a set of shapes tile the plane <em>without ever repeating</em> — an <strong>aperiodic</strong> tiling?</p>
+<p>This chapter explores these questions computationally, culminating in the remarkable Penrose tiling — a simple two-tile system that covers the plane without any repeating pattern.</p>
+<hr>
+</section>
+<section id="regular-and-semi-regular-tilings" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="regular-and-semi-regular-tilings"><span class="header-section-number">11.2</span> Regular and Semi-Regular Tilings</h2>
+<p>A <strong>regular tiling</strong> uses only one type of regular polygon and only one type of vertex configuration. There are exactly three:</p>
+<ul>
+<li>Equilateral triangles (6 meeting at each vertex)</li>
+<li>Squares (4 meeting at each vertex)</li>
+<li>Regular hexagons (3 meeting at each vertex)</li>
+</ul>
+<p>A <strong>semi-regular (Archimedean) tiling</strong> uses two or more types of regular polygons, with the same vertex configuration everywhere. There are exactly 8.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>RegularTiling<span class="op">[</span><span class="st">"hexagon"</span><span class="op">,</span> <span class="dv">6</span><span class="op">]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SemiRegularTiling<span class="op">[</span><span class="st">"3-4-6-4"</span><span class="op">,</span> <span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Left: hexagonal tiling colored in two alternating colors. Right: the 3-4-6-4 semi-regular tiling (triangles, squares, hexagons meeting at each vertex in the given order).]</em></p>
+<hr>
+</section>
+<section id="symmetry-groups" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="symmetry-groups"><span class="header-section-number">11.3</span> Symmetry Groups</h2>
+<p>Every tiling has a <strong>symmetry group</strong> — the set of rigid motions (rotations, reflections, translations, glide reflections) that map the tiling to itself. For periodic tilings, the symmetry group is one of exactly 17 <strong>wallpaper groups</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>TilingSymmetry<span class="op">[</span><span class="st">"hexagonal"</span><span class="op">]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>TilingSymmetry<span class="op">[</span><span class="st">"square"</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Diagrams showing the fundamental domain and symmetry axes for each tiling’s wallpaper group. Hexagonal tiling has p6m symmetry (the richest); square tiling has p4m.]</em></p>
+<hr>
+</section>
+<section id="aperiodic-tilings-penrose" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="aperiodic-tilings-penrose"><span class="header-section-number">11.4</span> Aperiodic Tilings: Penrose</h2>
+<p>In 1974, Roger Penrose discovered a set of just two tiles — a “kite” and a “dart” (or equivalently, a thick and thin rhombus) — that can tile the plane, but <em>only</em> aperiodically. No matter how you tile the plane with Penrose tiles following the matching rules, the resulting pattern never repeats with any translational period.</p>
+<p>The two rhombus shapes used are: - <strong>Thick rhombus:</strong> angles <span class="math inline">\(72°\)</span> and <span class="math inline">\(108°\)</span> - <strong>Thin rhombus:</strong> angles <span class="math inline">\(36°\)</span> and <span class="math inline">\(144°\)</span></p>
+<p>Both have side length 1 and are related to the regular pentagon and the golden ratio <span class="math inline">\(\phi\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PenroseTiling<span class="op">[</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Penrose tiling generated to subdivision level 6. Intricate pattern of thick and thin rhombuses with 5-fold local symmetry visible. No repeating patch of any size.]</em></p>
+<hr>
+</section>
+<section id="generating-penrose-tilings-by-substitution" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="generating-penrose-tilings-by-substitution"><span class="header-section-number">11.5</span> Generating Penrose Tilings by Substitution</h2>
+<p>The Penrose tiling is generated by a <strong>substitution rule</strong>: each thick rhombus is replaced by 2 thick and 1 thin; each thin rhombus is replaced by 1 thick and 1 thin (in specific orientations). Applying this rule repeatedly generates arbitrarily large Penrose tilings.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PenroseSubstitution<span class="op">[</span><span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Series of four images showing iterations 1 through 4 of the substitution rule. Each iteration subdivides all tiles into smaller copies according to the substitution.]</em></p>
+<p>The ratio of thick to thin rhombuses in a Penrose tiling converges to <span class="math inline">\(\phi = (1 + \sqrt{5})/2 \approx 1.618\ldots\)</span> — the golden ratio, embedded in the tiling’s very structure.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>PenroseRhombusRatio<span class="op">[</span><span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>Iteration 1:  ratio = 1.000
+Iteration 2:  ratio = 2.000
+Iteration 3:  ratio = 1.500
+Iteration 4:  ratio = 1.667
+Iteration 5:  ratio = 1.600
+Iteration 6:  ratio = 1.625
+Iteration 7:  ratio = 1.615
+Iteration 8:  ratio = 1.619
+Converging to phi = 1.618...</code></pre>
+<hr>
+</section>
+<section id="testing-for-aperiodicity" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="testing-for-aperiodicity"><span class="header-section-number">11.6</span> Testing for Aperiodicity</h2>
+<p>A tiling is <strong>periodic</strong> if there exists a translation vector <span class="math inline">\(\mathbf{v}\)</span> such that translating the entire tiling by <span class="math inline">\(\mathbf{v}\)</span> maps every tile to another tile of the same type. For a Penrose tiling, no such <span class="math inline">\(\mathbf{v}\)</span> exists.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SearchForPeriod<span class="op">[</span>PenroseTiling<span class="op">[</span><span class="dv">6</span><span class="op">],</span> maxShift <span class="ot">-&gt;</span> <span class="dv">50</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>No translational period found within search radius 50.
+(This is consistent with aperiodicity, not a proof of it.)</code></pre>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">11.7</span> Further Research Topics</h2>
+<section id="sec-tilings-r1" class="level3" data-number="11.7.1">
+<h3 data-number="11.7.1" class="anchored" data-anchor-id="sec-tilings-r1"><span class="header-section-number">11.7.1</span> Topic 1 — Vertex Configurations</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>PenroseVertexTypes<span class="op">[</span>PenroseTiling<span class="op">[</span><span class="dv">6</span><span class="op">]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Diagram showing all distinct local vertex configurations in the Penrose tiling, labeled with their frequency of occurrence.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>In a Penrose tiling, enumerate all distinct vertex configurations (the local pattern of tiles around each vertex). How many are there? The known answer is 7 for the rhombus Penrose tiling — verify this.</li>
+<li>For each vertex type, compute its frequency in a large Penrose tiling (level 8). Do the frequencies converge as the tiling grows?</li>
+<li>Compare vertex configurations in the Penrose tiling to those in the hexagonal and square tilings. How many vertex types does each periodic tiling have?</li>
+<li>Define the “vertex complexity” of a tiling as the number of distinct vertex configurations. Compare across: square, hexagonal, 3-4-6-4 semi-regular, and Penrose. Does aperiodicity require higher vertex complexity?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-tilings-r2" class="level3" data-number="11.7.2">
+<h3 data-number="11.7.2" class="anchored" data-anchor-id="sec-tilings-r2"><span class="header-section-number">11.7.2</span> Topic 2 — Golden Ratio in Penrose Tilings</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>PenroseRhombusRatio<span class="op">[</span><span class="dv">10</span><span class="op">]</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>PenroseEdgeLengthRatio<span class="op">[</span><span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two convergence plots. Both approach phi ≈ 1.618.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the ratio of thick to thin rhombuses at each substitution level from 1 to 10. Verify convergence to <span class="math inline">\(\phi\)</span>.</li>
+<li>In the Penrose tiling, many lengths appear. Identify all distinct lengths in a level-5 tiling (as multiples of the shortest edge). Are they all powers of <span class="math inline">\(\phi\)</span>?</li>
+<li>The substitution matrix for the Penrose tiling is <span class="math inline">\(M = \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}\)</span>. Its dominant eigenvalue is <span class="math inline">\(\phi\)</span>. Verify this and explain the connection to the rhombus ratio.</li>
+<li>Compare to a substitution tiling with substitution matrix <span class="math inline">\(\begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}\)</span>. What is the dominant eigenvalue? Does this tiling also appear aperiodic?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-tilings-r3" class="level3" data-number="11.7.3">
+<h3 data-number="11.7.3" class="anchored" data-anchor-id="sec-tilings-r3"><span class="header-section-number">11.7.3</span> Topic 3 — Design Your Own Substitution Tiling</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>CustomSubstitutionTiling<span class="op">[</span>rules <span class="ot">-&gt;</span> myRules<span class="op">,</span> iterations <span class="ot">-&gt;</span> <span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Design a substitution tiling with 3 tile types. Specify the substitution rules (how each tile divides into smaller tiles of the given types). Generate the tiling to depth 4.</li>
+<li>Compute the substitution matrix (how many of each tile type appear when each tile is substituted). Find its dominant eigenvalue. What does this eigenvalue represent?</li>
+<li>Test your tiling for aperiodicity by searching for translational periods in large patches.</li>
+<li>Conjecture: what property of the substitution matrix guarantees aperiodicity? (Hint: look at the eigenvalue’s algebraic properties — is it rational, quadratic irrational, or something else?)</li>
+</ol>
+<hr>
+</section>
+<section id="sec-tilings-r4" class="level3" data-number="11.7.4">
+<h3 data-number="11.7.4" class="anchored" data-anchor-id="sec-tilings-r4"><span class="header-section-number">11.7.4</span> Topic 4 — Chromatic Number of Tilings</h3>
+<p>The <strong>chromatic number</strong> of a tiling is the minimum number of colors needed to color the tiles so that no two adjacent tiles (sharing an edge) have the same color.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ColorTiling<span class="op">[</span><span class="st">"hexagonal"</span><span class="op">,</span> colors <span class="ot">-&gt;</span> <span class="dv">3</span><span class="op">]</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ColorTiling<span class="op">[</span>PenroseTiling<span class="op">[</span><span class="dv">5</span><span class="op">],</span> colors <span class="ot">-&gt;</span> <span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Left: hexagonal tiling colored with 3 colors — the minimum. Right: Penrose tiling colored with 4 colors. Both are valid colorings.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Determine the chromatic number of each regular tiling (triangle, square, hexagon). Verify your answer with a valid coloring.</li>
+<li>Determine the chromatic number of the Penrose tiling. Is it 3 or 4?</li>
+<li>For the semi-regular tilings: does the chromatic number correlate with any geometric property (number of sides, vertex configuration)?</li>
+<li>The four-color theorem says any planar map can be colored with 4 colors. Does any tiling require 4 colors? Which one?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-tilings-r5" class="level3" data-number="11.7.5">
+<h3 data-number="11.7.5" class="anchored" data-anchor-id="sec-tilings-r5"><span class="header-section-number">11.7.5</span> Topic 5 — Cut-and-Project Method</h3>
+<p>The Penrose tiling can be constructed by projecting a 5-dimensional integer lattice onto a 2D plane at a specific irrational angle.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>CutAndProject<span class="op">[</span>dim <span class="ot">-&gt;</span> <span class="dv">5</span><span class="op">,</span> <span class="fu">n</span> <span class="ot">-&gt;</span> <span class="dv">500</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Penrose-like tiling generated by the cut-and-project method. Visually identical to the substitution-generated Penrose tiling.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Implement the cut-and-project method for a 3D integer lattice projected to 2D. Varying the projection angle, show that:
+<ul>
+<li>Rational angles give periodic tilings.</li>
+<li>Irrational angles give aperiodic tilings.</li>
+</ul></li>
+<li>Verify that the cut-and-project method with the correct 5D parameters produces a tiling visually identical to the substitution-based Penrose tiling.</li>
+<li>The “windows” (or “acceptance domains”) in the cut-and-project method determine which lattice points are included. For the Penrose tiling, the windows are pentagons. Implement this and visualize the windows.</li>
+<li>Vary the projection angle slightly from the Penrose angle. At what angular deviation does the tiling first appear periodic?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +949,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch10-fractals.html" class="pagination-link" aria-label="Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span>
+      <a href="./ch10-fractals.html" class="pagination-link" aria-label="Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch12-misleads.html" class="pagination-link" aria-label="Chapter 12: When the Computer Misleads You">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch12-misleads.html" class="pagination-link" aria-label="Chapter 12 — When the Computer Misleads You">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

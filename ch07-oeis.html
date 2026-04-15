@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Chapter 7: Integer Sequences and the OEIS – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>7&nbsp; Chapter 7 — Integer Sequences and the OEIS – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch07-oeis.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch07-oeis.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,35 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-a-sequence" id="toc-what-is-a-sequence" class="nav-link active" data-scroll-target="#what-is-a-sequence"><span class="header-section-number">7.1</span> What Is a Sequence?</a></li>
+  <li><a href="#the-oeis" id="toc-the-oeis" class="nav-link" data-scroll-target="#the-oeis"><span class="header-section-number">7.2</span> The OEIS</a></li>
+  <li><a href="#difference-tables" id="toc-difference-tables" class="nav-link" data-scroll-target="#difference-tables"><span class="header-section-number">7.3</span> Difference Tables</a></li>
+  <li><a href="#identifying-recurrences" id="toc-identifying-recurrences" class="nav-link" data-scroll-target="#identifying-recurrences"><span class="header-section-number">7.4</span> Identifying Recurrences</a></li>
+  <li><a href="#recamáns-sequence" id="toc-recamáns-sequence" class="nav-link" data-scroll-target="#recamáns-sequence"><span class="header-section-number">7.5</span> Recamán’s Sequence</a></li>
+  <li><a href="#the-look-and-say-sequence" id="toc-the-look-and-say-sequence" class="nav-link" data-scroll-target="#the-look-and-say-sequence"><span class="header-section-number">7.6</span> The Look-and-Say Sequence</a></li>
+  <li><a href="#using-the-oeis-as-a-research-tool" id="toc-using-the-oeis-as-a-research-tool" class="nav-link" data-scroll-target="#using-the-oeis-as-a-research-tool"><span class="header-section-number">7.7</span> Using the OEIS as a Research Tool</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">7.8</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-oeis-r1" id="toc-sec-oeis-r1" class="nav-link" data-scroll-target="#sec-oeis-r1"><span class="header-section-number">7.8.1</span> Topic 1 — Iterated Difference Tables</a></li>
+  <li><a href="#sec-oeis-r2" id="toc-sec-oeis-r2" class="nav-link" data-scroll-target="#sec-oeis-r2"><span class="header-section-number">7.8.2</span> Topic 2 — Discovering New Sequences</a></li>
+  <li><a href="#sec-oeis-r3" id="toc-sec-oeis-r3" class="nav-link" data-scroll-target="#sec-oeis-r3"><span class="header-section-number">7.8.3</span> Topic 3 — Recamán in Depth</a></li>
+  <li><a href="#sec-oeis-r4" id="toc-sec-oeis-r4" class="nav-link" data-scroll-target="#sec-oeis-r4"><span class="header-section-number">7.8.4</span> Topic 4 — Look-and-Say Chemistry</a></li>
+  <li><a href="#sec-oeis-r5" id="toc-sec-oeis-r5" class="nav-link" data-scroll-target="#sec-oeis-r5"><span class="header-section-number">7.8.5</span> Topic 5 — Sequences and Their Complexity</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch07-oeis.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch07-oeis.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></h1>
+<h1 class="title"><span id="sec-oeis" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></h1>
 </div>
 
 
@@ -312,9 +396,184 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="what-is-a-sequence" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="what-is-a-sequence"><span class="header-section-number">7.1</span> What Is a Sequence?</h2>
+<p>A <strong>sequence</strong> is an ordered list of numbers produced by a rule. Some rules are explicit: the <span class="math inline">\(n\)</span>th prime, <span class="math inline">\(n^2\)</span>, <span class="math inline">\(2^n\)</span>. Others are recursive: the Fibonacci sequence, where each term depends on the two before it. Others are harder to classify: the Collatz stopping times from Chapter 2, or the number of ways to tile a <span class="math inline">\(2 \times n\)</span> board with dominoes.</p>
+<p>Integer sequences are one of the main objects of study in experimental mathematics. You generate a sequence, look at its terms, try to identify a pattern, and then search for that pattern in the mathematical literature. The tool that makes this search possible is the <strong>Online Encyclopedia of Integer Sequences</strong> — the OEIS.</p>
+<hr>
+</section>
+<section id="the-oeis" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-oeis"><span class="header-section-number">7.2</span> The OEIS</h2>
+<p>The OEIS (oeis.org) is a database of over 370,000 integer sequences, maintained by a community of mathematicians since 1964. It was started by Neil Sloane, then a graduate student, who kept a card file of sequences he encountered in his research.</p>
+<p>For each sequence, the OEIS provides: - The first several terms - A name and description - Formulas (explicit, recursive, generating functions) - References to the mathematical literature - Links to related sequences - Wolfram Language, Python, and other code for generating the sequence</p>
+<p>To search for a sequence: go to oeis.org, enter the first several terms separated by commas, and look for matches. The more terms you enter, the more specific the search.</p>
+<hr>
+</section>
+<section id="difference-tables" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="difference-tables"><span class="header-section-number">7.3</span> Difference Tables</h2>
+<p>One powerful technique for identifying a sequence is the <strong>difference table</strong>: repeatedly take differences between consecutive terms until you reach a row of constants (or zeros).</p>
+<p>For a polynomial sequence of degree <span class="math inline">\(d\)</span>, the difference table reaches a constant row after exactly <span class="math inline">\(d\)</span> differences.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DifferenceTable<span class="op">[{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">16</span><span class="op">,</span> <span class="dv">25</span><span class="op">,</span> <span class="dv">36</span><span class="op">,</span> <span class="dv">49</span><span class="op">},</span> <span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1,  4,  9,  16, 25, 36, 49}   (* original: n^2 *)
+{3,  5,  7,  9,  11, 13}       (* first differences *)
+{2,  2,  2,  2,  2}            (* second differences: CONSTANT *)
+{0,  0,  0,  0}                (* third differences: zero *)</code></pre>
+<p>The sequence <span class="math inline">\(1, 4, 9, 16, \ldots\)</span> is quadratic (degree 2), so the second difference row is constant and the third is zero.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DifferenceTable<span class="op">[</span>FibSequence<span class="op">[</span><span class="dv">10</span><span class="op">],</span> <span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{1, 1, 2, 3, 5, 8, 13, 21, 34, 55}
+{0, 1, 1, 2, 3, 5, 8, 13, 21}
+{1, 0, 1, 1, 2, 3, 5, 8}
+{-1, 1, 0, 1, 1, 2, 3}
+...</code></pre>
+<p>The Fibonacci sequence never reaches a constant row — it is not polynomial. The difference table just produces more Fibonacci-like sequences.</p>
+<hr>
+</section>
+<section id="identifying-recurrences" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="identifying-recurrences"><span class="header-section-number">7.4</span> Identifying Recurrences</h2>
+<p>Many sequences satisfy a <strong>linear recurrence</strong>: each term is a fixed linear combination of previous terms. Given the first several terms, we can often identify the recurrence computationally.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>FindSequenceRecurrence<span class="op">[{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="dv">13</span><span class="op">,</span> <span class="dv">21</span><span class="op">,</span> <span class="dv">34</span><span class="op">,</span> <span class="dv">55</span><span class="op">}]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>FindSequenceRecurrence<span class="op">[{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">31</span><span class="op">,</span> <span class="dv">63</span><span class="op">,</span> <span class="dv">127</span><span class="op">}]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>FindSequenceRecurrence<span class="op">[{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">24</span><span class="op">,</span> <span class="dv">120</span><span class="op">,</span> <span class="dv">720</span><span class="op">,</span> <span class="dv">5040</span><span class="op">}]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>a[n] = a[n-1] + a[n-2]         (* Fibonacci *)
+a[n] = 2*a[n-1] + 1            (* 2^n - 1   *)
+None found                      (* factorials: not a linear recurrence *)</code></pre>
+<p>Factorials do not satisfy a linear recurrence with constant coefficients — but they satisfy a simple <em>non-linear</em> recurrence: <span class="math inline">\(a_n = n \cdot a_{n-1}\)</span>.</p>
+<hr>
+</section>
+<section id="recamáns-sequence" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="recamáns-sequence"><span class="header-section-number">7.5</span> Recamán’s Sequence</h2>
+<p>One of the most intriguing sequences in the OEIS is <strong>Recamán’s sequence</strong> (A005132), defined by:</p>
+<p><span class="math display">\[a_0 = 0, \quad a_n = \begin{cases} a_{n-1} - n &amp; \text{if } a_{n-1} - n &gt; 0 \text{ and not already in the sequence} \\ a_{n-1} + n &amp; \text{otherwise} \end{cases}\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>RecamanSequence<span class="op">[</span><span class="dv">70</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{0, 1, 3, 6, 2, 7, 13, 20, 12, 21, 11, 22, 10, 23, 9, 24, 8, 25,
+ 43, 62, 42, 63, 41, 18, 42, 17, 43, 16, 44, 15, 45, 14, 46, 79, 113, ...}</code></pre>
+<p>The sequence is visualized as arcs on the number line, alternating above and below:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>PlotRecaman<span class="op">[</span><span class="dv">70</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Number line from 0 to ~120. Arcs drawn above (for subtraction steps) and below (for addition steps) connecting consecutive terms. The pattern is irregular but visually striking, resembling wave interference.]</em></p>
+<p><strong>The open question:</strong> Does every positive integer eventually appear in Recamán’s sequence? After 70 terms, some small integers are still missing. After 10,000 terms, the integer 852,655 had not yet appeared. This is an active open problem.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>RecamanMissing<span class="op">[</span><span class="dv">1000</span><span class="op">]</span>    <span class="co">(* integers not yet in the first 1000 terms *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[List of positive integers up to ~2000 that are missing from the first 1000 terms. Contains hundreds of values, apparently scattered without obvious pattern.]</em></p>
+<hr>
+</section>
+<section id="the-look-and-say-sequence" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="the-look-and-say-sequence"><span class="header-section-number">7.6</span> The Look-and-Say Sequence</h2>
+<p>Another famous sequence starts from a simple “description” rule. Starting from 1:</p>
+<ul>
+<li>1 (read as: “one 1”) → 11</li>
+<li>11 (read as: “two 1s”) → 21</li>
+<li>21 (read as: “one 2, one 1”) → 1211</li>
+<li>1211 (read as: “one 1, one 2, two 1s”) → 111221</li>
+<li><span class="math inline">\(\ldots\)</span></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>LookAndSay<span class="op">[</span><span class="dv">10</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{"1", "11", "21", "1211", "111221", "312211",
+ "13112221", "1113213211", "31131211131221", "13211311123113112211"}</code></pre>
+<p>The mathematician John Conway proved that the terms grow in length by a factor of approximately <span class="math inline">\(\lambda \approx 1.303577\)</span> per step, regardless of the starting value (except for a few degenerate cases). Conway also decomposed the sequence into 92 fundamental “atoms” that evolve independently.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>LookAndSayGrowthRate<span class="op">[</span><span class="dv">20</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Plot of term length vs.&nbsp;step for n = 1 to 20. Exponential growth. Ratio of consecutive lengths converges toward 1.3035…]</em></p>
+<hr>
+</section>
+<section id="using-the-oeis-as-a-research-tool" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="using-the-oeis-as-a-research-tool"><span class="header-section-number">7.7</span> Using the OEIS as a Research Tool</h2>
+<p>Here is the workflow for using the OEIS in mathematical exploration:</p>
+<ol type="1">
+<li><strong>Generate</strong> several terms of your sequence (at least 6–8; more is better).</li>
+<li><strong>Search</strong> oeis.org with those terms.</li>
+<li><strong>Read</strong> the entry carefully: name, formulas, cross-references.</li>
+<li><strong>Verify</strong> the formulas computationally.</li>
+<li><strong>Explore</strong> the related sequences linked in the entry.</li>
+</ol>
+<p>If your sequence is not found: you may have discovered a new sequence. Double-check your computation, search for subsequences, and if it still does not appear, consider submitting it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>GenerateAndSearch<span class="op">[</span><span class="fu">Table</span><span class="op">[</span><span class="fu">n</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">10</span><span class="op">}]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This function generates the sequence and formats it for pasting into the OEIS search (see <a href="app-b-wolfram.html#sec-app-oeis-helper" class="quarto-xref"><span>Section 15.7.8</span></a>).</p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">7.8</span> Further Research Topics</h2>
+<section id="sec-oeis-r1" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="sec-oeis-r1"><span class="header-section-number">7.8.1</span> Topic 1 — Iterated Difference Tables</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>IteratedDifferences<span class="op">[</span>FibSequence<span class="op">[</span><span class="dv">15</span><span class="op">],</span> <span class="dv">10</span><span class="op">]</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>IteratedDifferences<span class="op">[</span><span class="fu">Table</span><span class="op">[</span><span class="dv">2</span><span class="sc">^</span><span class="fu">n</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">14</span><span class="op">}],</span> <span class="dv">10</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[For Fibonacci: the difference table never stabilizes; every row is a shifted Fibonacci-like sequence. For powers of 2: the table never stabilizes either — every row is the same sequence.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For each sequence — <span class="math inline">\(n^2\)</span>, <span class="math inline">\(n^3\)</span>, <span class="math inline">\(2^n\)</span>, <span class="math inline">\(F_n\)</span>, <span class="math inline">\(n!\)</span> — compute 10 levels of iterated differences and describe what happens. Which sequences produce a constant row? Which produce a zero row? Which never stabilize?</li>
+<li>A sequence is polynomial of degree <span class="math inline">\(d\)</span> if and only if the <span class="math inline">\((d+1)\)</span>th difference row is identically zero. Verify this for <span class="math inline">\(d = 1, 2, 3, 4\)</span> using sequences <span class="math inline">\(n, n^2, n^3, n^4\)</span>.</li>
+<li>Construct a sequence whose difference table reaches zero in exactly 5 steps. What is the general form of such a sequence?</li>
+<li>What happens to the difference table of a sequence that satisfies a linear recurrence? Experiment with <span class="math inline">\(a_n = 2a_{n-1}\)</span> and <span class="math inline">\(a_n = a_{n-1} + a_{n-2}\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-oeis-r2" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="sec-oeis-r2"><span class="header-section-number">7.8.2</span> Topic 2 — Discovering New Sequences</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>SmallestPrimeFreeSequence<span class="op">[</span><span class="dv">50</span><span class="op">]</span>    <span class="co">(* custom novel sequence *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Define a sequence by the rule: <span class="math inline">\(a_1 = 1\)</span>; <span class="math inline">\(a_n\)</span> is the smallest positive integer not yet in the sequence such that <span class="math inline">\(a_n + a_{n-1}\)</span> is prime. Generate 50 terms and search OEIS. Is it listed?</li>
+<li>Define: <span class="math inline">\(a_1 = 1\)</span>; <span class="math inline">\(a_n\)</span> is the smallest positive integer not yet in the sequence such that <span class="math inline">\(|a_n - a_{n-1}|\)</span> is a perfect square. Generate 50 terms. Search OEIS.</li>
+<li>For each sequence you define: if it is not in OEIS, rigorously document it (definition, first 20 terms, a conjecture about its behavior) as if you were writing an OEIS entry.</li>
+<li>Take any sequence from the OEIS and define three new sequences derived from it (interleave, running sum, sequence of prime-valued indices). Search OEIS for all three. How often are derived sequences already catalogued?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-oeis-r3" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="sec-oeis-r3"><span class="header-section-number">7.8.3</span> Topic 3 — Recamán in Depth</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>RecamanMissing<span class="op">[</span><span class="dv">10000</span><span class="op">]</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>PlotRecamanMissing<span class="op">[</span><span class="dv">10000</span><span class="op">]</span>    <span class="co">(* plot of missing values vs. step count *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[List of integers not in the first 10,000 terms. Plot shows the number of missing integers decreasing slowly as more terms are computed.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the first 10,000 terms of Recamán’s sequence. List all positive integers below 2000 that are still missing. Is there a pattern to the missing values?</li>
+<li>Plot the number of missing integers below <span class="math inline">\(N\)</span> as a function of the number of terms computed. Does it appear to approach 0? How fast?</li>
+<li>Define the “Recamán index” of a positive integer <span class="math inline">\(n\)</span> as the step at which <span class="math inline">\(n\)</span> first appears (or <span class="math inline">\(\infty\)</span> if it never does). For all integers 1 to 100, compute their Recamán index. Do the indices have any pattern?</li>
+<li>Investigate: does the sequence ever subtract the same value twice? (i.e., are there two steps <span class="math inline">\(n_1 &lt; n_2\)</span> where <span class="math inline">\(a_{n_i} = a_{n_i - 1} - n_i\)</span>, and also <span class="math inline">\(n_1 = n_2\)</span>?) The answer is no by definition — but are there collisions in the <em>values</em> of <span class="math inline">\(n\)</span> used?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-oeis-r4" class="level3" data-number="7.8.4">
+<h3 data-number="7.8.4" class="anchored" data-anchor-id="sec-oeis-r4"><span class="header-section-number">7.8.4</span> Topic 4 — Look-and-Say Chemistry</h3>
+<p>Conway showed that any look-and-say sequence (for starting values other than 22) eventually splits into 92 fundamental strings that evolve independently, which he called “chemical elements.”</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>LookAndSayDecompose<span class="op">[</span>LookAndSay<span class="op">[</span><span class="dv">15</span><span class="op">][[</span><span class="sc">-</span><span class="dv">1</span><span class="op">]]]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[The 15th term decomposed into Conway’s atomic strings. Each atom labeled with its Conway element number.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute the first 20 terms of the look-and-say sequence starting from 1. For each term, measure its length. Compute the ratio of consecutive lengths. Does it converge to <span class="math inline">\(\lambda \approx 1.3035\)</span>?</li>
+<li>Verify Conway’s claim: start from three different starting values (e.g., 3, 12, 312). After 10 iterations, decompose each into atomic strings. Do all three produce the same set of atoms (in different proportions)?</li>
+<li>The starting value 22 is a fixed point of the look-and-say rule: “two 2s” → 22. Find all other fixed points or cycles.</li>
+<li>Define a “reverse look-and-say” sequence: instead of describing groups of equal digits, describe <em>runs</em> from right to left. Does this variant also grow at rate <span class="math inline">\(\lambda\)</span>?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-oeis-r5" class="level3" data-number="7.8.5">
+<h3 data-number="7.8.5" class="anchored" data-anchor-id="sec-oeis-r5"><span class="header-section-number">7.8.5</span> Topic 5 — Sequences and Their Complexity</h3>
+<p>Some sequences feel “simple” (powers of 2, Fibonacci) and others feel “complex” (Recamán, look-and-say). Can we make this precise?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>SequenceEntropy<span class="op">[</span>RecamanSequence<span class="op">[</span><span class="dv">1000</span><span class="op">],</span> <span class="dv">8</span><span class="op">]</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>SequenceEntropy<span class="op">[</span>FibSequence<span class="op">[</span><span class="dv">1000</span><span class="op">],</span> <span class="dv">8</span><span class="op">]</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>SequenceEntropy<span class="op">[</span><span class="fu">Table</span><span class="op">[</span><span class="dv">2</span><span class="sc">^</span><span class="fu">n</span><span class="op">,</span> <span class="op">{</span><span class="fu">n</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">999</span><span class="op">}],</span> <span class="dv">8</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Shannon entropy of symbol distributions in each sequence, computed over blocks of length up to 8. Recamán has higher entropy than Fibonacci, which has higher than powers of 2.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Define “sequence complexity” as the Shannon entropy of the distribution of <span class="math inline">\(k\)</span>-term blocks for <span class="math inline">\(k = 1, 2, 3, 4\)</span>. Compute it for: powers of 2, Fibonacci, primes, Recamán, and a random sequence. Rank them.</li>
+<li>The Lempel-Ziv complexity measures how compressible a sequence is. Apply it to the same five sequences. Does the ranking agree with entropy?</li>
+<li>Take two sequences <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Define their “interleave” <span class="math inline">\(C\)</span> as <span class="math inline">\(a_1, b_1, a_2, b_2, \ldots\)</span> and their “sum” <span class="math inline">\(D\)</span> as <span class="math inline">\(a_n + b_n\)</span>. Is the complexity of <span class="math inline">\(C\)</span> or <span class="math inline">\(D\)</span> predictable from the complexities of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>?</li>
+<li>Conjecture a definition of “interesting sequence” based on complexity. A sequence that is too simple (like <span class="math inline">\(1, 1, 1, \ldots\)</span>) or too complex (random) is uninteresting; the interesting sequences are somewhere in between. Where does each of the sequences above fall on this spectrum?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -719,13 +978,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch06-continued.html" class="pagination-link" aria-label="Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span>
+      <a href="./ch06-continued.html" class="pagination-link" aria-label="Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch08-automata.html" class="pagination-link" aria-label="Chapter 8: Cellular Automata — Rules That Generate Worlds">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch08-automata.html" class="pagination-link" aria-label="Chapter 8 — Cellular Automata: Rules That Generate Worlds">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

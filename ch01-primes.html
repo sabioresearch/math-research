@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Chapter 1: Prime Numbers — The Atoms of Arithmetic – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
+<title>1&nbsp; Chapter 1 — Prime Numbers: The Atoms of Arithmetic – Explore, Conjecture, Discover: Experimental Mathematics with Mathematica and Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,6 +117,35 @@ gtag('js', new Date());
 gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -94,7 +158,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch01-primes.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch01-primes.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +192,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Part I — Numbers Have Secrets</span></a>
+ <span class="menu-text">Part I - Numbers Have Secrets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,7 +201,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch01-primes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -149,31 +213,31 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch03-fibonacci.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3: Fibonacci Numbers and Their Cousins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 3 — Fibonacci Numbers and Their Cousins</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch04-digits.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4: Digits, Bases, and Normal Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 4 — Digits, Bases, and Normal Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch05-pascal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5: Pascal’s Triangle — Infinite Patterns in a Simple Array</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 5 — Pascal’s Triangle: Infinite Patterns in a Simple Array</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch06-continued.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6: Continued Fractions — The Most Natural Way to Write Numbers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6 — Continued Fractions: The Most Natural Way to Write Numbers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch07-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7: Integer Sequences and the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 7 — Integer Sequences and the OEIS</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,7 +245,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Part II — Structure and Dynamics</span></a>
+ <span class="menu-text">Part II - Structure and Dynamics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,13 +254,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08-automata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8: Cellular Automata — Rules That Generate Worlds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 8 — Cellular Automata: Rules That Generate Worlds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09-logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9: Chaos in a Simple Formula — The Logistic Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 9 — Chaos in a Simple Formula: The Logistic Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,7 +268,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Part III — Geometry Through Computation</span></a>
+ <span class="menu-text">Part III - Geometry Through Computation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,13 +277,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10-fractals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10: Fractal Geometry — Infinite Complexity from Simple Rules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 10 — Fractal Geometry: Infinite Complexity from Simple Rules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11-tilings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11: Tilings and Symmetry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 11 — Tilings and Symmetry</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +291,7 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Part IV — The Experimental Method</span></a>
+ <span class="menu-text">Part IV - The Experimental Method</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -236,13 +300,13 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12-misleads.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12: When the Computer Misleads You</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 12 — When the Computer Misleads You</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13-communication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13: From Conjecture to Communication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 13 — From Conjecture to Communication</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,26 +322,26 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-a-mathematica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A: Mathematica Quick Reference</span></span></a>
+  <a href="./app-a-quickref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Appendix A — Wolfram Language Quick Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app-b-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B: Python Quick Reference</span></span></a>
+  <a href="./app-b-wolfram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Appendix B — Wolfram Language Function Reference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-c-oeis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C: Guide to the OEIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix C — Guide to the OEIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-d-reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D: Further Reading</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Appendix D — Further Reading</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,15 +351,34 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-a-prime" id="toc-what-is-a-prime" class="nav-link active" data-scroll-target="#what-is-a-prime"><span class="header-section-number">1.1</span> What Is a Prime?</a></li>
+  <li><a href="#finding-primes-the-sieve-of-eratosthenes" id="toc-finding-primes-the-sieve-of-eratosthenes" class="nav-link" data-scroll-target="#finding-primes-the-sieve-of-eratosthenes"><span class="header-section-number">1.2</span> Finding Primes: The Sieve of Eratosthenes</a></li>
+  <li><a href="#how-many-primes-are-there" id="toc-how-many-primes-are-there" class="nav-link" data-scroll-target="#how-many-primes-are-there"><span class="header-section-number">1.3</span> How Many Primes Are There?</a></li>
+  <li><a href="#prime-gaps" id="toc-prime-gaps" class="nav-link" data-scroll-target="#prime-gaps"><span class="header-section-number">1.4</span> Prime Gaps</a></li>
+  <li><a href="#goldbachs-conjecture" id="toc-goldbachs-conjecture" class="nav-link" data-scroll-target="#goldbachs-conjecture"><span class="header-section-number">1.5</span> Goldbach’s Conjecture</a></li>
+  <li><a href="#the-ulam-spiral" id="toc-the-ulam-spiral" class="nav-link" data-scroll-target="#the-ulam-spiral"><span class="header-section-number">1.6</span> The Ulam Spiral</a></li>
+  <li><a href="#further-research-topics" id="toc-further-research-topics" class="nav-link" data-scroll-target="#further-research-topics"><span class="header-section-number">1.7</span> Further Research Topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-primes-r1" id="toc-sec-primes-r1" class="nav-link" data-scroll-target="#sec-primes-r1"><span class="header-section-number">1.7.1</span> Topic 1 — Prime Gaps and the Cramér Model</a></li>
+  <li><a href="#sec-primes-r2" id="toc-sec-primes-r2" class="nav-link" data-scroll-target="#sec-primes-r2"><span class="header-section-number">1.7.2</span> Topic 2 — The Ulam Spiral and Quadratic Polynomials</a></li>
+  <li><a href="#sec-primes-r3" id="toc-sec-primes-r3" class="nav-link" data-scroll-target="#sec-primes-r3"><span class="header-section-number">1.7.3</span> Topic 3 — Chebyshev’s Bias</a></li>
+  <li><a href="#sec-primes-r4" id="toc-sec-primes-r4" class="nav-link" data-scroll-target="#sec-primes-r4"><span class="header-section-number">1.7.4</span> Topic 4 — Goldbach in Depth</a></li>
+  <li><a href="#sec-primes-r5" id="toc-sec-primes-r5" class="nav-link" data-scroll-target="#sec-primes-r5"><span class="header-section-number">1.7.5</span> Topic 5 — Mersenne Primes</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I — Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch01-primes.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01-primes.html">Part I - Numbers Have Secrets</a></li><li class="breadcrumb-item"><a href="./ch01-primes.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1: Prime Numbers — The Atoms of Arithmetic</span></h1>
+<h1 class="title"><span id="sec-primes" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Chapter 1 — Prime Numbers: The Atoms of Arithmetic</span></span></h1>
 </div>
 
 
@@ -312,9 +395,159 @@ gtag('config', 'G-QQ8XMLM131', { 'anonymize_ip': true});
 </header>
 
 
-<p><em>Placeholder — content coming soon.</em></p>
+<section id="what-is-a-prime" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-a-prime"><span class="header-section-number">1.1</span> What Is a Prime?</h2>
+<p>A <strong>prime number</strong> is a positive integer greater than 1 that has exactly two divisors: 1 and itself. The first few primes are:</p>
+<p><span class="math display">\[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, \ldots\]</span></p>
+<p>Every other positive integer greater than 1 is <strong>composite</strong> — it can be broken down into smaller factors. For example, <span class="math inline">\(12 = 2 \times 2 \times 3\)</span>. The primes are the building blocks from which all other integers are assembled, which is why they are sometimes called the atoms of arithmetic.</p>
+<p>The <strong>Fundamental Theorem of Arithmetic</strong> states that every integer greater than 1 can be written as a product of primes in exactly one way (up to order). This makes primes foundational — not just interesting curiosities, but the irreducible units of multiplicative number theory.</p>
+<p>Despite their simple definition, primes are distributed among the integers in patterns that remain only partially understood after thousands of years of study.</p>
+<hr>
+</section>
+<section id="finding-primes-the-sieve-of-eratosthenes" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="finding-primes-the-sieve-of-eratosthenes"><span class="header-section-number">1.2</span> Finding Primes: The Sieve of Eratosthenes</h2>
+<p>The oldest known algorithm for finding primes is the <strong>Sieve of Eratosthenes</strong>, attributed to the Greek mathematician Eratosthenes around 240 BCE. The idea is simple:</p>
+<ol type="1">
+<li>Write down all integers from 2 to <span class="math inline">\(n\)</span>.</li>
+<li>Circle 2 (it is prime). Cross out all multiples of 2.</li>
+<li>Circle the next uncrossed number (3). Cross out all multiples of 3.</li>
+<li>Repeat: circle the next uncrossed number, cross out its multiples.</li>
+<li>All circled numbers are prime.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SieveOfEratosthenes<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<pre><code>{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+ 53, 59, 61, 67, 71, 73, 79, 83, 89, 97}</code></pre>
+<p>There are 25 primes below 100. Wolfram Language has a built-in <code>Prime[n]</code> function (the <span class="math inline">\(n\)</span>th prime) and <code>PrimePi[x]</code> (the number of primes up to <span class="math inline">\(x\)</span>), but implementing the sieve from scratch is an important exercise — see <a href="app-b-wolfram.html#sec-app-sieve" class="quarto-xref"><span>Section 15.1.1</span></a>.</p>
+<hr>
+</section>
+<section id="how-many-primes-are-there" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="how-many-primes-are-there"><span class="header-section-number">1.3</span> How Many Primes Are There?</h2>
+<p>Euclid proved around 300 BCE that there are infinitely many primes. His proof is one of the most elegant in all of mathematics: suppose there were only finitely many primes <span class="math inline">\(p_1, p_2, \ldots, p_k\)</span>. Then the number <span class="math inline">\(N = p_1 p_2 \cdots p_k + 1\)</span> is not divisible by any of them — contradiction.</p>
+<p>But how are primes <em>distributed</em> among the integers? The <strong>prime-counting function</strong> <span class="math inline">\(\pi(x)\)</span> counts the number of primes up to <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\pi(x) = \#\{p \leq x : p \text{ is prime}\}\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PlotPrimeCounting<span class="op">[</span><span class="dv">10</span><span class="sc">^</span><span class="dv">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Smooth-looking curve. x-axis: 0 to 10^6. y-axis: 0 to ~78498. Curve rises steeply at first, then flattens gradually. Shape resembles x/ln(x).]</em></p>
+<p>The curve looks smooth — a surprise given that individual primes seem scattered randomly. Gauss observed empirically (before it was proved) that <span class="math inline">\(\pi(x) \approx x / \ln x\)</span>. This is the <strong>Prime Number Theorem</strong>, proved in 1896. More accurate approximations exist, but the basic shape — primes become gradually rarer as numbers grow larger — is already visible in this plot.</p>
+<hr>
+</section>
+<section id="prime-gaps" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="prime-gaps"><span class="header-section-number">1.4</span> Prime Gaps</h2>
+<p>The <strong>gap</strong> between consecutive primes <span class="math inline">\(p_n\)</span> and <span class="math inline">\(p_{n+1}\)</span> is <span class="math inline">\(g_n = p_{n+1} - p_n\)</span>. The first few gaps are:</p>
+<p><span class="math display">\[1, 2, 2, 4, 2, 4, 2, 4, 6, 2, 6, \ldots\]</span></p>
+<p>The gap of 1 occurs only between 2 and 3. After that, all primes are odd, so all gaps are even. There are infinitely many gaps of size 2 (the <strong>twin prime conjecture</strong>, unproven), but gaps can also be arbitrarily large: for any <span class="math inline">\(k\)</span>, the <span class="math inline">\(k\)</span> consecutive integers <span class="math inline">\(k! + 2, k! + 3, \ldots, k! + (k+1)\)</span> are all composite.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>PlotPrimeGapHistogram<span class="op">[</span><span class="dv">10</span><span class="sc">^</span><span class="dv">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Histogram of prime gaps for primes up to 10^5. x-axis: gap size (2, 4, 6, …, up to ~72). y-axis: frequency. Gap of 2 is most common, frequency drops roughly exponentially, with all odd gaps having zero count.]</em></p>
+<p>The distribution of large prime gaps is predicted (but not proved) by the <strong>Cramér probabilistic model</strong>: near a prime <span class="math inline">\(p\)</span>, gaps are approximately Poisson-distributed with mean <span class="math inline">\(\ln p\)</span>. This is a heuristic, not a theorem — see Research Topic 1.</p>
+<hr>
+</section>
+<section id="goldbachs-conjecture" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="goldbachs-conjecture"><span class="header-section-number">1.5</span> Goldbach’s Conjecture</h2>
+<p>In 1742, the mathematician Christian Goldbach wrote to Euler with a conjecture: <em>every even integer greater than 2 is the sum of two primes.</em> For example:</p>
+<p><span class="math display">\[4 = 2+2, \quad 6 = 3+3, \quad 8 = 3+5, \quad 10 = 3+7 = 5+5, \quad 100 = 3+97 = 11+89 = \ldots\]</span></p>
+<p>This has been verified computationally for all even integers up to <span class="math inline">\(4 \times 10^{18}\)</span>. It has never been proved.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>VerifyGoldbach<span class="op">[</span><span class="dv">10</span><span class="sc">^</span><span class="dv">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Returns True if all even integers from 4 to 10^4 satisfy Goldbach’s conjecture. Output: True. Computation is fast.]</em></p>
+<p>We can also visualize the number of ways each even integer can be expressed as a sum of two primes — the <strong>Goldbach comet</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>PlotGoldbachComet<span class="op">[</span><span class="dv">2000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Scatter plot. x-axis: even integers from 4 to 2000. y-axis: number of distinct Goldbach representations. Points form a comet-like fan shape, spreading outward and upward as x increases, with minimum always staying above 1.]</em></p>
+<p>The fact that the minimum number of representations never reaches zero is exactly what Goldbach’s conjecture claims — but verifying it computationally only pushes the frontier; it does not prove it.</p>
+<hr>
+</section>
+<section id="the-ulam-spiral" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="the-ulam-spiral"><span class="header-section-number">1.6</span> The Ulam Spiral</h2>
+<p>In 1963, mathematician Stanislaw Ulam, bored during a conference, began writing integers in a spiral pattern on graph paper and circling the primes. He noticed something unexpected: the primes clustered along diagonal lines.</p>
+<p>The <strong>Ulam spiral</strong> is constructed by writing integers in a counterclockwise spiral starting from 1, then marking the primes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>UlamSpiral<span class="op">[</span><span class="dv">101</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[101×101 grid. Black squares mark prime positions. Clear diagonal streaks visible, especially along a few main diagonals. Background of scattered marks between the streaks.]</em></p>
+<p>The diagonal clustering has no complete explanation. It is related to the fact that certain quadratic polynomials — like <span class="math inline">\(4n^2 - 2n + 41\)</span> — produce primes at unusually high rates, and quadratic polynomials correspond to diagonals in the spiral. Research Topic 2 investigates this further.</p>
+<hr>
+</section>
+<section id="further-research-topics" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="further-research-topics"><span class="header-section-number">1.7</span> Further Research Topics</h2>
+<section id="sec-primes-r1" class="level3" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="sec-primes-r1"><span class="header-section-number">1.7.1</span> Topic 1 — Prime Gaps and the Cramér Model</h3>
+<p>The Cramér model predicts that near a prime <span class="math inline">\(p\)</span>, gaps are roughly Poisson-distributed with mean <span class="math inline">\(\ln p\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>PrimeGapStats<span class="op">[</span><span class="dv">10</span><span class="sc">^</span><span class="dv">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Summary statistics: mean gap near various ranges of p, compared to ln(p). Actual mean gap is close to ln(p) for large p.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Compute all prime gaps up to <span class="math inline">\(10^7\)</span>. Plot a histogram. Does the distribution resemble a Poisson distribution with the predicted mean?</li>
+<li>Define a “record gap” as a gap larger than all previous gaps. Find the first 20 record gaps. These are called <strong>maximal prime gaps</strong> (OEIS A002386). Do they follow any pattern?</li>
+<li>Count pairs of primes with gap exactly 2 (twin primes) up to <span class="math inline">\(10^6\)</span>. Plot the cumulative count of twin primes vs.&nbsp;<span class="math inline">\(x\)</span>. Does it grow like <span class="math inline">\(x / (\ln x)^2\)</span> as predicted?</li>
+<li>Find the first prime desert of length <span class="math inline">\(&gt; 100\)</span> — a gap larger than 100 between consecutive primes. How large a search is needed?</li>
+<li>The polynomial <span class="math inline">\(n^2 - n + 41\)</span> produces primes for <span class="math inline">\(n = 1, \ldots, 40\)</span>. For primes up to <span class="math inline">\(10^6\)</span>, what fraction lie on diagonals corresponding to this polynomial in the Ulam spiral?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-primes-r2" class="level3" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="sec-primes-r2"><span class="header-section-number">1.7.2</span> Topic 2 — The Ulam Spiral and Quadratic Polynomials</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>UlamSpiral<span class="op">[</span><span class="dv">201</span><span class="op">]</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>CompareUlamSpirals<span class="op">[{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">17</span><span class="op">,</span> <span class="dv">41</span><span class="op">}]</span>  <span class="co">(* start spiral at different centers *)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Three 201×201 spiral images side by side, starting from 1, 17, and 41. Diagonal structure shifts depending on center value.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Identify the three or four most prominent diagonals in <code>UlamSpiral[201]</code>. For each diagonal, sample 20 primes on it and determine which quadratic polynomial <span class="math inline">\(an^2 + bn + c\)</span> they satisfy.</li>
+<li>The polynomial <span class="math inline">\(n^2 + n + 41\)</span> (Euler’s lucky polynomial) gives primes for <span class="math inline">\(n = 0, \ldots, 39\)</span>. Find the next polynomial of the form <span class="math inline">\(n^2 + n + p\)</span> with the longest prime-producing run. What property must <span class="math inline">\(p\)</span> have?</li>
+<li>Change the spiral center from 1 to 41. Does the clustering pattern improve? Conjecture: which center value produces the clearest diagonal structure?</li>
+<li>Build a density map: for each cell in a 201×201 spiral, color it by the fraction of nearby cells that contain primes within a radius of 5. Does the diagonal structure persist in the smoothed density?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-primes-r3" class="level3" data-number="1.7.3">
+<h3 data-number="1.7.3" class="anchored" data-anchor-id="sec-primes-r3"><span class="header-section-number">1.7.3</span> Topic 3 — Chebyshev’s Bias</h3>
+<p>Among primes of the form <span class="math inline">\(4k+1\)</span> and <span class="math inline">\(4k+3\)</span>, the <span class="math inline">\(4k+3\)</span> primes tend to lead in the race up to <span class="math inline">\(N\)</span> — a phenomenon called <strong>Chebyshev’s bias</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ChebyshevRace<span class="op">[</span><span class="dv">10</span><span class="sc">^</span><span class="dv">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Two-line plot. x-axis: N from 2 to 10^5. y-axis: cumulative count. One line for primes ≡ 1 (mod 4), one for ≡ 3 (mod 4). The 3 mod 4 line stays above for most of the range.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>Plot the cumulative count of primes <span class="math inline">\(\equiv 1 \pmod 4\)</span> vs.&nbsp;primes <span class="math inline">\(\equiv 3 \pmod 4\)</span> up to <span class="math inline">\(10^6\)</span>. Find the smallest <span class="math inline">\(N &gt; 5\)</span> where primes <span class="math inline">\(\equiv 1 \pmod 4\)</span> take the lead (this is called a “Chebyshev bias violation”).</li>
+<li>Repeat for primes <span class="math inline">\(\equiv 1 \pmod 3\)</span> vs.&nbsp;<span class="math inline">\(\equiv 2 \pmod 3\)</span>. Does the same phenomenon occur?</li>
+<li>Define the <strong>bias function</strong> <span class="math inline">\(B(N) = \pi(N; 4, 3) - \pi(N; 4, 1)\)</span> where <span class="math inline">\(\pi(N; k, r)\)</span> counts primes <span class="math inline">\(\leq N\)</span> with remainder <span class="math inline">\(r\)</span> mod <span class="math inline">\(k\)</span>. Plot <span class="math inline">\(B(N)\)</span> for <span class="math inline">\(N\)</span> up to <span class="math inline">\(10^6\)</span>. Is <span class="math inline">\(B(N)\)</span> always positive? Does it ever reach 0?</li>
+<li>Repeat the analysis for the race modulo 6: primes <span class="math inline">\(\equiv 1 \pmod 6\)</span> vs.&nbsp;<span class="math inline">\(\equiv 5 \pmod 6\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="sec-primes-r4" class="level3" data-number="1.7.4">
+<h3 data-number="1.7.4" class="anchored" data-anchor-id="sec-primes-r4"><span class="header-section-number">1.7.4</span> Topic 4 — Goldbach in Depth</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>GoldbachRepresentations<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>PlotGoldbachComet<span class="op">[</span><span class="dv">10000</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[List of all Goldbach representations of 100. Plot of number of representations for even n up to 10000.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For even <span class="math inline">\(n\)</span> from 4 to <span class="math inline">\(10^4\)</span>: find the even number with the <em>most</em> Goldbach representations. Plot the number of representations vs.&nbsp;<span class="math inline">\(n\)</span>. Does it grow, and if so, how fast?</li>
+<li>The <strong>Goldbach function</strong> <span class="math inline">\(g(n)\)</span> gives the number of representations of <span class="math inline">\(n\)</span> as a sum of two primes. Plot <span class="math inline">\(g(n)\)</span> and its smoothed average. Conjecture a formula for the average growth rate.</li>
+<li><strong>Weak Goldbach conjecture</strong> (proved 2013): every odd integer greater than 5 is the sum of three primes. Verify this for all odd integers up to <span class="math inline">\(10^4\)</span> and record the minimum number of ways each can be expressed.</li>
+<li>Find all even integers below <span class="math inline">\(10^4\)</span> that have a Goldbach representation using two <em>twin</em> primes (primes <span class="math inline">\(p\)</span> and <span class="math inline">\(p+2\)</span>). What fraction of even integers does this cover?</li>
+</ol>
+<hr>
+</section>
+<section id="sec-primes-r5" class="level3" data-number="1.7.5">
+<h3 data-number="1.7.5" class="anchored" data-anchor-id="sec-primes-r5"><span class="header-section-number">1.7.5</span> Topic 5 — Mersenne Primes</h3>
+<p>A <strong>Mersenne prime</strong> is a prime of the form <span class="math inline">\(2^p - 1\)</span> where <span class="math inline">\(p\)</span> itself is prime. The first few are <span class="math inline">\(3, 7, 31, 127\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode mathematica code-with-copy"><code class="sourceCode mathematica"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>MersennePrimeCandidates<span class="op">[</span><span class="dv">100</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Output:</strong></p>
+<p><em>[Table of p values (prime) up to 100, with 2^p - 1 and whether it is prime. Many fail despite p being prime.]</em></p>
+<p><strong>Your tasks:</strong></p>
+<ol type="1">
+<li>For all primes <span class="math inline">\(p \leq 100\)</span>: test whether <span class="math inline">\(2^p - 1\)</span> is prime. What fraction pass? This requires big integer arithmetic — verify that Wolfram Language handles it exactly.</li>
+<li>The Lucas-Lehmer test is the standard primality test for Mersenne numbers. Implement it (see <a href="app-b-wolfram.html#sec-app-lucas-lehmer" class="quarto-xref"><span>Section 15.1.11</span></a>) and verify it agrees with Wolfram Language’s <code>PrimeQ</code> for all Mersenne candidates up to <span class="math inline">\(2^{100} - 1\)</span>.</li>
+<li>If <span class="math inline">\(2^p - 1\)</span> is a Mersenne prime, then <span class="math inline">\(2^{p-1}(2^p - 1)\)</span> is a <strong>perfect number</strong> (equals the sum of its proper divisors). Compute the first five perfect numbers and verify they are perfect.</li>
+<li>Plot the number of digits in <span class="math inline">\(2^p - 1\)</span> vs.&nbsp;<span class="math inline">\(p\)</span> (for prime <span class="math inline">\(p\)</span>). How many decimal digits does the 10th Mersenne prime have?</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
